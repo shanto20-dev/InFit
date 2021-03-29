@@ -3,6 +3,8 @@ import { Provider } from "react-redux";
 import { HashRouter } from "react-router-dom";
 import App from "./app";
 
+import '../styles/reset.css'
+
 const Root = ({ store }) => (
   <Provider store={store}>
     <HashRouter>

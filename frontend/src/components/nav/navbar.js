@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
+import '../../styles/navbar/navbar.css'
 import Logo from "../../assets/InfitLogo.png"
 
 class NavBar extends React.Component {
@@ -28,7 +29,7 @@ class NavBar extends React.Component {
       );
     } else {
       return (
-        <div>
+        <div className="login-signup">
           <Link to={"/signup"}>Signup</Link>
           <Link to={"/login"}>Login</Link>
         </div>
