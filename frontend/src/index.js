@@ -5,6 +5,12 @@ import configureStore from "./store/store";
 import jwt_decode from "jwt-decode";
 import { setAuthToken } from "./util/session_api_util";
 import { logout } from "./actions/session_actions";
+import {
+  getAllClothing,
+  getUserClothing,
+  newClothing,
+  destroyClothing,
+} from "./actions/clothing_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -33,4 +39,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const root = document.getElementById("root");
 
   ReactDOM.render(<Root store={store} />, root);
+
+  // testing purposes only
+
+  window.store = store;
+
+  window.getAllClothing = getAllClothing;
+  window.getUserClothing = getUserClothing;
+  window.newClothing = newClothing;
+  window.destroyClothing = destroyClothing;
 });
