@@ -1,5 +1,8 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
+
+import '../../styles/user_auth/signup.css'
+import logoWhite from '../../assets/InfitLogoWhite.png'
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -14,6 +17,7 @@ class SignupForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
+    this.switchForm = this.switchForm.bind(this)
   }
 
   update(field) {
@@ -45,44 +49,64 @@ class SignupForm extends React.Component {
     );
   }
 
+  switchForm(event) {
+    event.preventDefault();
+
+    document.getElementById("signup-form").classList.add("inactive");
+
+    setTimeout(() => {
+      this.props.history.push("/login")
+    }, 200)
+  }
+
   render() {
     return (
       <div className="signup-form-container">
-        <form onSubmit={this.handleSubmit}>
-          <div className="signup-form">
-            <br />
-            <input
-              type="text"
-              value={this.state.email}
-              onChange={this.update("email")}
-              placeholder="Email"
-            />
-            <br />
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.update("username")}
-              placeholder="Username"
-            />
-            <br />
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.update("password")}
-              placeholder="Password"
-            />
-            <br />
-            <input
-              type="password"
-              value={this.state.password2}
-              onChange={this.update("password2")}
-              placeholder="Confirm Password"
-            />
-            <br />
-            <input type="submit" value="Submit" />
+        <Link to="/"><img className="logo" src={logoWhite} alt=""/></Link>
+        <div id="signup-form" className="signup-form">
+          <h1>Create an Account</h1>
+          <form onSubmit={this.handleSubmit}>
+            <div className="field">
+              <label>EMAIL</label>
+              <input
+                type="text"
+                value={this.state.email}
+                onChange={this.update("email")}
+                placeholder="Email"
+              />
+            </div>
+            <div className="field">
+              <label>USERNAME</label>
+              <input
+                type="text"
+                value={this.state.username}
+                onChange={this.update("username")}
+                placeholder="Username"
+              />
+            </div>
+            <div className="field">
+              <label>PASSWORD</label>
+              <input
+                type="password"
+                value={this.state.password}
+                onChange={this.update("password")}
+                placeholder="Password"
+              />
+            </div>
+            <div className="field">
+              <label>CONFIRM PASSWORD</label>
+              <input
+                type="password"
+                value={this.state.password2}
+                onChange={this.update("password2")}
+                placeholder="Confirm Password"
+              />
+            </div>
+            <input type="submit" value="Sign In" />
+            <h3>Already have an account? <span onClick={this.switchForm}>Log In</span></h3>
             {this.renderErrors()}
-          </div>
-        </form>
+          </form>
+        </div>
       </div>
     );
   }

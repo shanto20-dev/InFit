@@ -12,7 +12,7 @@ import tabLogo from "../assets/tabLogo.png";
 
 const App = () => (
   <div className="app-div">
-    <link rel="shortcut icon" href={tabLogo}></link>
+    <link rel="shortcut icon" type="image/png" href={tabLogo}></link>
     <NavbarContainer />
     <Switch>
       <Route exact path="/" component={LandingPage} />
