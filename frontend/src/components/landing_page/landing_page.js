@@ -6,7 +6,6 @@ export default class LandingPage extends React.Component {
     render() {
         return (
             <div>
-                <img src={Logo}/>
             </div>
         )
     }
