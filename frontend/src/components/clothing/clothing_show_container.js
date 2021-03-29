@@ -4,7 +4,7 @@ import ClothingShow from "./clothing_show";
 
 const mapStateToProps = (state) => {
   return {
-    clothing: Object.values(state.entities.clothing),
+    clothing: state.entities.clothing,
   };
 };
 
