@@ -7,8 +7,11 @@ import SignupFormContainer from "./session/signup_form_container";
 import NavbarContainer from "./nav/navbar_container";
 import LandingPage from './landing_page/landing_page'
 
+import tabLogo from '../assets/tabLogo.png'
+
 const App = () => (
-  <div>
+  <div className="app-div">
+    <link rel="shortcut icon" href={tabLogo}></link>
     <NavbarContainer />
     <Switch>
       <Route path="/" component={LandingPage}/>
