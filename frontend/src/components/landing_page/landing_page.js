@@ -37,7 +37,7 @@ export default class LandingPage extends React.Component {
                         </div>
                         <div className="column">
                             <ul>
-                                <li><img src={LogoWhite} /></li>
+                                <li><img src={LogoWhite} alt=""/></li>
                                 <li>Copyright © 2021 Infit Inc</li>
                             </ul>
                         </div>

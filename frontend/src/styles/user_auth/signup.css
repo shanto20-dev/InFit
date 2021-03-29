@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&family=Varela&display=swap');
+
+.signup-form-container {
+    width: 100%;
+    min-height: 100%;
+    background: url('../../assets/carousel_images/background3.png');
+    background-size: cover;
+    background-color: rgba(255,255,255,0.4);
+    background-blend-mode: lighten;
+    position:absolute;
+    top: 0;
+    display: flex;
+}
+
+.signup-form-container a .logo {
+    position: absolute;
+    top: 20px;
+    left: 28px;
+    width: 200px;
+    height: 80px;
+}
+
+.signup-form {
+    margin: auto;
+    background-color: rgb(216, 253, 237);
+    border-radius: 10px;
+    box-shadow: 0 0 5px 10px rgba(0,0,0,0.3);
+    height: auto;
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 30px;
+
+    animation-name: slideInSignup;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+}
+
+.signup-form form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form form .field {
+    display: flex;
+    flex-direction: column;
+}
+
+.signup-form h1 {
+    font-family: 'Nunito', sans-serif;
+    color: #18A86B;
+    margin: 30px auto;
+    font-size: 40px;
+    font-weight: 800;
+}
+
+.signup-form form .field label {
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    color: #0a7a4c;
+    margin-bottom: 4px;
+    font-weight: 800;
+}
+
+.signup-form form .field input[type=text], input[type=password] {
+    height: 40px;
+    width: 100%;
+    background-color: white;
+    border: 1px solid #0a7a4c;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    padding-left: 8px;
+    overflow: hidden;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 20px;
+}
+
+.signup-form form input[type=submit] {
+    margin: 20px auto;
+    width: 100px;
+    height: 48px;
+    border: none;
+    border-radius: 24px;
+    background-color: #18A86B;
+    transition: 0.17s;
+    cursor: pointer;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+.signup-form form input[type=submit]:hover {
+    background-color: #08804e;
+    transition: 0.17s;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2);
+}
+
+.signup-form h3 {
+    margin: 0 auto;
+    color: #159660;
+    font-family: 'Nunito', sans-serif;
+}
+
+.signup-form h3 span {
+    color: #08804e;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 800;
+}
+
+.signup-form.inactive {
+    animation-name: slideOutSignup;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+}
+
+@keyframes slideInSignup {
+    0% {
+        transform: translateY(-200px) scale(0.8,0.8);
+        opacity: 0;
+    }
+    70% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(0) scale(1, 1);
+    }
+}
+
+@keyframes slideOutSignup {
+    0% {
+        transform: translateY(0) scale(1,1);
+        opacity: 1;
+    }
+    70% {
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(200px) scale(0.8,0.8);
+    }
+}
