@@ -1,4 +1,10 @@
-import { createClothing, fetchAllClothing, fetchUserClothing, deleteClothing } from "../util/clothing_api_util";
+import {
+  createClothing,
+  fetchAllClothing,
+  fetchUserClothing,
+  fetchClothing,
+  deleteClothing,
+} from "../util/clothing_api_util";
 
 export const RECEIVE_ALL_CLOTHING = "RECEIVE_ALL_CLOTHING";
 export const RECEIVE_USER_CLOTHING = "RECEIVE_USER_CLOTHING";
@@ -26,23 +32,31 @@ const removeClothing = (clothingId) => ({
 });
 
 export const getAllClothing = () => (dispatch) =>
-  fetchAllClothing()
-    .then((clothings) => dispatch(receiveAllClothing(clothings)), (err) => console.log(err))
+  fetchAllClothing().then(
+    (clothings) => dispatch(receiveAllClothing(clothings)),
+    (err) => console.log(err)
+  );
 
 export const getUserClothing = (id) => (dispatch) =>
-  fetchUserClothing(id)
-    .then((clothings) => dispatch(receiveUserClothing(clothings)), (err) => console.log(err));
+  fetchUserClothing(id).then(
+    (clothings) => dispatch(receiveUserClothing(clothings)),
+    (err) => console.log(err)
+  );
 
 export const newClothing = (clothingData) => (dispatch) =>
-  createClothing(clothingData)
-    .then((clothing) => dispatch(receiveClothing(clothing)), (err) => console.log(err));
+  createClothing(clothingData).then(
+    (clothing) => dispatch(receiveClothing(clothing)),
+    (err) => console.log(err)
+  );
 
-    export const newClothing = (clothingData) => (dispatch) =>
-  createClothing(clothingData)
-    .then((clothing) => dispatch(receiveClothing(clothing)), (err) => console.log(err));
+export const getClothing = (id) => (dispatch) =>
+  fetchClothing(id).then(
+    (clothing) => dispatch(receiveClothing(clothing)),
+    (err) => console.log(err)
+  );
 
-export const deleteClothing = (clothingId) => (dispatch) =>
-  deleteClothing(clothingId)
-    .then(() => dispatch(removeClothing(clothingId)), (err) => console.log(err));
-
-    
+export const destroyClothing = (clothingId) => (dispatch) =>
+  deleteClothing(clothingId).then(
+    () => dispatch(removeClothing(clothingId)),
+    (err) => console.log(err)
+  );

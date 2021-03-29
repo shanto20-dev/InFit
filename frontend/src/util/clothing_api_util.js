@@ -12,6 +12,10 @@ export const fetchUserClothing = (id) => {
   return axios.get(`/api/clothing/user/${id}`);
 };
 
+export const fetchClothing = (id) => {
+  return axios.get(`/api/clothing/${id}`);
+};
+
 export const deleteClothing = (id) => {
   return axios.delete(`/api/clothing/${id}`);
 };
