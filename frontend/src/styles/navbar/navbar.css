@@ -8,6 +8,9 @@
     justify-content: space-between;
     align-items: center;
     border-bottom: 2px solid #A83C28;
+    box-sizing: border-box;
+    padding: 0 20px;
+    margin-bottom: 20px;
 }
 
 .navbar-div img {

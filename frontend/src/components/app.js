@@ -14,7 +14,7 @@ const App = () => (
     <link rel="shortcut icon" href={tabLogo}></link>
     <NavbarContainer />
     <Switch>
-      <Route path="/" component={LandingPage}/>
+      <Route exact path="/" component={LandingPage}/>
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
     </Switch>
