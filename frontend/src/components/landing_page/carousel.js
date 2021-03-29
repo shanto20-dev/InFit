@@ -17,7 +17,9 @@ export default class Carousel extends Component {
         super(props);
     
         this.state = {
-            currentImageIndex: 0
+            currentImageIndex: 0,
+            leftArrowClickable: true,
+            rightArrowClickable: true
         };
 
         this.nextSlide = this.nextSlide.bind(this);
@@ -25,28 +27,41 @@ export default class Carousel extends Component {
     }
 
     previousSlide () {
-
+        if (!this.state.leftArrowClickable) {
+            return;
+        }
         const index = (this.state.currentImageIndex + imgArr.length - 1) % imgArr.length;
 
         document.getElementById("image-slides").classList.add("move-left")
-    
+        this.setState({
+            leftArrowClickable: false
+        });
         setTimeout( () => {
             this.setState({
-                currentImageIndex: index
+                currentImageIndex: index,
+                leftArrowClickable: true
             });
             document.getElementById("image-slides").classList.remove("move-left")
         }, 900);
     }
     
     nextSlide () {
+        if (!this.state.rightArrowClickable) {
+            return;
+        }
 
         const index = (this.state.currentImageIndex + 1) % imgArr.length
 
         document.getElementById("image-slides").classList.add("move-right")
+
+        this.setState({
+            rightArrowClickable: false
+        });
     
         setTimeout( () => {
             this.setState({
-                currentImageIndex: index
+                currentImageIndex: index,
+                rightArrowClickable: true
             });
             document.getElementById("image-slides").classList.remove("move-right")
         }, 900);
@@ -61,16 +76,21 @@ export default class Carousel extends Component {
         let farRightIdx = (this.state.currentImageIndex + 2) % imgArr.length;
 
         return (
-            <div className="carousel">
-                <Arrow
-                    direction="left"
-                    clickFunction={ this.previousSlide }
-                    arrow="&#9664;" />
-                <ImageSlides img1={ imgArr[farLeftIdx] } img2={ imgArr[leftIdx] } img3={ imgArr[this.state.currentImageIndex] } img4={ imgArr[rightIdx] } img5={ imgArr[farRightIdx] } />
-                <Arrow
-                    direction="right"
-                    clickFunction={ this.nextSlide }
-                    arrow="&#9654;" />
+            <div className="carousel-container">
+                <div className="header-message">
+                    <h2>Your Digital Wardrobe</h2>
+                </div>
+                <div className="carousel">
+                    <Arrow
+                        direction="left"
+                        clickFunction={ this.previousSlide }
+                        arrow="&#9664;" />
+                    <ImageSlides img1={ imgArr[farLeftIdx] } img2={ imgArr[leftIdx] } img3={ imgArr[this.state.currentImageIndex] } img4={ imgArr[rightIdx] } img5={ imgArr[farRightIdx] } />
+                    <Arrow
+                        direction="right"
+                        clickFunction={ this.nextSlide }
+                        arrow="&#9654;" />
+                </div>
             </div>
         )
     }
@@ -84,9 +104,9 @@ const ImageSlides = ({ img1, img2, img3, img4, img5 }) => {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         position: 'absolute',
-        left: '360px',
+        left: 'Calc(50% - 1710px)',
         transform: 'scale(0.6,0.6)',
-        backgroundColor: 'lightgrey',
+        // backgroundColor: 'lightgrey',
         width: 'Calc(100%/5)',
         height: '100%',
     };
@@ -97,9 +117,9 @@ const ImageSlides = ({ img1, img2, img3, img4, img5 }) => {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         position: 'absolute',
-        left: 'Calc(100%/5 + 180px)',
+        left: 'Calc(50% - 1070px)',
         transform: 'scale(0.6,0.6)',
-        backgroundColor: 'lightgrey'
+        // backgroundColor: 'lightgrey'
     };
 
     const style3 = {
@@ -111,7 +131,7 @@ const ImageSlides = ({ img1, img2, img3, img4, img5 }) => {
         left: 'Calc(200%/5)',
         width: 'Calc(100%/5)',
         height: '100%',
-        backgroundColor: 'lightgrey'
+        // backgroundColor: 'lightgrey'
     };
 
     const style4 = {
@@ -120,11 +140,11 @@ const ImageSlides = ({ img1, img2, img3, img4, img5 }) => {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         position: 'absolute',
-        left: 'Calc(300%/5 - 180px)',
+        left: 'Calc(50% + 210px)',
         width: 'Calc(100%/5)',
         height: '100%',
         transform: 'scale(0.6,0.6)',
-        backgroundColor: 'lightgrey'
+        // backgroundColor: 'lightgrey'
     };
 
     const style5 = {
@@ -133,9 +153,9 @@ const ImageSlides = ({ img1, img2, img3, img4, img5 }) => {
         backgroundPosition: 'center',
         backgroundRepeat: 'no-repeat',
         position: 'absolute',
-        right: '360px',
+        left: 'Calc(50% + 850px)',
         transform: 'scale(0.6,0.6)',
-        backgroundColor: 'lightgrey',
+        // backgroundColor: 'lightgrey',
         width: 'Calc(100%/5)',
         height: '100%',
     };
