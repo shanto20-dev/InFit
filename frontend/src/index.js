@@ -42,6 +42,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // testing purposes only
 
+  window.store = store;
+
   window.getAllClothing = getAllClothing;
   window.getUserClothing = getUserClothing;
   window.newClothing = newClothing;

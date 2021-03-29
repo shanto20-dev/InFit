@@ -5,7 +5,7 @@ export const createClothing = (clothingData) => {
 };
 
 export const fetchAllClothing = () => {
-  return axios.get("/api/clothing/");
+  return axios.get("/api/clothing");
 };
 
 export const fetchUserClothing = (id) => {

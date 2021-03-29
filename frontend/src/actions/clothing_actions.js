@@ -33,7 +33,7 @@ const removeClothing = (clothingId) => ({
 
 export const getAllClothing = () => (dispatch) =>
   fetchAllClothing().then(
-    (clothings) => dispatch(receiveAllClothing(clothings)),
+    (clothings) => dispatch(receiveAllClothing(clothings.data)),
     (err) => console.log(err)
   );
 
@@ -43,14 +43,20 @@ export const getUserClothing = (id) => (dispatch) =>
     (err) => console.log(err)
   );
 
-export const newClothing = (clothingData) => (dispatch) =>
-  createClothing(clothingData).then(
-    (clothing) => dispatch(receiveClothing(clothing)),
-    (err) => console.log(err)
-  );
+export const newClothing = (clothingData) => (dispatch) => {
+  return createClothing(clothingData)
+    .then((clothing) => dispatch(receiveClothing(clothing)))
+    .catch((err) => console.log(err));
+};
 
 export const destroyClothing = (clothingId) => (dispatch) =>
   deleteClothing(clothingId).then(
     () => dispatch(removeClothing(clothingId)),
+    (err) => console.log(err)
+  );
+
+export const getClothing = (clothingId) => (dispatch) =>
+  fetchClothing(clothingId).then(
+    (clothing) => dispatch(receiveClothing(clothing)),
     (err) => console.log(err)
   );
