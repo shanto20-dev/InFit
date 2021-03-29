@@ -42,3 +42,15 @@ export const getUserClothing = (id) => (dispatch) =>
     (clothings) => dispatch(receiveUserClothing(clothings)),
     (err) => console.log(err)
   );
+
+export const newClothing = (clothingData) => (dispatch) =>
+  createClothing(clothingData).then(
+    (clothing) => dispatch(receiveClothing(clothing)),
+    (err) => console.log(err)
+  );
+
+export const destroyClothing = (clothingId) => (dispatch) =>
+  deleteClothing(clothingId).then(
+    () => dispatch(removeClothing(clothingId)),
+    (err) => console.log(err)
+  );
