@@ -37,12 +37,7 @@ export const newClothing = (clothingData) => (dispatch) =>
   createClothing(clothingData)
     .then((clothing) => dispatch(receiveClothing(clothing)), (err) => console.log(err));
 
-    export const newClothing = (clothingData) => (dispatch) =>
-  createClothing(clothingData)
-    .then((clothing) => dispatch(receiveClothing(clothing)), (err) => console.log(err));
-
-export const deleteClothing = (clothingId) => (dispatch) =>
+export const destroyClothing = (clothingId) => (dispatch) =>
   deleteClothing(clothingId)
     .then(() => dispatch(removeClothing(clothingId)), (err) => console.log(err));
 
-    
