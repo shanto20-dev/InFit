@@ -57,6 +57,6 @@ export const destroyClothing = (clothingId) => (dispatch) =>
 
 export const getClothing = (clothingId) => (dispatch) =>
   fetchClothing(clothingId).then(
-    (clothing) => dispatch(receiveClothing(clothing)),
+    (clothing) => dispatch(receiveClothing(clothing.data)),
     (err) => console.log(err)
   );
