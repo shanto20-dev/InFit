@@ -5,15 +5,16 @@ import Closet from "./closet";
 
 const mapStateToProps = (state) => {
     
-    return {
-        currentUser: currentUser,
-        errors: state.errors.session,
-    };
+  return {
+    currentUser: currentUser,
+    errors: state.errors.session,
+    clothing: state.entities.clothing.data
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getUserClothes: (id) => dispatch(getUserClothing(id))
+    getUserClothing: (id) => dispatch(getUserClothing(id))
   };
 };
 
