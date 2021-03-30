@@ -1,0 +1,55 @@
+.closet-wrapper {
+    height: Calc(100% - 100px);
+    width: 100%;
+    display: flex;
+}
+
+.closet-wrapper .sidebar {
+    width: 20%;
+    height: 100%;
+    background-color: #F66B54;
+}
+
+.closet-wrapper .content {
+    width: 80%;
+    height: 100%;
+    background-color: #ffffff;
+    position: relative;
+}
+
+.closet-wrapper .content .upload-clothes-wrapper {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 44px;
+    height: 40px;
+    
+    display: flex;
+}
+
+.closet-wrapper .content .upload-clothes-wrapper a {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    border: 2px solid black;
+    background-color: #ffe8e4;
+    cursor: pointer;
+    display: flex;
+}
+
+.closet-wrapper .content .upload-clothes-wrapper img {
+    width: 28px;
+    height: 20px;
+    margin: auto;
+}
+
+.closet-wrapper .content .upload-clothes-wrapper a span {
+    display: none;
+}
+
+.closet-wrapper .content .upload-clothes-wrapper a:hover span {
+    display: inline-block;
+    transition: ease-in-out;
+    margin: auto 0 auto 4px;
+    background-color: #F66B54;
+}
