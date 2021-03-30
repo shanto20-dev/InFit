@@ -3,13 +3,16 @@
     width: 100%;
     display: flex;
     overflow: hidden;
+    
 }
 
 .closet-wrapper .sidebar {
     width: 20%;
     height: 100%;
-    background-color: #f66c54a8;
+    background-color: #f66c5479;
+    box-shadow: 0 0 5px 2px rgba(0,0,0,0.2);
     position: relative;
+    z-index: 1;
 }
 
 .closet-wrapper .content {
@@ -17,6 +20,7 @@
     height: 100%;
     background-color: #ffffff;
     position: relative;
+    z-index:0;
 }
 
 .closet-wrapper .content .upload-clothes-wrapper {
@@ -101,7 +105,7 @@
 
 .closet-wrapper .sidebar-content h2 {
     margin-bottom: 12px;
-    color: white;
+    color: rgb(60,60,60);
     font-family: 'Nunito', sans-serif;
     font-weight: 700;
     font-size: 28px;
@@ -112,21 +116,28 @@
     padding: 8px;
     margin-bottom: 4px;
     margin-top: 4px;
-    color: white;
+    color: rgb(60,60,60);
     font-family: 'Nunito', sans-serif;
     font-weight: 600;
     font-size: 16px;
     cursor: pointer;
     border-radius: 4px;
+    transition: 0.17s;
 }
 
 .closet-wrapper .sidebar-content h3:hover {
     background-color: rgba(255,255,255,0.2);
+    transform: scale(1.1,1.1);
+    transition: 0.17s;
 }
 
 .closet-wrapper .sidebar-content h3.selected {
-    background-color: rgba(255,255,255,0.2);
+    background-color: rgba(255,255,255,0.4);
     font-weight: 800;
+}
+
+.closet-wrapper .sidebar-content h3.selected:hover {
+    background-color: rgba(255,255,255,0.4);
 }
 
 
@@ -134,5 +145,5 @@
     height: 2px;
     border-radius: 1px;
     width: 90%;
-    background-color: #ff8e7a;
+    background-color: #fc9f8f;
 }

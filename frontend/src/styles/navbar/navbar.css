@@ -7,7 +7,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 2px solid #A83C28;
+    /* border-bottom: 2px solid #A83C28; */
     box-sizing: border-box;
     padding: 0 20px;
     background-color: #ff85702a;

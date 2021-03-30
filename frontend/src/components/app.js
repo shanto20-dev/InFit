@@ -19,7 +19,7 @@ import OutfitShowContainer from "./outfits/outfit_show_container";
 
 const App = () => (
   <div className="app-div">
-    <link rel="shortcut icon" type="image/png" href={tabLogo}></link>
+    <link rel="shortcut icon" type="image/png" src={tabLogo}></link>
     <NavbarContainer />
     <Switch>
       <ProtectedRoute
