@@ -18,6 +18,10 @@ class NewClothingForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount(){
+    this.props.clearErrors();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
     let newClothing
@@ -111,7 +115,7 @@ class NewClothingForm extends React.Component {
                 placeholder="#tag"
               />
             <label>
-            Image
+              Image
             </label>
               <input
                 type="text"
@@ -119,6 +123,16 @@ class NewClothingForm extends React.Component {
                 value={this.state.img_url}
                 onChange={this.update("img_url")}
                 placeholder="Upload an Image"
+              />
+            <label>
+              Link to Buy
+            </label>
+              <input
+                type="text"
+                className="new-clothing-link field"
+                value={this.state.link}
+                onChange={this.update("link")}
+                placeholder="Where can you buy this item?"
               />
               {this.renderErrors()}
             <button>Submit</button>
