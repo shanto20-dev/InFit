@@ -57,11 +57,13 @@
     position: relative;
     background-color: white;
     transition: 0.3s;
+
+    overflow: hidden;
 }
 
 .clothing-wrapper .clothing-list .clothing-item a .shadow {
-    min-width: 100%;
-    min-height: 100%;
+    min-width: Calc(100% - 4px);
+    min-height: Calc(100% - 4px);
     border: rgb(119, 119, 119) 2px solid;
     box-shadow: 0 0 10px 2px rgba(0,0,0,0.2) inset;
     border-radius: 4px;
@@ -88,12 +90,14 @@
     font-size: 14px;
     font-size: 1.2vh;
     overflow:hidden;
+    transition: 0.3s;
 }
 
 .clothing-wrapper .clothing-list .clothing-item a:hover {
     transform: scale(1.2,1.4);
     z-index: 6;
     transition: 0.3s;
+    box-shadow: 0 0 10px 3px rgba(0,0,0,0.4)
 }
 
 /* .clothing-wrapper .clothing-list .clothing-item a:hover .shadow{
@@ -109,6 +113,7 @@
 .clothing-wrapper .clothing-list .clothing-item a:hover h3 {
     display: block;
     bottom: 4%;
+    transition: 0.3s;
 }
 
 .clothing-wrapper .page-select {

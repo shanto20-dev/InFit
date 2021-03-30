@@ -33,7 +33,6 @@ export default class Clothing extends Component {
         let start = this.state.currentPage * 20;
         let end = this.state.currentPage * 20 + 20;
         let clothingElements = Object.values(this.props.clothing).slice(start, end).map((cloth, i) => {
-            console.log(cloth)
             let clothUrl = `/clothing/${cloth._id}`;
             return (
                 <div className="clothing-item" key={i}>
@@ -47,19 +46,17 @@ export default class Clothing extends Component {
         })
 
         let numPages = Math.floor(1 + Object.values(this.props.clothing).length/20);
-        console.log(this.state.currentPage)
-        console.log(numPages)
         let pageSelects = [];
         for (let i = 0; i < numPages; i++) {
             pageSelects.push(
-                <span onClick={this.setPage(i)}>{i + 1}</span>
+                <span key={i} onClick={this.setPage(i)}>{i + 1}</span>
             )
         }
 
         return (
             <div className="clothing-wrapper">
                 <div className="header-div">
-                    <h1>{this.props.currentUser.username}'s Clothing</h1>
+                    <h1>Your Clothing</h1>
                 </div>
                 
                 <div className="clothing-list">
