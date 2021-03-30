@@ -6,9 +6,9 @@ import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import NavbarContainer from "./nav/navbar_container";
 import LandingPage from "./landing_page/landing_page";
+import ClothingShowContainer from "./clothing/clothing_show_container";
 
 import tabLogo from "../assets/tabLogo.png";
-import ClothingShowContainer from "./clothing/clothing_show_container";
 
 const App = () => (
   <div className="app-div">
@@ -16,7 +16,7 @@ const App = () => (
     <NavbarContainer />
     <Switch>
       <Route exact path="/" component={LandingPage} />
-      <Route exact path="/clothing/:id" component={ClothingShowContainer} />
+      <Route exact path="/clothing/:_id" component={ClothingShowContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
     </Switch>
