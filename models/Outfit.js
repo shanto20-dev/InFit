@@ -22,6 +22,10 @@ const OutfitSchema = new Schema({
     date: {
         type: Date,
         default: Date.now,
+    },
+    clothes: {
+        type: Array,
+        default: [],
     }
 })
 
