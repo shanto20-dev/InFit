@@ -15,7 +15,6 @@ router.get(
   "/current",
   passport.authenticate("jwt", { session: false }),
   (req, res) => {
-    console.log(res);
     res.json({
       id: req.user.id,
       username: req.user.username,
@@ -52,22 +51,28 @@ router.post("/register", (req, res) => {
           newUser.password = hash;
           newUser
             .save()
-            .then((user) => res.json(user))
+            .then((user) => {
+              const email = user.email;
+              User.findOne({ email }).then((user) => {
+                const payload = { id: user.id, name: user.name };
+
+                jwt.sign(
+                  payload,
+                  keys.secretOrKey,
+                  // Tell the key to expire in one hour
+                  { expiresIn: 3600 },
+                  (err, token) => {
+                    res.json({
+                      success: true,
+                      token: "Bearer " + token,
+                    });
+                  }
+                );
+              });
+            })
             .catch((err) => console.log(err));
         });
       });
-      jwt.sign(
-        payload,
-        keys.secretOrKey,
-        // Tell the key to expire in one hour
-        { expiresIn: 3600 },
-        (err, token) => {
-          res.json({
-            success: true,
-            token: "Bearer " + token,
-          });
-        }
-      );
     }
   });
 });
