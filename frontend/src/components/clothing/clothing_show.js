@@ -3,14 +3,30 @@ import { Link } from "react-router-dom";
 import "../../styles/clothing/clothing-show.css";
 
 class ClothingShow extends React.Component {
+  constructor(props){
+    super(props);
+    this.switchForm = this.switchForm.bind(this);
+  }
+
+
+
   componentDidMount() {
     this.props.getClothing(this.props.match.params._id);
+  }
+
+
+  switchForm(event){
+    event.preventDefault()
+    document.getElementById("clothing-card").classList.add("inactive");
+    setTimeout(() => {
+      this.props.history.push("/clothing/${this.props.clothing._id}/edit");
+    }, 100);
   }
 
   render() {
     const clothing = this.props.clothing._id ? (
       <div className="clothing-show-container">
-        <div className="clothing-card">
+        <div className="clothing-card" id="clothing-card">
           <div className="image-container">
             <img
               className="clothing-image"
@@ -30,7 +46,7 @@ class ClothingShow extends React.Component {
             <p>{this.props.clothing.tags}</p>
           </div>
           <div className="edit-button">
-            <Link to={`/clothing/${this.props.clothing._id}/edit`}>Edit</Link>
+           <button onClick={this.switchForm}>Edit</button>
           </div>
         </div>
       </div>

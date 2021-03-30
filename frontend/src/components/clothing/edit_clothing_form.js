@@ -11,10 +11,12 @@ class EditClothingForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
+    document.getElementById("clothing-card").classList.add("inactive");
     this.props.editClothing(this.state).then(
-      (clothing) =>
-        this.props.history.push(`/clothing/${clothing.clothing.data._id}`)
+      (clothing) => setTimeout(() => {
+      this.props.history.push(`/clothing/${clothing.clothing.data._id}`);
+    }, 100)
+        // this.props.history.push(`/clothing/${clothing.clothing.data._id}`)
       // console.log(clothing.clothing.data._id)
     );
   }
@@ -33,10 +35,12 @@ class EditClothingForm extends React.Component {
       });
   }
 
+  
+
   render() {
     return (
       <div className="clothing-edit-container">
-        <form onSubmit={this.handleSubmit} className="clothing-card">
+        <form onSubmit={this.handleSubmit} className="clothing-card" id="clothing-card">
           <div className="image-container">
             <img className="clothing-image" src={this.state.img_url} alt="" />
           </div>

@@ -17,10 +17,37 @@
   gap: 50px;
   align-items: center;
   font-family: "Varela", sans-serif;
+  animation-name: slideInCard;
+  animation-duration: 0.2s;
+  animation-iteration-count: 1;
+}
+
+.clothing-card.inactive {
+    animation-name: slideOutCard;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+}
+
+@keyframes slideInCard {
+    0% {
+        transform: scale(0,1);
+    }
+    100% {
+        transform: scale(1,1);
+    }
+}
+
+@keyframes slideOutCard {
+    0% {
+        transform: scale(1,1);
+    }
+    100% {
+        transform: scale(0,1);
+    }
 }
 
 .clothing-image {
-  width: 400px;
+  width: 350px;
   height: 350px;
 }
 
