@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 
 import uploadClothesIcon from '../../assets/icons/uploadClothes.png'
+import uploadOutfitsIcon from '../../assets/icons/uploadOutfits.png'
 
 import '../../styles/closet/closet.css'
 import Clothes from './clothes'
@@ -38,21 +39,38 @@ export default class Closet extends Component {
     }
     
     render() {
-        console.log(this.state.currentUser)
-        // console.log(this.props.currentUser())
+        // console.log(this.state.currentUser)
+        console.log(this.props.currentUser())
+
         let overviewClass = "";
         let clothesClass = "";
         let outfitsClass = "";
         let currentContent = "";
+        let addButton = ""
+
         if (this.state.selectedSidebar === "overview") {
             overviewClass = "selected";
-            currentContent = <Overview />;
+            currentContent = <Overview currentUser={this.state.currentUser}/>;
         } else if (this.state.selectedSidebar === "clothes") {
             clothesClass = "selected";
             currentContent = <Clothes />;
+            addButton = (
+                <div className="upload-clothes-wrapper">
+                    <Link to="/clothing/new"><img src={uploadClothesIcon} alt=""/></Link>
+                    <span>Add Clothing</span>
+                    <div className="hider"></div>
+                </div>
+            )
         } else if (this.state.selectedSidebar === "outfits") {
             outfitsClass = "selected";
             currentContent = <Outfits />;
+            addButton = (
+                <div className="upload-clothes-wrapper">
+                    <Link to="/outfit/new"><img src={uploadOutfitsIcon} alt=""/></Link>
+                    <span>Add Outfit</span>
+                    <div className="hider"></div>
+                </div>
+            )
         }
 
         return (
@@ -68,11 +86,7 @@ export default class Closet extends Component {
                     </div>
                 </div>
                 <div className="content">
-                    <div className="upload-clothes-wrapper">
-                        <Link to="/clothing/new"><img src={uploadClothesIcon} alt=""/></Link>
-                        <span>Add Clothing</span>
-                        <div className="hider"></div>
-                    </div>
+                    {addButton}
                     {currentContent}
                 </div>
             </div>

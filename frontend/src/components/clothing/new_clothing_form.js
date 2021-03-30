@@ -50,7 +50,7 @@ class NewClothingForm extends React.Component {
             </label>
             <select
               name="category"
-              value="category"
+              defaultValue="category"
               onChange={this.update("category")}
               className="new-clothing-category-dropdown"
             >
