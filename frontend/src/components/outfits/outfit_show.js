@@ -1,4 +1,5 @@
 import React from "react";
+import ClothingItem from "../clothing/clothing_item";
 
 class OutfitShow extends React.Component {
   constructor(props) {
@@ -10,10 +11,8 @@ class OutfitShow extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-        <ClothingItem />
-      </div>
-    );
+    return <div>{/* <ClothingItem clothing={clothing} /> */}</div>;
   }
 }
+
+export default OutfitShow;

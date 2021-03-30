@@ -49,12 +49,6 @@ export const newOutfit = (outfitData) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-// export const editClothing = (clothingData) => (dispatch) => {
-//   return editClothing(clothingData)
-//     .then((clothing) => dispatch(receiveClothing(clothing)))
-//     .catch((err) => console.log(err));
-// };
-
 export const destroyOutfit = (outfitId) => (dispatch) =>
   deleteOutfit(outfitId).then(
     () => dispatch(removeOutfit(outfitId)),
