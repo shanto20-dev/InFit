@@ -5,7 +5,7 @@ import uploadClothesIcon from '../../assets/icons/uploadClothes.png'
 import uploadOutfitsIcon from '../../assets/icons/uploadOutfits.png'
 
 import '../../styles/closet/closet.css'
-import Clothes from './clothes'
+import Clothing from './clothing'
 import Outfits from './outfits'
 import Overview from './overview'
 
@@ -23,10 +23,13 @@ export default class Closet extends Component {
 
     componentDidMount() {
         this.props.currentUser().then(result => {
+            let thisUser = result.data;
             this.setState({
-                currentUser: result.data
+                currentUser: thisUser
             })
+            this.props.getUserClothing(thisUser.id)
         })
+        
     }
 
     updateSelected(field) {
@@ -40,10 +43,10 @@ export default class Closet extends Component {
     
     render() {
         // console.log(this.state.currentUser)
-        console.log(this.props.currentUser())
+        // console.log(this.props.clothes)
 
         let overviewClass = "";
-        let clothesClass = "";
+        let clothingClass = "";
         let outfitsClass = "";
         let currentContent = "";
         let addButton = ""
@@ -51,9 +54,9 @@ export default class Closet extends Component {
         if (this.state.selectedSidebar === "overview") {
             overviewClass = "selected";
             currentContent = <Overview currentUser={this.state.currentUser}/>;
-        } else if (this.state.selectedSidebar === "clothes") {
-            clothesClass = "selected";
-            currentContent = <Clothes />;
+        } else if (this.state.selectedSidebar === "clothing") {
+            clothingClass = "selected";
+            currentContent = <Clothing currentUser={this.state.currentUser} clothing={this.props.clothing}/>;
             addButton = (
                 <div className="upload-clothes-wrapper">
                     <Link to="/clothing/new"><img src={uploadClothesIcon} alt=""/></Link>
@@ -81,7 +84,7 @@ export default class Closet extends Component {
                         <div className="divider"></div>
                         <h3 className={overviewClass} onClick={this.updateSelected("overview")}>Overview</h3>
                         <div className="divider"></div>
-                        <h3 className={clothesClass} onClick={this.updateSelected("clothes")}>Clothes</h3>
+                        <h3 className={clothingClass} onClick={this.updateSelected("clothing")}>Clothing</h3>
                         <h3 className={outfitsClass} onClick={this.updateSelected("outfits")}>Outfits</h3>
                     </div>
                 </div>

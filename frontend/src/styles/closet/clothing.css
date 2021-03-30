@@ -1,0 +1,133 @@
+.clothing-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.clothing-wrapper .header-div {
+    width: 90%;
+    min-height: 160px;
+    border-bottom: 2px solid #ffd2ca9f;
+    display: flex;
+    align-items: center;
+    margin: 0 auto 30px auto;
+}
+
+.clothing-wrapper .header-div h1 {
+    margin: 0 auto;
+    color: #585858;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+}
+
+.clothing-wrapper .clothing-list {
+    width: 95%;
+    max-width: 1000px;
+    height: Calc(100% - 160px);
+    max-height: 600px;
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    grid-template-rows: repeat(4, 25%);
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 0 auto;
+}
+
+.clothing-wrapper .clothing-list .clothing-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+}
+
+.clothing-wrapper .clothing-list .clothing-item a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    position: relative;
+    background-color: white;
+    transition: 0.3s;
+}
+
+.clothing-wrapper .clothing-list .clothing-item a .shadow {
+    min-width: 100%;
+    min-height: 100%;
+    border: rgb(119, 119, 119) 2px solid;
+    box-shadow: 0 0 10px 2px rgba(0,0,0,0.2) inset;
+    border-radius: 4px;
+
+    z-index: 4;
+    position: absolute;
+}
+
+.clothing-wrapper .clothing-list .clothing-item a img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    z-index: 3;
+    transition: 0.3s;
+}
+
+.clothing-wrapper .clothing-list .clothing-item a h3 {
+    display: none;
+    position: absolute;
+    bottom: 50%;
+    color: #585858;
+    font-family: 'Varela', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    font-size: 1.2vh;
+    overflow:hidden;
+}
+
+.clothing-wrapper .clothing-list .clothing-item a:hover {
+    transform: scale(1.2,1.4);
+    z-index: 6;
+    transition: 0.3s;
+}
+
+/* .clothing-wrapper .clothing-list .clothing-item a:hover .shadow{
+    transform: scale(1.2,1.3);
+    transition: 0.3s;
+} */
+
+.clothing-wrapper .clothing-list .clothing-item a:hover img{
+    transform: scale(1,0.9) translateY(-10%);
+    transition: 0.3s;
+}
+
+.clothing-wrapper .clothing-list .clothing-item a:hover h3 {
+    display: block;
+    bottom: 4%;
+}
+
+.clothing-wrapper .page-select {
+    margin: 0 auto;
+}
+
+.clothing-wrapper .page-select span {
+    margin: auto 4px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 18px;
+    font-family: 'Varela', sans-serif;
+}
+
+.clothing-wrapper .page-select span.left, span.right {
+    color: #A83C28;
+}
+
+.clothing-wrapper .page-select span:hover {
+    font-weight: 800;
+    transition: 0.3s;
+}
