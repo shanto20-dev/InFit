@@ -50,7 +50,7 @@
 .signup-form h1 {
     font-family: 'Nunito', sans-serif;
     color: #18A86B;
-    margin: 30px auto;
+    margin: 20px auto;
     font-size: 40px;
     font-weight: 800;
 }
@@ -74,7 +74,7 @@
     padding-left: 8px;
     overflow: hidden;
     font-family: 'Nunito', sans-serif;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
 }
 
 .signup-form form input[type=submit] {
@@ -127,6 +127,12 @@
     100% {
         transform: translateY(0) scale(1, 1);
     }
+    /* 0% {
+        transform: scale(0,1);
+    }
+    100% {
+        transform: scale(1,1);
+    } */
 }
 
 @keyframes slideOutSignup {
@@ -140,4 +146,10 @@
     100% {
         transform: translateY(200px) scale(0.8,0.8);
     }
+    /* 0% {
+        transform: scale(1,1);
+    }
+    100% {
+        transform: scale(0,1);
+    } */
 }
