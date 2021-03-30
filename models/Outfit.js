@@ -7,7 +7,7 @@ const OutfitSchema = new Schema({
         ref: "users",
     },
     name: {
-        type: string,
+        type: String,
         required: true,
     },
     tags: {
