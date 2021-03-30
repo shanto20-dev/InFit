@@ -18,7 +18,7 @@
     height: 80px;
 }
 
-.navbar-div .login-signup a {
+.navbar-div .login-signup,.logout-other a,button {
     padding: 10px 20px;
     background-color: #ff684e;
     border-radius: 20px;
@@ -28,10 +28,21 @@
     font-family: 'Nunito', sans-serif;
     margin-right: 15px;
     transition: 0.17s;
+    border:none;
+    cursor: pointer;
+    font-size: 14px;
 }
 
-.navbar-div .login-signup a:hover {
+.navbar-div .login-signup,.logout-other a:hover,button:hover {
     background-color: #e0452a;
     transition: 0.17s;
     box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2);
+}
+
+.navbar-div .logout-other a {
+    background-color: #3eda99;
+}
+
+.navbar-div .logout-other a:hover {
+    background-color: #18A86B;
 }
