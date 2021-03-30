@@ -1,4 +1,5 @@
 import React from "react";
+import ClothingItem from "../clothing/clothing_item";
 
 class OutfitShow extends React.Component {
   constructor(props) {
@@ -6,22 +7,28 @@ class OutfitShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getOutfit(this.props.match.params.id)
-    .then(() => this.props.outfit.clothes.push("60625fb2b3c93291d8ae77d8"));
+    this.props.getOutfit(this.props.match.params.id);
   }
 
   render() {
-    console.log(this.props.outfit)
+    const mappedItems = this.props.outfit._id
+      ? this.props.outfit.clothes.map((itemId) => {
+          return (
+            <ClothingItem
+              clothingId={itemId}
+              getClothing={this.props.getClothing}
+            />
+          );
+        })
+      : "";
+
     return (
       <div>
         <h1>Outfit</h1>
         <p>{this.props.outfit.name}</p>
         <p>{this.props.outfit.description}</p>
         <p>{this.props.outfit.tags}</p>
-        {this.props.outfit.clothes.map(item => {
-          return(
-            <div>Clothing Item</div>
-          )})}
+        {mappedItems}
       </div>
     );
   }
