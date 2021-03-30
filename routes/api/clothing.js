@@ -47,6 +47,7 @@ router.post(
       tags: req.body.tags,
       description: req.body.description,
       img_url: req.body.img_url,
+      link: req.body.link,
     });
 
     newClothing.save().then((clothing) => res.json(clothing));
