@@ -24,9 +24,17 @@
 }
 
 .title {
+  line-height: 28px;
   font-family: "Nunito", sans-serif;
+  font-size: 24px;
   font-weight: 700;
   color: #a83c28;
+}
+
+.title + p {
+  line-height: 24px;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 /*
