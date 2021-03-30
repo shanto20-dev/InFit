@@ -1,4 +1,6 @@
 import React from "react";
+import { RECEIVE_SESSION_ERRORS } from "../../actions/session_actions";
+import "../../styles/clothing/clothing-create.css";
 
 class NewClothingForm extends React.Component {
   constructor(props) {
@@ -18,12 +20,21 @@ class NewClothingForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    this.props
-      .newClothing(this.state)
-      .then((clothing) =>
-        this.props.history.push(`/clothing/${clothing.clothing.id}`)
-      );
+    let newClothing
+    this.props.newClothing(this.state).then((clothing) => {
+      console.log(clothing);
+      if (clothing.type !== RECEIVE_SESSION_ERRORS){
+        this.props.clearErrors();
+        newClothing = clothing;
+        this.props.history.push(`/clothing/${clothing.clothing.data._id}`)
+      };
+    })
+    // if (!this.props.errors) {
+    //   this.props.history.push(`/clothing/${newClothing.clothing.id}`)
+    // };
+      // .then((clothing) =>
+      //   this.props.history.push(`/clothing/${clothing.clothing.id}`)
+      // );
   }
 
   update(type) {
@@ -33,30 +44,43 @@ class NewClothingForm extends React.Component {
       });
   }
 
+  renderErrors() {
+    return (
+      <ul>
+        {Object.keys(this.props.errors).map((error, i) => (
+          <li key={`error-${i}`}>{this.props.errors[error]}</li>
+        ))}
+      </ul>
+    );
+  }
+
   render() {
     return (
-      <div>
+      <div className="clothes-form-container">
+        <div className="clothes-form-card">
+        <h1>Create New Clothing Item</h1>
         <form onSubmit={this.handleSubmit}>
-          <div>
+          <div className="form-details">
             <label>
-              Item Name:
+              Item Name
+            </label>
               <input
                 type="text"
                 value={this.state.name}
                 onChange={this.update("name")}
                 placeholder="Item Name"
-                className="new-clothing-name"
+                className="new-clothing-name field"
               />
+            <label>
+              Category
             </label>
             <select
               name="category"
               defaultValue="category"
               onChange={this.update("category")}
-              className="new-clothing-category-dropdown"
+              className="new-clothing-category-dropdown field"
             >
-              <option value="category" disabled>
-                Select a category
-              </option>
+              <option value="category" disabled>Select a category</option>
               <option value="Top">Top</option>
               <option value="Bottom">Bottom</option>
               <option value="Dress">Dress</option>
@@ -66,36 +90,41 @@ class NewClothingForm extends React.Component {
               <option value="Shoes">Shoes</option>
             </select>
             <label>
-              Description:
+              Description
+            </label>
               <textarea
                 className="new-clothing-description"
                 value={this.state.description}
                 onChange={this.update("description")}
                 placeholder="Description"
+                cols="4"
+                rows="4"
               />
-            </label>
             <label>
-              Tags:
+              Tags
+            </label>
               <input
                 type="text"
-                className="new-clothing-tags"
+                className="new-clothing-tags field"
                 value={this.state.tags}
                 onChange={this.update("tags")}
                 placeholder="#tag"
               />
-            </label>
             <label>
+            Image
+            </label>
               <input
                 type="text"
-                className="new-clothing-image"
+                className="new-clothing-image field"
                 value={this.state.img_url}
                 onChange={this.update("img_url")}
                 placeholder="Upload an Image"
               />
-            </label>
+              {this.renderErrors()}
             <button>Submit</button>
           </div>
         </form>
+        </div>
       </div>
     );
   }
