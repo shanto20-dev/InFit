@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import '../../styles/navbar/navbar.css'
-import Logo from "../../assets/InfitLogo.png"
+import "../../styles/navbar/navbar.css";
+import Logo from "../../assets/InfitLogo.png";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -21,9 +21,8 @@ class NavBar extends React.Component {
     if (this.props.loggedIn) {
       return (
         <div>
-          <Link to={"/tweets"}>All Tweets</Link>
-          <Link to={"/profile"}>Profile</Link>
-          <Link to={"/new_tweet"}>Write a Tweet</Link>
+          <Link to="/clothing/new">Upload clothes</Link>
+          <Link to="/"></Link>
           <button onClick={this.logoutUser}>Logout</button>
         </div>
       );
@@ -40,7 +39,9 @@ class NavBar extends React.Component {
   render() {
     return (
       <div className="navbar-div">
-        <Link to="/" ><img src={Logo}/></Link>
+        <Link to="/">
+          <img src={Logo} alt="" />
+        </Link>
         {this.getLinks()}
       </div>
     );

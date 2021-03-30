@@ -1,8 +1,8 @@
 import React from "react";
 import { withRouter, Link } from "react-router-dom";
 
-import '../../styles/user_auth/signup.css'
-import logoWhite from '../../assets/InfitLogoWhite.png'
+import "../../styles/user_auth/signup.css";
+import logoWhite from "../../assets/InfitLogoWhite.png";
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class SignupForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
-    this.switchForm = this.switchForm.bind(this)
+    this.switchForm = this.switchForm.bind(this);
   }
 
   update(field) {
@@ -36,7 +36,7 @@ class SignupForm extends React.Component {
       password2: this.state.password2,
     };
 
-    this.props.signup(user).then(() => this.props.history.push("/tweets"));
+    this.props.signup(user).then(() => this.props.history.push("/closet"));
   }
 
   renderErrors() {
@@ -55,14 +55,16 @@ class SignupForm extends React.Component {
     document.getElementById("signup-form").classList.add("inactive");
 
     setTimeout(() => {
-      this.props.history.push("/login")
-    }, 200)
+      this.props.history.push("/login");
+    }, 200);
   }
 
   render() {
     return (
       <div className="signup-form-container">
-        <Link to="/"><img className="logo" src={logoWhite} alt=""/></Link>
+        <Link to="/">
+          <img className="logo" src={logoWhite} alt="" />
+        </Link>
         <div id="signup-form" className="signup-form">
           <h1>Create an Account</h1>
           <form onSubmit={this.handleSubmit}>

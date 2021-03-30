@@ -12,7 +12,11 @@ class ClothingShow extends React.Component {
       <div className="clothing-show-container">
         <div className="clothing-card">
           <div className="image-container">
-            <img className="clothing-image" src={this.props.clothing.img_url} />
+            <img
+              className="clothing-image"
+              src={this.props.clothing.img_url}
+              alt=""
+            />
           </div>
 
           <div className="clothing-info">
@@ -22,7 +26,7 @@ class ClothingShow extends React.Component {
             <p>{this.props.clothing.category}</p>
             <h2 className="title clothing-description">Description:</h2>
             <p>{this.props.clothing.description}</p>
-
+            <h2 className="title clothing-tags">Tags:</h2>
             <p>{this.props.clothing.tags}</p>
           </div>
         </div>
