@@ -8,10 +8,12 @@ import NavbarContainer from "./nav/navbar_container";
 import LandingPage from "./landing_page/landing_page";
 import ClothingShowContainer from "./clothing/clothing_show_container";
 import NewClothingFormContainer from "./clothing/new_clothing_form_container";
-import ClosetContainer from "./closet/closet_container"
+import ClosetContainer from "./closet/closet_container";
+import NewOutfitForm from "./outfits/new_outfit_form_container";
 
 
 import tabLogo from "../assets/tabLogo.png";
+import OutfitShowContainer from "./outfits/outfit_show_container";
 
 const App = () => (
   <div className="app-div">
@@ -28,6 +30,8 @@ const App = () => (
         path="/clothing/new"
         component={NewClothingFormContainer}
       />
+      <ProtectedRoute exact path="/outfit/:id" component={OutfitShowContainer}/>
+      <ProtectedRoute exact path="/outfit/new" component={NewOutfitForm}/>
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/clothing/:_id" component={ClothingShowContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />

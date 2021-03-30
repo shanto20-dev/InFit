@@ -27,7 +27,7 @@ class NewOutfitForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
 
-        this.props.newOutfit(this.state).then((outfit) => newOutfit(outfit))
+        this.props.newOutfit(this.state).then((outfit) => console.log(outfit))
     }
 
     update(type) {
@@ -40,9 +40,10 @@ class NewOutfitForm extends React.Component {
     render() {
         return (
             <div>
-                {getUserClothing(currentUser.id)}
+                
                 <form onSubmit={this.handleSubmit}>
                     <div>
+
                         <input
                             type="text"
                             value={this.state.name}
@@ -52,13 +53,13 @@ class NewOutfitForm extends React.Component {
                         />
                         <input
                             type="text"
-                            className="new-clothing-tags"
+                            className="new-outfit-tags"
                             value={this.state.tags}
                             onChange={this.update("tags")}
                             placeholder="#tag"
                         />
                         <textarea
-                            className="new-clothing-description"
+                            className="new-outfit-description"
                             value={this.state.description}
                             onChange={this.update("description")}
                             placeholder="Description"
