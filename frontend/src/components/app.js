@@ -12,8 +12,6 @@ import ClosetContainer from "./closet/closet_container";
 import NewOutfitForm from "./outfits/new_outfit_form_container";
 import EditClothingFormContainer from "./clothing/edit_clothing_form_container";
 
-
-
 import tabLogo from "../assets/tabLogo.png";
 import OutfitShowContainer from "./outfits/outfit_show_container";
 
@@ -22,18 +20,18 @@ const App = () => (
     <link rel="shortcut icon" type="image/png" href={tabLogo}></link>
     <NavbarContainer />
     <Switch>
-      <ProtectedRoute
-        exact
-        path="/closet"
-        component={ClosetContainer}
-      />
+      <ProtectedRoute exact path="/closet" component={ClosetContainer} />
       <ProtectedRoute
         exact
         path="/clothing/new"
         component={NewClothingFormContainer}
       />
-      <ProtectedRoute exact path="/outfit/:id" component={OutfitShowContainer}/>
-      <ProtectedRoute exact path="/outfit/new" component={NewOutfitForm}/>
+      <ProtectedRoute
+        exact
+        path="/outfit/:id"
+        component={OutfitShowContainer}
+      />
+      <ProtectedRoute exact path="/outfit/new" component={NewOutfitForm} />
       <ProtectedRoute
         exact
         path="/clothing/:id/edit"
