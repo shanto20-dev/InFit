@@ -4,6 +4,10 @@ export const createClothing = (clothingData) => {
   return axios.post("/api/clothing/new", clothingData);
 };
 
+export const patchClothing = (clothingData) => {
+  return axios.patch("/api/clothing/edit", clothingData);
+};
+
 export const fetchAllClothing = () => {
   return axios.get("/api/clothing");
 };

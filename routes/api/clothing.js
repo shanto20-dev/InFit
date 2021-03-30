@@ -30,6 +30,19 @@ router.delete("/:id", (req, res) => {
   if (clothing.user === req.user.id) clothing.delete();
 });
 
+router.patch("/edit", (req, res) => {
+  Clothing.findById(req.body._id).then((clothing) => {
+    clothing.name = req.body.name;
+    clothing.category = req.body.category;
+    clothing.tags = req.body.tags;
+    clothing.description = req.body.description;
+    clothing.img_url = req.body.img_url;
+    clothing.link = req.body.link;
+
+    clothing.save().then((clothing) => res.json(clothing));
+  });
+});
+
 router.post(
   "/new",
   passport.authenticate("jwt", { session: false }),
