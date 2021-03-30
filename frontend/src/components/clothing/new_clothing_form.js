@@ -21,7 +21,9 @@ class NewClothingForm extends React.Component {
 
     this.props
       .newClothing(this.state)
-      .then((clothing) => console.log(clothing));
+      .then((clothing) =>
+        this.props.history.push(`/clothing/${clothing.clothing.id}`)
+      );
   }
 
   update(type) {
@@ -48,7 +50,7 @@ class NewClothingForm extends React.Component {
             </label>
             <select
               name="category"
-              value="category"
+              defaultValue="category"
               onChange={this.update("category")}
               className="new-clothing-category-dropdown"
             >

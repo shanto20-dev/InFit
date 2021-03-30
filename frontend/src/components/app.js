@@ -10,6 +10,9 @@ import ClothingShowContainer from "./clothing/clothing_show_container";
 import NewClothingFormContainer from "./clothing/new_clothing_form_container";
 import ClosetContainer from "./closet/closet_container";
 import NewOutfitForm from "./outfits/new_outfit_form_container";
+import EditClothingFormContainer from "./clothing/edit_clothing_form_container";
+import ClosetContainer from "./closet/closet_container"
+
 
 
 import tabLogo from "../assets/tabLogo.png";
@@ -32,6 +35,11 @@ const App = () => (
       />
       <ProtectedRoute exact path="/outfit/:id" component={OutfitShowContainer}/>
       <ProtectedRoute exact path="/outfit/new" component={NewOutfitForm}/>
+      <ProtectedRoute
+        exact
+        path="/clothing/:id/edit"
+        component={EditClothingFormContainer}
+      />
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/clothing/:_id" component={ClothingShowContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
