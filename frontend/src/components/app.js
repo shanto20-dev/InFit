@@ -9,6 +9,7 @@ import LandingPage from "./landing_page/landing_page";
 import ClothingShowContainer from "./clothing/clothing_show_container";
 import NewClothingFormContainer from "./clothing/new_clothing_form_container";
 
+
 import tabLogo from "../assets/tabLogo.png";
 
 const App = () => (
