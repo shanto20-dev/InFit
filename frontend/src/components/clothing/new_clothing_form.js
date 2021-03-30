@@ -16,18 +16,13 @@ class NewClothingForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  //   componentDidUpdate() {
-  //     this.setState({ newTweet: this.props.newTweet.text });
-  //   }
-
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props
-      .newClothing(this.state)
-      .then((clothing) =>
-        this.props.history.push(`/clothing/${clothing.clothing.data._id}`)
-      );
+    this.props.newClothing(this.state).then(
+      (clothing) => console.log(clothing)
+      // this.props.history.push(`/clothing/${clothing.clothing.data._id}`)
+    );
   }
 
   update(type) {
@@ -51,8 +46,12 @@ class NewClothingForm extends React.Component {
                 placeholder="Item Name"
               />
             </label>
-            <select name="category" onChange={this.update("category")}>
-              <option value="category" disabled selected>
+            <select
+              name="category"
+              value="category"
+              onChange={this.update("category")}
+            >
+              <option value="category" disabled>
                 Select a category
               </option>
               <option value="Top">Top</option>

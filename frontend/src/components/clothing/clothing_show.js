@@ -12,7 +12,11 @@ class ClothingShow extends React.Component {
       <div className="clothing-show-container">
         <div className="clothing-card">
           <div className="image-container">
-            <img className="clothing-image" src={this.props.clothing.img_url} />
+            <img
+              className="clothing-image"
+              src={this.props.clothing.img_url}
+              alt=""
+            />
           </div>
 
           <div className="clothing-info">
