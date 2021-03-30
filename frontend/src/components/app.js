@@ -16,7 +16,11 @@ const App = () => (
     <link rel="shortcut icon" type="image/png" href={tabLogo}></link>
     <NavbarContainer />
     <Switch>
-      <Route exact path="/clothing/new" component={NewClothingFormContainer} />
+      <ProtectedRoute
+        exact
+        path="/clothing/new"
+        component={NewClothingFormContainer}
+      />
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/clothing/:_id" component={ClothingShowContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
