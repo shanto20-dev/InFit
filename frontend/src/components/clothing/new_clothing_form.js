@@ -19,10 +19,9 @@ class NewClothingForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.newClothing(this.state).then(
-      (clothing) => console.log(clothing)
-      // this.props.history.push(`/clothing/${clothing.clothing.data._id}`)
-    );
+    this.props
+      .newClothing(this.state)
+      .then((clothing) => console.log(clothing));
   }
 
   update(type) {
@@ -44,12 +43,14 @@ class NewClothingForm extends React.Component {
                 value={this.state.name}
                 onChange={this.update("name")}
                 placeholder="Item Name"
+                className="new-clothing-name"
               />
             </label>
             <select
               name="category"
               value="category"
               onChange={this.update("category")}
+              className="new-clothing-category-dropdown"
             >
               <option value="category" disabled>
                 Select a category
