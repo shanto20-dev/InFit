@@ -104,11 +104,8 @@ class SignupForm extends React.Component {
                 placeholder="Confirm Password"
               />
             </div>
-            <input type="submit" value="Sign In" />
-            <h3>
-              Already have an account?{" "}
-              <span onClick={this.switchForm}>Log In</span>
-            </h3>
+            <input type="submit" value="Sign Up" />
+            <h3>Already have an account? <span onClick={this.switchForm}>Log In</span></h3>
             {this.renderErrors()}
           </form>
         </div>

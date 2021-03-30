@@ -87,10 +87,8 @@ class LoginForm extends React.Component {
                 placeholder="Password"
               />
             </div>
-            <input type="submit" value="Submit" />
-            <h3>
-              Need an account? <span onClick={this.switchForm}>Register</span>
-            </h3>
+            <input type="submit" value="Log In" />
+            <h3>Need an account? <span onClick={this.switchForm}>Register</span></h3>
             {this.renderErrors()}
           </form>
         </div>
