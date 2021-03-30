@@ -11,7 +11,6 @@ import NewClothingFormContainer from "./clothing/new_clothing_form_container";
 import ClosetContainer from "./closet/closet_container";
 import NewOutfitForm from "./outfits/new_outfit_form_container";
 import EditClothingFormContainer from "./clothing/edit_clothing_form_container";
-import ClosetContainer from "./closet/closet_container"
 
 
 
