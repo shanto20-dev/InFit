@@ -57,6 +57,7 @@ class LoginForm extends React.Component {
     document.getElementById("login-form").classList.add("inactive");
 
     setTimeout(() => {
+      this.props.clearErrors();
       this.props.history.push("/signup");
     }, 200);
   }

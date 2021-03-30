@@ -56,11 +56,18 @@ class SignupForm extends React.Component {
     document.getElementById("signup-form").classList.add("inactive");
 
     setTimeout(() => {
+      this.props.clearErrors();
       this.props.history.push("/login");
     }, 200);
   }
 
   render() {
+    // let errors = Object.values(this.props.errors)
+    // let usernameError = "";
+    // let emailError = "";
+    // let passwordError = "";
+
+
     return (
       <div className="signup-form-container">
         <Link to="/">
