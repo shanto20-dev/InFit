@@ -1,11 +1,13 @@
 import React from 'react';
 import { getUserClothing } from '../../actions/clothing_actions';
+import { newOutfit } from '../../actions/outfit_actions';
 
 class NewOutfitForm extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
+            currentUser: {id: "", username: "", email: ""},
             name: "",
             tags: [],
             description: "",
@@ -14,10 +16,18 @@ class NewOutfitForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        this.props.currentUser().then(result => {
+            this.setState({
+                currentUser: result.data
+            })
+        })
+    }
+
     handleSubmit(e) {
         e.preventDefault();
 
-        this.props.newOutfit(this.state).then((outfit) => console.log(outfit))
+        this.props.newOutfit(this.state).then((outfit) => newOutfit(outfit))
     }
 
     update(type) {
@@ -30,7 +40,7 @@ class NewOutfitForm extends React.Component {
     render() {
         return (
             <div>
-                {getUserClothing()}
+                {getUserClothing(currentUser.id)}
                 <form onSubmit={this.handleSubmit}>
                     <div>
                         <input
