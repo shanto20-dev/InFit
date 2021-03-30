@@ -1,9 +1,9 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../../styles/clothing/clothing-show.css";
 
 class ClothingShow extends React.Component {
   componentDidMount() {
-    console.log(this.props);
     this.props.getClothing(this.props.match.params._id);
   }
 
@@ -28,6 +28,9 @@ class ClothingShow extends React.Component {
             <p>{this.props.clothing.description}</p>
             <h2 className="title clothing-tags">Tags:</h2>
             <p>{this.props.clothing.tags}</p>
+          </div>
+          <div className="edit-button">
+            <Link to={`/clothing/${this.props.clothing._id}/edit`}>Edit</Link>
           </div>
         </div>
       </div>

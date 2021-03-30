@@ -21,7 +21,9 @@ class NewClothingForm extends React.Component {
 
     this.props
       .newClothing(this.state)
-      .then((clothing) => console.log(clothing));
+      .then((clothing) =>
+        this.props.history.push(`/clothing/${clothing.clothing.id}`)
+      );
   }
 
   update(type) {

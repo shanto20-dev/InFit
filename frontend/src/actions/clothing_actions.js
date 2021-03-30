@@ -4,6 +4,7 @@ import {
   fetchUserClothing,
   fetchClothing,
   deleteClothing,
+  patchClothing,
 } from "../util/clothing_api_util";
 
 export const RECEIVE_ALL_CLOTHING = "RECEIVE_ALL_CLOTHING";
@@ -49,11 +50,11 @@ export const newClothing = (clothingData) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-// export const editClothing = (clothingData) => (dispatch) => {
-//   return editClothing(clothingData)
-//     .then((clothing) => dispatch(receiveClothing(clothing)))
-//     .catch((err) => console.log(err));
-// };
+export const editClothing = (clothingData) => (dispatch) => {
+  return patchClothing(clothingData)
+    .then((clothing) => dispatch(receiveClothing(clothing)))
+    .catch((err) => console.log(err));
+};
 
 export const destroyClothing = (clothingId) => (dispatch) =>
   deleteClothing(clothingId).then(
