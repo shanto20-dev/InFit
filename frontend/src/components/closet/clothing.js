@@ -10,14 +10,17 @@ export default class Clothing extends Component {
         this.state = {
             currentPage: 0,
             categoryFilter: "",
-            tagFilter: ""
+            tagFilter: "",
         }
 
         this.setPage = this.setPage.bind(this);
         this.setCategory = this.setCategory.bind(this);
         this.setTag = this.setTag.bind(this)
         this.getAllTags = this.getAllTags.bind(this);
+
+        // this.timeoutFunc = setPage(this.state.currentPage + 1)
     }
+
 
     setPage(val) {
         return (e) => {
@@ -31,6 +34,7 @@ export default class Clothing extends Component {
             this.setState({
                 currentPage: val
             })
+            
         }
     }
 
