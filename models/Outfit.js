@@ -18,7 +18,6 @@ const OutfitSchema = new Schema({
     },
     img_url: {
         type: String,
-        required: true,
     },
     date: {
         type: Date,
