@@ -22,6 +22,7 @@ const ClothingSchema = new Schema({
   },
   img_url: {
     type: String,
+    required: true,
   },
   link: {
     type: String,

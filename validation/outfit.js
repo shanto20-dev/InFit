@@ -10,6 +10,10 @@ module.exports = function validateOutfitInput(data) {
         errors.name = "Name field is required";
     }
 
+    if (Validator.isEmpty(data.img_url)) {
+        errors.img_url = "An image is required";
+    }
+
     return {
         errors,
         isValid: Object.keys(errors).length === 0,
