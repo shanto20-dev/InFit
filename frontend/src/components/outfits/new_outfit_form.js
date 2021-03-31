@@ -1,6 +1,5 @@
 import React from "react";
-import { getUserClothing } from "../../actions/clothing_actions";
-import { newOutfit } from "../../actions/outfit_actions";
+import "../../styles/outfits/new_outfit_form.css";
 
 class NewOutfitForm extends React.Component {
   constructor(props) {
@@ -43,31 +42,46 @@ class NewOutfitForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form onSubmit={this.handleSubmit}>
-          <div>
-            <input
-              type="text"
-              value={this.state.name}
-              onChange={this.update("name")}
-              placeholder="Outfit Name"
-              className="new-outfit-name"
-            />
-            <input
-              type="text"
-              className="new-outfit-tags"
-              value={this.state.tags}
-              onChange={this.update("tags")}
-              placeholder="#tag"
-            />
-            <textarea
-              className="new-outfit-description"
-              value={this.state.description}
-              onChange={this.update("description")}
-              placeholder="Description"
-            />
-            <button>Create Outfit</button>
-          </div>
+      <div className="new-outfit-form-container">
+        <form className="new-outfit-form" onSubmit={this.handleSubmit}>
+          <h1 className="new-outfit-form-header">
+            Add a new outfit to your closet
+          </h1>
+          <label>Outfit Name</label>
+          <input
+            type="text"
+            value={this.state.name}
+            onChange={this.update("name")}
+            placeholder="Outfit Name"
+            className="new-outfit-name"
+          />
+
+          <label>Tags</label>
+          <input
+            type="text"
+            className="new-outfit-tags"
+            value={this.state.tags}
+            onChange={this.update("tags")}
+            placeholder="#tag"
+          />
+
+          <label>Description</label>
+          <textarea
+            className="new-outfit-description"
+            value={this.state.description}
+            onChange={this.update("description")}
+            placeholder="Description"
+          />
+
+          <label>Image</label>
+          <input
+            type="text"
+            className="new-outfit-img_url"
+            value={this.state.img_url}
+            onChange={this.update("img_url")}
+            placeholder="Upload an Image"
+          />
+          <button>Create Outfit</button>
         </form>
       </div>
     );
