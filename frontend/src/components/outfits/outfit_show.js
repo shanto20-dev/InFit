@@ -1,13 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import ClothingItem from "../clothing/clothing_item";
 
 class OutfitShow extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = { renderClothes: false, newClothes: [] };
-    this.renderOwnedClothes = this.renderOwnedClothes.bind(this);
+    this.state = {
+      renderClothes: false,
+      newClothes: [],
+    };
+
     this.handleSave = this.handleSave.bind(this);
   }
 
@@ -22,38 +24,31 @@ class OutfitShow extends React.Component {
     });
   }
 
-  renderOwnedClothes() {
-    // if (this.props.clothes) {
-    //   Object.values(this.props.clothes).map((cloth, i) => {
-    //     let clothUrl = `/clothing/${cloth._id}`;
-    //     return (
-    //       <div className="clothing-item" key={i}>
-    //         <Link to={clothUrl}>
-    //           <div className="shadow"></div>
-    //           <img src={cloth.img_url} alt="" />
-    //           <h3>{cloth.name}</h3>
-    //         </Link>
-    //       </div>
-    //     );
-    //   });
-    // }
-  }
-
   addToOutfit(id) {
-    if (!this.state.newClothes.includes(id))
-      this.setState({ newClothes: [...this.state.newClothes, id] });
+    if (
+      !this.state.newClothes.includes(id) &&
+      !this.props.outfit.clothes.includes(id)
+    )
+      this.setState({
+        newClothes: [
+          ...this.props.outfit.clothes,
+          ...this.state.newClothes,
+          id,
+        ],
+      });
   }
 
   handleSave() {
     this.props.updateOutfit({
       id: this.props.match.params.id,
-      clothes: this.state.newClothes,
+      clothes: [...this.props.outfit.clothes, ...this.state.newClothes],
     });
+    this.setState({ renderClothes: false });
   }
 
   render() {
     const mappedItems = this.props.outfit._id
-      ? this.props.outfit.clothes.map((itemId) => {
+      ? this.props.outfit.clothes.map((itemId, idx) => {
           return (
             <ClothingItem
               clothingId={itemId}
