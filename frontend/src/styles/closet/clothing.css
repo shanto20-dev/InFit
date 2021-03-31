@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .clothing-wrapper .header-div {
@@ -10,16 +11,49 @@
     min-height: 160px;
     border-bottom: 2px solid #ffd2ca9f;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-end;
     margin: 0 auto 30px auto;
+    position: relative;
 }
 
 .clothing-wrapper .header-div h1 {
-    margin: 0 auto;
+    
     color: #585858;
     font-family: 'Nunito', sans-serif;
     font-weight: 700;
     font-size: 36px;
+    margin-bottom: 12px;
+}
+
+.clothing-wrapper .header-div .select-div {
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+.clothing-wrapper .header-div .select-div select{
+    margin: auto 6px;
+    height: 32px;
+    width: 200px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 1.5vh;
+    background-color: rgb(250, 250, 250);
+    color: #471108;
+    border: 2px solid #471108;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.clothing-wrapper .header-div .select-div select:focus {
+    border-color: #F66B54;
+}
+
+.clothing-wrapper .header-div .select-div select option {
+    font-weight: 700;
+    font-size: 1.5vh;
 }
 
 .clothing-wrapper .clothing-list {
@@ -118,6 +152,12 @@
 
 .clothing-wrapper .page-select {
     margin: 0 auto;
+    position: absolute;
+    bottom: 3%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .clothing-wrapper .page-select span {
@@ -130,6 +170,7 @@
 
 .clothing-wrapper .page-select span.left, span.right {
     color: #A83C28;
+
 }
 
 .clothing-wrapper .page-select span:hover {
