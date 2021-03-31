@@ -41,13 +41,13 @@ export const receiveErrors = (errors) => ({
 export const getAllClothing = () => (dispatch) =>
   fetchAllClothing().then(
     (clothings) => dispatch(receiveAllClothing(clothings.data)),
-    (err) => console.log(err)
+    (err) => dispatch(receiveErrors(err.response.data))
   );
 
 export const getUserClothing = (id) => (dispatch) =>
   fetchUserClothing(id).then(
     (clothings) => dispatch(receiveUserClothing(clothings)),
-    (err) => console.log(err)
+    (err) => dispatch(receiveErrors(err.response.data))
   );
 
 export const newClothing = (clothingData) => (dispatch) => {
@@ -59,17 +59,20 @@ export const newClothing = (clothingData) => (dispatch) => {
 export const editClothing = (clothingData) => (dispatch) => {
   return patchClothing(clothingData)
     .then((clothing) => dispatch(receiveClothing(clothing)))
-    .catch((err) => console.log(err));
+    .catch((err) => dispatch(receiveErrors(err.response.data)));
 };
 
-export const destroyClothing = (clothingId) => (dispatch) =>
-  deleteClothing(clothingId).then(
-    () => dispatch(removeClothing(clothingId)),
-    (err) => dispatch(receiveErrors(err.response.data))
-  );
+export const destroyClothing = (clothingId, userId) => (dispatch) => {
+  return deleteClothing(clothingId, userId).then(
+    () => {
+      return dispatch(removeClothing(clothingId))
+    },(err) => {
+      return dispatch(receiveErrors(err.response.data))
+    }
+  )};
 
 export const getClothing = (clothingId) => (dispatch) =>
   fetchClothing(clothingId).then(
     (clothing) => dispatch(receiveClothing(clothing.data)),
-    (err) => console.log(err)
+    (err) => dispatch(receiveErrors(err.response.data))
   );

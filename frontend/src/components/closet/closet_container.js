@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { getUserClothing } from "../../actions/clothing_actions";
+import { destroyClothing, getUserClothing } from "../../actions/clothing_actions";
 import { currentUser } from "../../util/session_api_util";
 import Closet from "./closet";
 
@@ -14,7 +14,10 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getUserClothing: (id) => dispatch(getUserClothing(id))
+    getUserClothing: (id) => dispatch(getUserClothing(id)),
+    deleteClothing: (id, userId) => {
+      return dispatch(destroyClothing(id, userId))
+    }
   };
 };
 

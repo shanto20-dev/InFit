@@ -122,13 +122,14 @@
     width: 95%;
     max-width: 1000px;
     height: Calc(100% - 160px);
-    max-height: 600px;
+    max-height: 450px;
     display: grid;
     grid-template-columns: repeat(5, 20%);
-    grid-template-rows: repeat(4, 25%);
+    grid-template-rows: repeat(3, 33%);
     align-items: flex-start;
     flex-wrap: wrap;
     margin: 0 auto;
+    position: relative;
 }
 
 .clothing-wrapper .clothing-list .clothing-item {
@@ -212,6 +213,12 @@
     transition: 0.3s;
 }
 
+.clothing-wrapper .clothing-list span {
+    position: absolute;
+    bottom: 30%;
+    right: 6%;
+}
+
 .clothing-wrapper .page-select {
     margin: 0 auto;
     position: absolute;
@@ -238,4 +245,37 @@
 .clothing-wrapper .page-select span:hover {
     font-weight: 800;
     transition: 0.3s;
+}
+
+.clothing-wrapper .trashcan {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 30%;
+    width: 20%;
+    border-radius: 8px;
+    position:absolute;
+    bottom: -200px;
+    right: 60px;
+    transition: 0.3s;
+    z-index: 999999;
+}
+
+.clothing-wrapper .trashcan.active {
+    bottom: 2%;
+    transition: 0.3s;
+}
+
+.clothing-wrapper .trashcan.active .trash-holder {
+    height: 140px;
+    width: 80px;
+    position:fixed;
+    background-image: url('../../assets/icons/closedTrash.png');
+    background-repeat: no-repeat;
+    background-position:bottom;
+    background-size: 80px 80px;
+}
+
+.clothing-wrapper .trashcan.active .trash-holder:hover {
+    background-image: url('../../assets/icons/openTrash.png');
 }

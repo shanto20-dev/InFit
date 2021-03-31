@@ -26,8 +26,12 @@ router.get("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  const clothing = Clothing.findById(req.params.id);
-  if (clothing.user === req.user.id) clothing.delete();
+  Clothing.findById(req.params.id).then((clothing) =>{
+    if (clothing.user == req.body.userId) {
+      clothing.delete();
+    }
+  })
+  
 });
 
 router.patch("/edit", (req, res) => {

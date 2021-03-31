@@ -20,6 +20,10 @@ export const fetchClothing = (id) => {
   return axios.get(`/api/clothing/${id}`);
 };
 
-export const deleteClothing = (id) => {
-  return axios.delete(`/api/clothing/${id}`);
+export const deleteClothing = (id, userId) => {
+  return axios({
+    method: 'DELETE',
+    url:`/api/clothing/${id}`,
+    data: { userId: userId }
+  })
 };

@@ -42,8 +42,6 @@ export default class Closet extends Component {
     }
     
     render() {
-        // console.log(this.state.currentUser)
-        // console.log(this.props.clothes)
 
         let overviewClass = "";
         let clothingClass = "";
@@ -56,7 +54,7 @@ export default class Closet extends Component {
             currentContent = <Overview currentUser={this.state.currentUser}/>;
         } else if (this.state.selectedSidebar === "clothing") {
             clothingClass = "selected";
-            currentContent = <Clothing currentUser={this.state.currentUser} clothing={this.props.clothing}/>;
+            currentContent = <Clothing deleteClothing={this.props.deleteClothing} currentUser={this.state.currentUser} clothing={this.props.clothing}/>;
             addButton = (
                 <div className="upload-clothes-wrapper">
                     <Link to="/clothing/new"><img src={uploadClothesIcon} alt=""/></Link>
