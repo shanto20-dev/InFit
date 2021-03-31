@@ -54,10 +54,14 @@ class OutfitShow extends React.Component {
   }
 
   handleSave() {
-    document.getElementById("modal").classList.remove("active")
+    if (document.getElementById("modal").classList.contains("active")){
+      document.getElementById("modal").classList.add("inactive")
+    }
+    setTimeout(() => {
+      document.getElementById("modal").classList.remove("inactive")
+      this.setState({ renderClothes: !this.state.renderClothes })
+    }, 100)
 
-
-    this.setState({ renderClothes: !this.state.renderClothes })
     this.props.updateOutfit({
       id: this.props.match.params.id,
       clothes: [...this.props.outfit.clothes, ...this.state.newClothes],
