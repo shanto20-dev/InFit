@@ -75,6 +75,10 @@ export default class Carousel extends Component {
         }, 5000)
     }
 
+    componentWillUnmount() {
+        clearTimeout(nextSlideTO)
+    }
+
     render() {
 
         let leftIdx = (this.state.currentImageIndex + imgArr.length - 1) % imgArr.length;
