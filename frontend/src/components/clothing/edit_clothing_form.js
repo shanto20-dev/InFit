@@ -11,11 +11,12 @@ class EditClothingForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    document.getElementById("clothing-card").classList.add("inactive");
+    // document.getElementById("clothing-card").classList.add("inactive");
     this.props.editClothing(this.state).then(
       (clothing) => setTimeout(() => {
+      document.getElementById("clothing-card").classList.add("inactive");
       this.props.history.push(`/clothing/${clothing.clothing.data._id}`);
-    }, 100)
+    }, 50)
         // this.props.history.push(`/clothing/${clothing.clothing.data._id}`)
       // console.log(clothing.clothing.data._id)
     );

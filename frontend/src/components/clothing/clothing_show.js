@@ -19,7 +19,7 @@ class ClothingShow extends React.Component {
     event.preventDefault()
     document.getElementById("clothing-card").classList.add("inactive");
     setTimeout(() => {
-      this.props.history.push("/clothing/${this.props.clothing._id}/edit");
+      this.props.history.push(`/clothing/${this.props.clothing._id}/edit`);
     }, 100);
   }
 
@@ -51,7 +51,10 @@ class ClothingShow extends React.Component {
         </div>
       </div>
     ) : (
-      <div>Loading</div>
+      <div className="clothing-show-container">
+        <div className="clothing-card" id="clothing-card">
+        </div>
+      </div>
     );
 
     return <div>{clothing}</div>;
