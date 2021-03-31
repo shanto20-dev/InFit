@@ -17,6 +17,7 @@
   border: 1px solid black;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
   display: flex;
+  justify-content: center;
   gap: 50px;
   align-items: center;
   font-family: "Varela", sans-serif;
@@ -51,9 +52,16 @@
     }
 }
 
+.clothing-card .clothing-info {
+  margin-left: 40px;
+}
+
 .clothing-image {
-  width: 350px;
-  height: 350px;
+  width: auto;
+  height: auto;
+  max-height: 350px;
+  max-width: 350px;
+  
 }
 
 .title {
