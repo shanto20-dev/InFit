@@ -1,0 +1,120 @@
+.outfit-show-container {
+  width: 100vw;
+  height: 100vh;
+  font-family: "Nunito", sans-serif;
+  display: flex;
+}
+
+.outfit-clothes {
+  display: grid;
+  grid-template-columns: repeat(5, 20%);
+  grid-template-rows: repeat(4, 20%);
+}
+
+.clothing-elements {
+  display: grid;
+  grid-template-columns: repeat(4, 25%);
+  grid-template-rows: repeat(2, 50%);
+}
+
+/* #A83C28","#FF8670","#F66B54","#18A86B","#53F5B0" */
+.modal {
+  box-sizing: border-box;
+  height: 50vh;
+  width: 80%;
+  position: absolute;
+  left: 10%;
+  bottom: 0px;
+  z-index: 1;
+  background-color: #53f5b0;
+  border-radius: 10px;
+  padding: 40px;
+}
+
+.modal-header {
+  position: absolute;
+  z-index: 2;
+  top: 20px;
+  left: 46px;
+}
+
+.clothing-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 6px;
+}
+
+.clothing-item a {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  object-fit: contain;
+  position: relative;
+  background-color: white;
+  transition: 0.3s;
+
+  overflow: hidden;
+}
+
+.clothing-item a .shadow {
+  min-width: Calc(100% - 4px);
+  min-height: Calc(100% - 4px);
+  border: rgb(119, 119, 119) 2px solid;
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2) inset;
+  border-radius: 4px;
+
+  z-index: 4;
+  position: absolute;
+}
+
+.clothing-item a img {
+  height: 100%;
+  width: auto;
+  max-width: 100%;
+  z-index: 3;
+  transition: 0.3s;
+}
+
+.clothing-item a h3 {
+  display: none;
+  position: absolute;
+  bottom: 50%;
+  color: #585858;
+  font-family: "Varela", sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  font-size: 1.2vh;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+.clothing-item a:hover {
+  transform: scale(1.2, 1.4);
+  z-index: 6;
+  transition: 0.3s;
+  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* .clothing-wrapper .clothing-list .clothing-item a:hover .shadow{
+    transform: scale(1.2,1.3);
+    transition: 0.3s;
+} */
+
+.clothing-item a:hover img {
+  transform: scale(1, 0.9) translateY(-10%);
+  transition: 0.3s;
+}
+
+.clothing-item a:hover h3 {
+  display: block;
+  bottom: 4%;
+  transition: 0.3s;
+}

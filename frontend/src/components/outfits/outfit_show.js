@@ -1,5 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ClothingItem from "../clothing/clothing_item";
+import "../../styles/outfits/outfit_show.css";
 
 class OutfitShow extends React.Component {
   constructor(props) {
@@ -47,8 +49,10 @@ class OutfitShow extends React.Component {
   }
 
   render() {
+    console.log(this.state, this.props);
+
     const mappedItems = this.props.outfit._id
-      ? this.props.outfit.clothes.map((itemId, idx) => {
+      ? this.props.outfit.clothes.map((itemId) => {
           return (
             <ClothingItem
               clothingId={itemId}
@@ -57,6 +61,7 @@ class OutfitShow extends React.Component {
           );
         })
       : "";
+
     let clothingElements;
     if (this.props.clothes && this.state.renderClothes) {
       clothingElements = Object.values(this.props.clothes).map((cloth, i) => {
@@ -66,33 +71,40 @@ class OutfitShow extends React.Component {
             className="clothing-item"
             key={i}
           >
-            <div className="shadow"></div>
-            <img src={cloth.img_url} alt="" />
-            <h3>{cloth.name}</h3>
+            <Link to="#">
+              <div className="shadow"></div>
+              <img src={cloth.img_url} alt="" />
+              <h3>{cloth.name}</h3>
+            </Link>
           </div>
         );
       });
     }
 
     return (
-      <div>
-        <h1>Outfit</h1>
-        <p>{this.props.outfit.name}</p>
-        <p>{this.props.outfit.description}</p>
-        <p>{this.props.outfit.tags}</p>
-        {mappedItems}
+      <div className="outfit-show-container">
+        <div>
+          <h1 className="outfit-title">{this.props.outfit.name}</h1>
+          <h1 className="outfit-description">
+            {this.props.outfit.description}
+          </h1>
+          <h1 className="outfit-tags">{this.props.outfit.tags}</h1>
 
-        <button
-          onClick={() =>
-            this.setState({ renderClothes: !this.state.renderClothes })
-          }
-        >
-          Add clothes to this outfit
-        </button>
+          <button
+            onClick={() =>
+              this.setState({ renderClothes: !this.state.renderClothes })
+            }
+          >
+            Add clothes to this outfit
+          </button>
 
-        {clothingElements}
-
-        <button onClick={this.handleSave}>Save Outfit</button>
+          <button onClick={this.handleSave}>Save Outfit</button>
+        </div>
+        <div className="clothing-elements modal">
+          <h1 className="modal-header">Add clothes to your outfit</h1>
+          {clothingElements}
+        </div>
+        <div className="outfit-clothes"> {mappedItems}</div>
       </div>
     );
   }
