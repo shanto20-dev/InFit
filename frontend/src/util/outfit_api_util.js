@@ -19,3 +19,7 @@ export const fetchOutfit = (id) => {
 export const deleteOutfit = (id) => {
   return axios.delete(`/api/outfit/${id}`);
 };
+
+export const addClothes = (outfitData) => {
+  return axios.patch(`/api/outfit/${outfitData.id}`, outfitData);
+};

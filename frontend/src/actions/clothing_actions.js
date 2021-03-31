@@ -33,7 +33,7 @@ const removeClothing = (clothingId) => ({
   clothingId,
 });
 
-const receiveErrors = (errors) => ({
+export const receiveErrors = (errors) => ({
   type: RECEIVE_SESSION_ERRORS,
   errors,
 });
