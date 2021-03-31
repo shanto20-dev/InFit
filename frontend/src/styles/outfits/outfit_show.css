@@ -13,30 +13,83 @@
 
 .clothing-elements {
   display: grid;
-  grid-template-columns: repeat(4, 25%);
+  grid-template-columns: repeat(5, 20%);
   grid-template-rows: repeat(2, 50%);
+  position: relative;
 }
 
 /* #A83C28","#FF8670","#F66B54","#18A86B","#53F5B0" */
+.modal.inactive{
+  animation-name: slideOutModal;
+  animation-duration: 0.4s;
+  animation-iteration-count: 1;
+  display: block;
+  /* opacity: 0; */
+}
+
 .modal {
+  display: none;
   box-sizing: border-box;
-  height: 50vh;
-  width: 80%;
+  height: 52vh;
+  width: 60%;
   position: absolute;
-  left: 10%;
+  left: 20%;
   bottom: 0px;
   z-index: 1;
   background-color: #a6f8d4;
   border-radius: 10px;
   padding: 40px;
-  padding-top: 60px;
 }
+
+.modal.active{
+  display: block;
+  animation-name: slideInModal;
+  animation-duration: 0.4s;
+  animation-iteration-count: 1;
+}
+
+@keyframes slideInModal{
+  0% {
+    bottom: -300px;
+    opacity: 0;
+  }
+
+  70% {
+    bottom: -50px;
+    opacity: 1;
+  }
+
+  100%{
+    bottom: 0px;
+  }
+
+}
+@keyframes slideOutModal{
+  0% {
+    bottom: 0px;
+    opacity: 1;
+  }
+
+  70% {
+    bottom: -270px;
+    opacity: .5;
+  }
+
+  100%{
+    bottom: -300px;
+    opacity: 0;
+  }
+
+}
+
+
+
+
 
 .modal-header {
   width: 100%;
   text-align: center;
-  position: absolute;
-  top: 20px;
+  position: relative;
   margin-bottom: 30px;
   font-size: 24px;
 }
