@@ -52,4 +52,16 @@ router.post(
   }
 );
 
+router.patch(
+  "/:id",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    Outfit.findById(req.params.id).then((outfit) => {
+      outfit.clothes = req.body.clothes;
+
+      outfit.save().then((outfit) => res.json(outfit));
+    });
+  }
+);
+
 module.exports = router;

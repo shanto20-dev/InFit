@@ -4,7 +4,10 @@ import {
   fetchUserOutfits,
   fetchOutfit,
   deleteOutfit,
+  addClothes,
 } from "../util/outfit_api_util";
+
+import { receiveErrors } from "./clothing_actions";
 
 export const RECEIVE_ALL_OUTFITS = "RECEIVE_ALL_OUTFITS";
 export const RECEIVE_USER_OUTFITS = "RECEIVE_USER_OUTFITS";
@@ -49,12 +52,6 @@ export const newOutfit = (outfitData) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-// export const editClothing = (clothingData) => (dispatch) => {
-//   return editClothing(clothingData)
-//     .then((clothing) => dispatch(receiveClothing(clothing)))
-//     .catch((err) => console.log(err));
-// };
-
 export const destroyOutfit = (outfitId) => (dispatch) =>
   deleteOutfit(outfitId).then(
     () => dispatch(removeOutfit(outfitId)),
@@ -65,4 +62,10 @@ export const getOutfit = (outfitId) => (dispatch) =>
   fetchOutfit(outfitId).then(
     (outfit) => dispatch(receiveOutfit(outfit.data)),
     (err) => console.log(err)
+  );
+
+export const updateOutfit = (outfitData) => (dispatch) =>
+  addClothes(outfitData).then(
+    (outfit) => dispatch(receiveOutfit(outfit.data)),
+    (err) => dispatch(receiveErrors(err))
   );
