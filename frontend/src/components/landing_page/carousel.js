@@ -9,7 +9,7 @@ import outfit5 from '../../assets/carousel_images/outfit5.jpg'
 
 const imgArr = [outfit1, outfit2, outfit3, outfit4, outfit5]
 
-
+let nextSlideTO = ""
 
 export default class Carousel extends Component {
 
@@ -24,6 +24,10 @@ export default class Carousel extends Component {
 
         this.nextSlide = this.nextSlide.bind(this);
         this.previousSlide = this.previousSlide.bind(this);
+
+        nextSlideTO = setTimeout(() => {
+            this.nextSlide()
+        }, 5000)
     }
 
     previousSlide () {
@@ -65,10 +69,13 @@ export default class Carousel extends Component {
             });
             document.getElementById("image-slides").classList.remove("move-right")
         }, 900);
+        clearTimeout(nextSlideTO);
+        nextSlideTO = setTimeout(() => {
+            this.nextSlide()
+        }, 5000)
     }
 
     render() {
-        console.log(imgArr[this.state.currentImageIndex])
 
         let leftIdx = (this.state.currentImageIndex + imgArr.length - 1) % imgArr.length;
         let farLeftIdx = (this.state.currentImageIndex + imgArr.length - 2) % imgArr.length;
