@@ -146,10 +146,11 @@ class NewClothingForm extends React.Component {
                 placeholder="#tag"
               />
               <span className="add-tag" onClick={this.addTag}>+</span>
-              <div className="current-tags">
-                {currentTags}
-              </div>
             </div>
+            <div className="current-tags">
+              {currentTags}
+            </div>
+            
             <label>
               Image
             </label>

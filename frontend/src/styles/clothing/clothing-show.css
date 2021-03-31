@@ -12,8 +12,9 @@
 
 .clothing-card {
   margin-bottom: 100px;
-  width: 850px;
-  height: 450px;
+  width: 800px;
+  height: auto;
+  padding: 40px;
   border: 1px solid black;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
   display: flex;
@@ -54,6 +55,9 @@
 
 .clothing-card .clothing-info {
   margin-left: 40px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .clothing-image {
@@ -65,9 +69,9 @@
 }
 
 .title {
-  line-height: 28px;
+  line-height: 20px;
   font-family: "Nunito", sans-serif;
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 700;
   color: #a83c28;
 }
@@ -80,6 +84,101 @@
 
 .loading{
   text-align: center;
+}
+
+.clothing-info input {
+  height: 40px;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.clothing-info textarea {
+  height: 64px;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.clothing-info select {
+  height: 40px;
+  width: 100%;
+  max-width: 500px;
+  box-sizing: border-box;
+  margin-bottom: 12px;
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.clothing-info button.submit-edit {
+  width: 80px;
+  margin: 0 auto;
+  padding-left: 18px;
+}
+
+.clothing-info .current-tags {
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.clothing-info .current-tags .tag {
+  padding: 6px 12px;
+  border-radius: 16px;
+  color: white;
+  background-color: #18A86B;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.clothing-info .current-tags .tag .delete-tag {
+  margin-left: 8px;
+  cursor: pointer
+}
+
+.clothing-info .current-tags .tag .delete-tag:hover {
+  color: rgb(216, 32, 0);
+}
+
+.clothing-info .tags-div {
+  width: 100%;
+  height: auto;
+  position: relative
+}
+
+.clothing-info .add-tag {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  color:white;
+  font-weight: 900;
+  font-size: 20px;
+  position: absolute;
+  top: 40%;
+  right: 3%;
+  padding-bottom: 1px;
+  background-color: rgb(255, 170, 170);
+  cursor: pointer;
+}
+
+.clothing-info .add-tag:hover {
+  background-color: rgb(165, 48, 44);
 }
 
 /*

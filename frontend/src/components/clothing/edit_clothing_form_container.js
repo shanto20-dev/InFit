@@ -3,6 +3,7 @@ import { editClothing, getClothing } from "../../actions/clothing_actions";
 import EditClothingForm from "./edit_clothing_form";
 
 const mapStateToProps = (state) => {
+  console.log(state.entities.clothing)
   return {
     clothing: state.entities.clothing,
   };
