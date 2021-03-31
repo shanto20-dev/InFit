@@ -28,8 +28,10 @@ class NewOutfitForm extends React.Component {
 
     this.props
       .newOutfit(this.state)
-      .then((outfit) =>
-        this.props.history.push(`/outfit/${outfit.outfit.data._id}`)
+      .then((outfit) => {
+        console.log(outfit)
+        this.props.history.push(`/outfit/${outfit._id}`)
+      }
       );
   }
 

@@ -47,6 +47,7 @@ export const getUserOutfits = (id) => (dispatch) =>
   );
 
 export const newOutfit = (outfitData) => (dispatch) => {
+  
   return createOutfit(outfitData)
     .then((outfit) => dispatch(receiveOutfit(outfit)))
     .catch((err) => console.log(err));
