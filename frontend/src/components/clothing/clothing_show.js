@@ -45,7 +45,7 @@ class ClothingShow extends React.Component {
             <h2 className="title clothing-tags">Tags:</h2>
             <p>{this.props.clothing.tags}</p>
             <div className="edit-button">
-            <button onClick={this.switchForm}>Edit</button>
+              <button onClick={this.switchForm}>Edit</button>
             </div>
           </div>
           
