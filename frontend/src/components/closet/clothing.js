@@ -11,14 +11,64 @@ export default class Clothing extends Component {
             currentPage: 0,
             categoryFilter: "",
             tagFilter: "",
+            tagText: "",
+            tags: [],
+            invalidTag: false,
+            alreadyAdded: false
         }
 
         this.setPage = this.setPage.bind(this);
         this.setCategory = this.setCategory.bind(this);
         this.setTag = this.setTag.bind(this)
         this.getAllTags = this.getAllTags.bind(this);
+        this.updateTagText = this.updateTagText.bind(this)
+        this.handleKeyPress = this.handleKeyPress.bind(this)
+        this.deleteTag = this.deleteTag.bind(this)
 
-        // this.timeoutFunc = setPage(this.state.currentPage + 1)
+    }
+
+    updateTagText(e) {
+        e.preventDefault();
+        this.setState({
+            tagText: e.currentTarget.value
+        })
+    }
+
+    deleteTag(e) {
+        e.preventDefault();
+        let current = this.state.tags;
+        delete current[e.currentTarget.id];
+        this.setState({
+            tags: current
+        })
+    }
+
+    handleKeyPress(e){
+        if (e.keyCode === 13) {
+            e.preventDefault();
+            let allTags = this.getAllTags();
+            if (!allTags.includes('#' + e.currentTarget.value)){
+                this.setState({
+                    invalidTag: true,
+                    tagText: ""
+                })
+            } else if (this.state.tags.includes('#' + e.currentTarget.value)) {
+                this.setState({
+                    alreadyAdded: true
+                })
+            } else {
+                
+                let current = this.state.tags;
+                current.push('#' + e.currentTarget.value)
+                this.setState({
+                    tags: current,
+                    tagText: "",
+                    invalidTag: false,
+                    alreadyAdded: false
+                })
+            }
+            
+        }
     }
 
 
@@ -71,10 +121,16 @@ export default class Clothing extends Component {
         let clothingElements = Object.values(this.props.clothing)
         .filter( cloth => cloth.category.includes(this.state.categoryFilter))
         .filter(cloth => {
-            if (this.state.tagFilter === ""){
+            if (this.state.tags === []){
                 return true;
             } else {
-                return cloth.tags.includes(this.state.tagFilter)
+                let isGood = true;
+                this.state.tags.forEach(tag => {
+                    if (!cloth.tags.includes(tag)) {
+                        isGood = false;
+                    }
+                })
+                return isGood;
             }
         })
         .slice(start, end).map((cloth, i) => {
@@ -98,13 +154,22 @@ export default class Clothing extends Component {
             )
         }
 
-        let allTags = this.getAllTags();
-        let tagOptions = allTags.map(tag => {
+        let tagError = "";
+        
+        if (this.state.invalidTag) {
+            tagError = "You do not have a clothing item with that tag";
+        } else if (this.state.alreadyAdded) {
+            tagError = "You have already added this tag"
+        }
+        let tagElements = this.state.tags.map((tag, i) => {
             return (
-                <option value={tag}>{tag}</option>
+                <span className="tag" id={i} key={i}>
+                    {tag}
+                    <span className="delete-tag" id={i} onClick={this.deleteTag}>X</span>
+                </span>
             )
         })
-        
+
         return (
             <div className="clothing-wrapper">
                 <div className="header-div">
@@ -125,19 +190,23 @@ export default class Clothing extends Component {
                             <option value="Accessory">Accessory</option>
                             <option value="Shoes">Shoes</option>
                         </select>
-                        <select 
-                            name="tag"
-                            defaultValue=""
-                            onChange={this.setTag}
-                            className="tag-dropdown field"
-                        >
-                            <option value="">All Tags</option>
-                            {tagOptions}
-                        </select>
+                        <div className="tag-input-wrapper">
+                            <label>{tagError}</label>
+                            <input 
+                                type="text" 
+                                value={this.state.tagText}
+                                placeholder="Add Tag" 
+                                onChange={this.updateTagText} 
+                                onKeyDown={this.handleKeyPress}
+                            />
+                        </div>
                     </div>
                 </div>
-                
+                <div className="current-tags">
+                    {tagElements}
+                </div>
                 <div className="clothing-list">
+                    
                     {clothingElements}
                 </div>
                 <div className="page-select">

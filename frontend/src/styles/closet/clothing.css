@@ -34,7 +34,7 @@
 }
 
 .clothing-wrapper .header-div .select-div select{
-    margin: auto 6px;
+    margin: auto 6px 8px 6px;
     height: 32px;
     width: 200px;
     font-family: 'Nunito', sans-serif;
@@ -54,6 +54,68 @@
 .clothing-wrapper .header-div .select-div select option {
     font-weight: 700;
     font-size: 1.5vh;
+}
+
+.clothing-wrapper .header-div .tag-input-wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 200px;
+}
+
+.clothing-wrapper .header-div .tag-input-wrapper label {
+    color: rgb(224, 36, 36);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 8px;
+    
+}
+
+.clothing-wrapper .header-div .tag-input-wrapper input[type=text] {
+    height: 32px;
+    width: 200px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 1.5vh;
+    background-color: rgb(250, 250, 250);
+    color: #471108;
+    border: 2px solid #471108;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 8px;
+    padding-left: 4px;
+}
+.clothing-wrapper .header-div .tag-input-wrapper input[type=text]:focus {
+    border-color: rgb(224, 36, 36);
+    outline: none;
+}
+
+.clothing-wrapper .current-tags {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    padding: 0 5% 2% 5%;
+}
+
+.clothing-wrapper .current-tags .tag {
+    padding: 4px 8px;
+    border-radius: 16px;
+    color: white;
+    background-color: #18A86B;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.clothing-wrapper .current-tags .tag .delete-tag {
+    margin-left: 8px;
+    cursor: pointer
+}
+
+.clothing-wrapper .current-tags .tag .delete-tag:hover {
+    color: rgb(216, 32, 0);
 }
 
 .clothing-wrapper .clothing-list {
