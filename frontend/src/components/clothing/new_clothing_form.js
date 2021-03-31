@@ -13,9 +13,12 @@ class NewClothingForm extends React.Component {
       tags: [],
       img_url: "",
       link: "",
+      tagText: ""
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.addTag = this.addTag.bind(this)
+    this.removeTag = this.removeTag.bind(this)
   }
 
   componentDidMount(){
@@ -48,6 +51,27 @@ class NewClothingForm extends React.Component {
       });
   }
 
+  addTag(e) {
+    e.preventDefault();
+    if (this.state.tagText === "") return;
+    if (this.state.tags.includes("#" + this.state.tagText)) return;
+    let current = this.state.tags;
+    current.push("#" + this.state.tagText);
+    this.setState({
+      tags: current,
+      tagText: ""
+    })
+  }
+
+  removeTag(e) {
+    e.preventDefault();
+    let current = this.state.tags;
+    delete current[e.currentTarget.id]
+    this.setState({
+      tags: current
+    })
+  }
+
   renderErrors() {
     return (
       <ul>
@@ -59,6 +83,12 @@ class NewClothingForm extends React.Component {
   }
 
   render() {
+    let currentTags = this.state.tags.map((tag, i) => {
+      return (
+        <span key={i} className="tag">{tag}<span className="delete-tag" id={i} onClick={this.removeTag}>X</span></span>
+      )
+    })
+
     return (
       <div className="clothes-form-container">
         <div className="clothes-form-card">
@@ -107,13 +137,19 @@ class NewClothingForm extends React.Component {
             <label>
               Tags
             </label>
+            <div className = "tags-div">
               <input
                 type="text"
                 className="new-clothing-tags field"
-                value={this.state.tags}
-                onChange={this.update("tags")}
+                value={this.state.tagText}
+                onChange={this.update("tagText")}
                 placeholder="#tag"
               />
+              <span className="add-tag" onClick={this.addTag}>+</span>
+              <div className="current-tags">
+                {currentTags}
+              </div>
+            </div>
             <label>
               Image
             </label>

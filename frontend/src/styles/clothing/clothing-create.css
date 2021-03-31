@@ -12,7 +12,7 @@
 
 .clothes-form-card{
     margin: 100px auto;
-    background-color:#f8dedacc;
+    background-color:#f8dedae7;
     border-radius: 10px;
     box-shadow: 0 0 5px 10px rgba(0,0,0,0.3);
     height: auto;
@@ -53,9 +53,10 @@
 }
 
 .form-details{
-    width: 60%;
+    width: 75%;
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .clothes-form-card h1 {
@@ -98,6 +99,7 @@
     overflow: hidden;
     font-family: 'Nunito', sans-serif;
     margin-bottom: 20px;
+    box-sizing: border-box;
 }
 
 .clothes-form-card form button {
@@ -136,8 +138,77 @@
     margin-bottom: 20px;
     resize: none;
     overflow: auto;
+    box-sizing: border-box;
 }
 
 .clothes-form-card select {
     padding-top: 8px;
+    /* padding-left: 8px;
+    width: 103%;
+    height: 40px;
+    background-color: white;
+    border: 1px solid #0a7a4c;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 700;
+    padding-left: 8px;
+    overflow: hidden;
+    font-family: 'Nunito', sans-serif;
+    margin-bottom: 20px; */
+}
+
+.clothes-form-card .current-tags {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.clothes-form-card .current-tags .tag {
+    padding: 4px 8px;
+    border-radius: 16px;
+    color: white;
+    background-color: #18A86B;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.clothes-form-card .current-tags .tag .delete-tag {
+    margin-left: 8px;
+    cursor: pointer
+}
+
+.clothes-form-card .current-tags .tag .delete-tag:hover {
+    color: rgb(216, 32, 0);
+}
+
+.clothes-form-card .tags-div {
+    width: 100%;
+    height: auto;
+    position: relative
+}
+
+.clothes-form-card .add-tag {
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    color:white;
+    font-weight: 900;
+    font-size: 20px;
+    position: absolute;
+    top: 15%;
+    right: 3%;
+    padding-bottom: 1px;
+    background-color: rgb(255, 170, 170);
+    cursor: pointer;
+}
+
+.clothes-form-card .add-tag:hover {
+    background-color: rgb(165, 48, 44);
 }
