@@ -6,36 +6,94 @@
 }
 
 .outfit-clothes {
+  margin-left: 20%;
+  padding-left: 30px;
   display: grid;
-  grid-template-columns: repeat(5, 20%);
+  grid-template-columns: repeat(5, 100%);
   grid-template-rows: repeat(4, 20%);
+  border-left: 1px solid rgb(248, 218, 218);
 }
 
 .clothing-elements {
   display: grid;
-  grid-template-columns: repeat(4, 25%);
+  grid-template-columns: repeat(5, 20%);
   grid-template-rows: repeat(2, 50%);
+  position: relative;
 }
 
 /* #A83C28","#FF8670","#F66B54","#18A86B","#53F5B0" */
+.modal.inactive{
+  animation-name: slideOutModal;
+  animation-duration: 0.4s;
+  animation-iteration-count: 1;
+  display: block;
+  /* opacity: 0; */
+}
+
 .modal {
+  display: none;
   box-sizing: border-box;
-  height: 50vh;
-  width: 80%;
+  height: 52vh;
+  width: 60%;
   position: absolute;
-  left: 10%;
+  left: 20%;
   bottom: 0px;
   z-index: 1;
-  background-color: #53f5b0;
+  background-color: #bef3dc;
   border-radius: 10px;
   padding: 40px;
+  box-shadow: 0 0 0px 5px rgba(0, 0, 0, 0.02);
+}
+
+.modal.active{
+  display: block;
+  animation-name: slideInModal;
+  animation-duration: 0.4s;
+  animation-iteration-count: 1;
+}
+
+@keyframes slideInModal{
+  0% {
+    bottom: -300px;
+    opacity: 0;
+  }
+
+  70% {
+    bottom: -30px;
+    opacity: 1;
+  }
+
+  100%{
+    bottom: 0px;
+  }
+
+}
+@keyframes slideOutModal{
+  0% {
+    bottom: 0px;
+    opacity: 1;
+  }
+
+  70% {
+    bottom: -270px;
+    opacity: .5;
+  }
+
+  100%{
+    bottom: -300px;
+    opacity: 0;
+  }
+
 }
 
 .modal-header {
-  position: absolute;
-  z-index: 2;
-  top: 20px;
-  left: 46px;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  margin-bottom: 30px;
+  font-size: 28px;
+  font-weight: 800;
+  color: #246e4e;
 }
 
 .clothing-item {

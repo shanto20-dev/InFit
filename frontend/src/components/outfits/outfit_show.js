@@ -13,6 +13,7 @@ class OutfitShow extends React.Component {
     };
 
     this.handleSave = this.handleSave.bind(this);
+    this.handleModal = this.handleModal.bind(this);
   }
 
   componentDidMount() {
@@ -40,7 +41,27 @@ class OutfitShow extends React.Component {
       });
   }
 
+  handleModal(){
+    document.getElementById("modal").classList.toggle("active")
+    if (!document.getElementById("modal").classList.contains("active")){
+      console.log("hitting this");
+      document.getElementById("modal").classList.add("inactive")
+    }
+    setTimeout(() => {
+      document.getElementById("modal").classList.remove("inactive")
+      this.setState({ renderClothes: !this.state.renderClothes })
+    }, 100)
+  }
+
   handleSave() {
+    if (document.getElementById("modal").classList.contains("active")){
+      document.getElementById("modal").classList.add("inactive")
+    }
+    setTimeout(() => {
+      document.getElementById("modal").classList.remove("inactive")
+      this.setState({ renderClothes: !this.state.renderClothes })
+    }, 100)
+
     this.props.updateOutfit({
       id: this.props.match.params.id,
       clothes: [...this.props.outfit.clothes, ...this.state.newClothes],
@@ -91,18 +112,18 @@ class OutfitShow extends React.Component {
           <h1 className="outfit-tags">{this.props.outfit.tags}</h1>
 
           <button
-            onClick={() =>
-              this.setState({ renderClothes: !this.state.renderClothes })
-            }
+            onClick={() => this.handleModal()}
           >
             Add clothes to this outfit
           </button>
 
           <button onClick={this.handleSave}>Save Outfit</button>
         </div>
-        <div className="clothing-elements modal">
+        <div className="modal" id="modal">
           <h1 className="modal-header">Add clothes to your outfit</h1>
+          <div className="clothing-elements">
           {clothingElements}
+          </div>
         </div>
         <div className="outfit-clothes"> {mappedItems}</div>
       </div>
