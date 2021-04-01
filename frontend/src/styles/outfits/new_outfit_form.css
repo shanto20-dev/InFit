@@ -53,7 +53,7 @@
   font-weight: 800;
 }
 
-.new-outfit-form > input {
+.new-outfit-form input {
   font-family: "Nunito", sans-serif;
 
   border-style: none;
@@ -99,4 +99,65 @@
   font-size: 16px;
   font-weight: 700;
   background-color: #0a7a4c;
+}
+
+.new-outfit-form .current-tags {
+  width: 66%;
+  height: auto;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.new-outfit-form .current-tags .tag {
+  padding: 6px 12px;
+  border-radius: 16px;
+  color: white;
+  background-color: #18A86B;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.new-outfit-form .current-tags .tag .delete-tag {
+  margin-left: 8px;
+  cursor: pointer
+}
+
+.new-outfit-form .current-tags .tag .delete-tag:hover {
+  color: rgb(216, 32, 0);
+}
+
+.new-outfit-form .tags-div {
+  width: 66%;
+  margin: 0 auto;
+  height: auto;
+  position: relative
+}
+
+.new-outfit-form .tags-div input[type=text]{
+  min-width: 100%;
+}
+
+.new-outfit-form .add-tag {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  color:white;
+  font-weight: 900;
+  font-size: 20px;
+  position: absolute;
+  top: 15%;
+  right: 3%;
+  padding-bottom: 1px;
+  background-color: rgb(255, 170, 170);
+  cursor: pointer;
+}
+
+.new-outfit-form .add-tag:hover {
+  background-color: rgb(165, 48, 44);
 }
