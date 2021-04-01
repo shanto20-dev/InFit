@@ -22,6 +22,7 @@ export default class Closet extends Component {
 
         this.updateSelected = this.updateSelected.bind(this);
         this.clickKnob = this.clickKnob.bind(this)
+        this.updateProps = this.updateProps.bind(this)
     }
 
     componentDidMount() {
@@ -34,6 +35,14 @@ export default class Closet extends Component {
             this.props.getUserOutfits(thisUser.id)
         })
         
+    }
+
+    updateProps() {
+        this.props.currentUser().then(result => {
+            let thisUser = result.data;
+            this.props.getUserClothing(thisUser.id)
+            this.props.getUserOutfits(thisUser.id)
+        })
     }
 
     updateSelected(field) {
@@ -65,10 +74,10 @@ export default class Closet extends Component {
 
         if (this.state.selectedSidebar === "overview") {
             overviewClass = "selected";
-            currentContent = <Overview currentUser={this.state.currentUser}/>;
+            currentContent = <Overview outfits={this.props.outfits} clothing={this.props.clothing} currentUser={this.state.currentUser}/>;
         } else if (this.state.selectedSidebar === "clothing") {
             clothingClass = "selected";
-            currentContent = <Clothing deleteClothing={this.props.deleteClothing} currentUser={this.state.currentUser} clothing={this.props.clothing}/>;
+            currentContent = <Clothing updateProps={this.updateProps} getUserClothing={this.props.getUserClothing} deleteClothing={this.props.deleteClothing} currentUser={this.state.currentUser} clothing={this.props.clothing}/>;
             addButton = (
                 <div className="upload-clothes-wrapper">
                     <Link to="/clothing/new"><img src={uploadClothesIcon} alt=""/></Link>
@@ -78,7 +87,7 @@ export default class Closet extends Component {
             )
         } else if (this.state.selectedSidebar === "outfits") {
             outfitsClass = "selected";
-            currentContent = <Outfits deleteOutfit={this.props.deleteOutfit} currentUser={this.state.currentUser} outfits={this.props.outfits}/>;
+            currentContent = <Outfits updateProps={this.updateProps} getUserOutfits={this.props.getUserOutfits} deleteOutfit={this.props.deleteOutfit} currentUser={this.state.currentUser} outfits={this.props.outfits}/>;
             addButton = (
                 <div className="upload-clothes-wrapper">
                     <Link to="/outfit/new"><img src={uploadOutfitsIcon} alt=""/></Link>

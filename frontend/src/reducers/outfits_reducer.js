@@ -19,6 +19,7 @@ const OutfitsReducer = (
     case RECEIVE_OUTFIT:
       return action.outfit;
     case REMOVE_OUTFIT:
+        console.log("i am here")
         delete newState[action.outfitId];
         return newState;
     default:

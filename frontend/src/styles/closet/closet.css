@@ -187,7 +187,7 @@
 
 .closet-wrapper .sidebar-content {
     position: absolute;
-    top: 6.5vh;
+    top: 7vh;
     right: 18%;
     width: 63%;
     display: flex;
@@ -195,7 +195,6 @@
     flex-direction: column;
     height: auto;
     box-sizing: border-box;
-    overflow: hidden;
 }
 
 .closet-wrapper .sidebar-content h2 {

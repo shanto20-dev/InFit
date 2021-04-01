@@ -53,11 +53,15 @@ export const newOutfit = (outfitData) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-export const destroyOutfit = (outfitId, userId) => (dispatch) =>
-  deleteOutfit(outfitId, userId).then(
-    () => dispatch(removeOutfit(outfitId)),
+export const destroyOutfit = (outfitId, userId) => (dispatch) => {
+  console.log("plz")
+  return deleteOutfit(outfitId, userId).then(
+    () => {
+      console.log("got here")
+      dispatch(removeOutfit(outfitId))
+    },
     (err) => console.log(err)
-  );
+)};
 
 export const getOutfit = (outfitId) => (dispatch) =>
   fetchOutfit(outfitId).then(
