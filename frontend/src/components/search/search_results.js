@@ -14,12 +14,19 @@ export default class SearchResults extends Component {
         return (
             <div className="search-results-container">
                 {this.props.searchResults.map((result, idx) => {
+                    let link;
+                    if (result.clothes) {
+                        link = `/outfit/${result._id}`;
+                    } else {
+                        link = `clothing/${result._id}`;
+                    }
+
                     return (
                         <Link
                             className="link"
                             key={idx}
                             ref={(card) => (this.cardRef[idx] = card)}
-                            to={`/clothing/${result._id}`}
+                            to={link}
                         >
                             <div
                                 onMouseEnter={() => {
