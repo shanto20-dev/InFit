@@ -23,9 +23,12 @@ class OutfitShow extends React.Component {
       this.setState({
         currentUser: thisUser,
       });
-      this.props.getUserClothing(thisUser.id);
+      this.props.getUserClothing(thisUser.id).then(() => {
+                this.setState({
+                    currentUserClothes: this.props.clothes
+                })
     });
-  }
+  })}
 
   addToOutfit(id) {
     if (
@@ -34,7 +37,6 @@ class OutfitShow extends React.Component {
     )
       this.setState({
         newClothes: [
-          ...this.props.outfit.clothes,
           ...this.state.newClothes,
           id,
         ],
@@ -44,7 +46,6 @@ class OutfitShow extends React.Component {
   handleModal(){
     document.getElementById("modal").classList.toggle("active")
     if (!document.getElementById("modal").classList.contains("active")){
-      console.log("hitting this");
       document.getElementById("modal").classList.add("inactive")
     }
     setTimeout(() => {
@@ -55,18 +56,22 @@ class OutfitShow extends React.Component {
 
   handleSave() {
     if (document.getElementById("modal").classList.contains("active")){
+      document.getElementById("modal").classList.remove("active")
       document.getElementById("modal").classList.add("inactive")
-    }
-    setTimeout(() => {
+          setTimeout(() => {
       document.getElementById("modal").classList.remove("inactive")
       this.setState({ renderClothes: !this.state.renderClothes })
     }, 100)
+    }
 
     this.props.updateOutfit({
       id: this.props.match.params.id,
       clothes: [...this.props.outfit.clothes, ...this.state.newClothes],
     });
-    this.setState({ renderClothes: false });
+
+    this.setState({newClothes: []})
+  
+    // this.setState({ renderClothes: false });
   }
 
   render() {
@@ -84,8 +89,8 @@ class OutfitShow extends React.Component {
       : "";
 
     let clothingElements;
-    if (this.props.clothes && this.state.renderClothes) {
-      clothingElements = Object.values(this.props.clothes).map((cloth, i) => {
+    if (this.state.currentUserClothes && this.state.renderClothes) {
+      clothingElements = Object.values(this.state.currentUserClothes).map((cloth, i) => {
         return (
           <div
             onClick={() => this.addToOutfit(cloth._id)}
@@ -104,16 +109,15 @@ class OutfitShow extends React.Component {
 
     return (
       <div className="outfit-show-container">
-        <div>
+        <div className="outfit-info">
           <h1 className="outfit-title">{this.props.outfit.name}</h1>
           <h1 className="outfit-description">
             {this.props.outfit.description}
           </h1>
           <h1 className="outfit-tags">{this.props.outfit.tags}</h1>
+          <img src={this.props.outfit.img_url} className="outfit-image"></img>
 
-          <button
-            onClick={() => this.handleModal()}
-          >
+          <button className="addButton" onClick={() => this.handleModal()}>
             Add clothes to this outfit
           </button>
 
