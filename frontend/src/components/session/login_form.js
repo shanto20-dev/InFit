@@ -17,6 +17,7 @@ class LoginForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
     this.switchForm = this.switchForm.bind(this);
+    this.handleDemoLogin = this.handleDemoLogin.bind(this)
   }
 
   // Handle field updates (called in the render method)
@@ -38,6 +39,18 @@ class LoginForm extends React.Component {
 
     this.props.login(user)
     // .then(() => this.props.history.push("/closet"));
+  }
+
+  // Logs in demo user
+  handleDemoLogin(e) {
+    e.preventDefault();
+
+    let user = {
+      email: 'infitimpala@infit.com',
+      password: 'password123'
+    }
+
+    this.props.login(user)
   }
 
   // Render the session errors if there are any
@@ -89,7 +102,11 @@ class LoginForm extends React.Component {
                 placeholder="Password"
               />
             </div>
-            <input type="submit" value="Log In" />
+            <div className="buttons">
+              <input type="submit" value="Log In" />
+              <button onClick={this.handleDemoLogin}>Demo</button>
+            </div>
+            
             <h3>Need an account? <span onClick={this.switchForm}>Register</span></h3>
             {this.renderErrors()}
           </form>
