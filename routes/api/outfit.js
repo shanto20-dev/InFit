@@ -26,8 +26,12 @@ router.get("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  const outfit = Outfit.findById(req.params.id);
-  if (outfit.user === req.user.id) outfit.delete();
+  Outfit.findById(req.params.id).then((outfit) => {
+    if (outfit.user == req.body.userId) {
+      outfit.delete();
+    }
+  })
+  
 });
 
 router.post(
