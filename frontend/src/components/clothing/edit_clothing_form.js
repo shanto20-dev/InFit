@@ -58,7 +58,7 @@ class EditClothingForm extends React.Component {
   removeTag(e) {
     e.preventDefault();
     let current = this.state.tags;
-    delete current[e.currentTarget.id]
+    current.splice(e.currentTarget.id, 1)
     this.setState({
       tags: current
     })

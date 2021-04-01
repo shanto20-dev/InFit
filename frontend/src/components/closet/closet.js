@@ -15,10 +15,13 @@ export default class Closet extends Component {
 
         this.state = {
             currentUser: {id:"", username: "", email: ""},
-            selectedSidebar: "overview"
+            selectedSidebar: "overview",
+            sidebarClass: "sidebar",
+            contentClass: "content"
         }
 
         this.updateSelected = this.updateSelected.bind(this);
+        this.clickKnob = this.clickKnob.bind(this)
     }
 
     componentDidMount() {
@@ -40,6 +43,16 @@ export default class Closet extends Component {
                 selectedSidebar: field
             })
         }
+    }
+
+    clickKnob(e) {
+        e.preventDefault();
+        let currentSidebar = this.state.sidebarClass
+        let currentContent = this.state.contentClass
+        this.setState({
+            sidebarClass: currentSidebar === "sidebar" ? "sidebar hide-sidebar" : "sidebar",
+            contentClass: currentContent === "content" ? "content hide-sidebar" : "content",
+        })
     }
     
     render() {
@@ -77,7 +90,10 @@ export default class Closet extends Component {
 
         return (
             <div className="closet-wrapper">
-                <div className="sidebar">
+                <div className={this.state.sidebarClass}>
+                    <div className="top-square"></div>
+                    <div className="bottom-square"></div>
+                    <div className="knob" onClick={this.clickKnob}></div>
                     <div className="sidebar-content">
                         <h2>{this.state.currentUser.username}'s Closet</h2>
                         <div className="divider"></div>
@@ -87,7 +103,7 @@ export default class Closet extends Component {
                         <h3 className={outfitsClass} onClick={this.updateSelected("outfits")}>Outfits</h3>
                     </div>
                 </div>
-                <div className="content">
+                <div className={this.state.contentClass}>
                     {addButton}
                     {currentContent}
                 </div>

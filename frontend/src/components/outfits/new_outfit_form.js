@@ -11,8 +11,11 @@ class NewOutfitForm extends React.Component {
       tags: [],
       description: "",
       img_url: "",
+      tagText: "",
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.addTag = this.addTag.bind(this)
+    this.removeTag = this.removeTag.bind(this)
   }
 
   componentDidMount() {
@@ -42,7 +45,35 @@ class NewOutfitForm extends React.Component {
       });
   }
 
+  addTag(e) {
+    e.preventDefault();
+    if (this.state.tagText === "") return;
+    if (this.state.tags.includes("#" + this.state.tagText)) return;
+    let current = this.state.tags;
+    current.push("#" + this.state.tagText);
+    this.setState({
+      tags: current,
+      tagText: ""
+    })
+  }
+
+  removeTag(e) {
+    e.preventDefault();
+    let current = this.state.tags;
+    current.splice(e.currentTarget.id, 1)
+    this.setState({
+      tags: current
+    })
+  }
+
   render() {
+
+    let currentTags = this.state.tags.map((tag, i) => {
+      return (
+        <span key={i} className="tag">{tag}<span className="delete-tag" id={i} onClick={this.removeTag}>X</span></span>
+      )
+    })
+
     return (
       <div className="new-outfit-form-container">
         <form className="new-outfit-form" onSubmit={this.handleSubmit}>
@@ -59,13 +90,19 @@ class NewOutfitForm extends React.Component {
           />
 
           <label>Tags</label>
-          <input
-            type="text"
-            className="new-outfit-tags"
-            value={this.state.tags}
-            onChange={this.update("tags")}
-            placeholder="#tag"
-          />
+          <div className = "tags-div">
+            <input
+              type="text"
+              className="new-outfit-tags field"
+              value={this.state.tagText}
+              onChange={this.update("tagText")}
+              placeholder="#tag"
+            />
+            <span className="add-tag" onClick={this.addTag}>+</span>
+          </div>
+          <div className="current-tags">
+            {currentTags}
+          </div>
 
           <label>Description</label>
           <textarea
