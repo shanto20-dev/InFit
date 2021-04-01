@@ -53,11 +53,12 @@
 .outfit-clothes {
   padding: 30px;
   display: grid;
-  grid-template-columns: repeat(5, 100%);
-  grid-template-rows: repeat(4, 20%);
+  grid-template-columns: repeat(5, 18%);
+  grid-template-rows: repeat(4, 50%);
   border-left: 1px solid rgb(248, 218, 218);
-  width: 10%;
-  grid-column-gap: 8%;
+  width: 60%;
+  height: 40%;
+  grid-column-gap: 2%;
   grid-row-gap: 5%;
 }
 
@@ -189,7 +190,8 @@
 }
 
 .clothing-item a img {
-  height: 100%;
+  height: auto;
+  max-height: 100%;
   width: auto;
   max-width: 100%;
   z-index: 3;

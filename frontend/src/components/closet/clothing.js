@@ -260,7 +260,7 @@ export default class Clothing extends Component {
                             <input 
                                 type="text" 
                                 value={this.state.tagText}
-                                placeholder="Add Tag" 
+                                placeholder="Filter by Tag" 
                                 onChange={this.updateTagText} 
                                 onKeyDown={this.handleKeyPress}
                             />

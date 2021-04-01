@@ -9,6 +9,7 @@ const mapStateToProps = (state) => {
     currentUser: currentUser,
     outfit: state.entities.outfits,
     clothes: state.entities.clothing.data,
+    cloth: state.entities.clothing
   };
 };
 

@@ -21,9 +21,12 @@ class OutfitShow extends React.Component {
         name: "",
         user: "",
         img_url: "",
-        description: ""
+        description: "",
+        clothes: []
       },
-      tagText: ""
+      tagText: "",
+      isDragging: false,
+      currentUserClothes: []
     };
 
     this.handleSave = this.handleSave.bind(this);
@@ -31,11 +34,11 @@ class OutfitShow extends React.Component {
     this.update = this.update.bind(this);
     this.addTag = this.addTag.bind(this);
     this.removeTag = this.removeTag.bind(this);
+    this.handleOnDragEnd = this.handleOnDragEnd.bind(this)
   }
 
   componentDidMount() {
     this.props.getOutfit(this.props.match.params.id).then(action => {
-      console.log(action)
       this.setState({
         outfit: action.outfit
       })
@@ -46,9 +49,9 @@ class OutfitShow extends React.Component {
         currentUser: thisUser,
       });
       this.props.getUserClothing(thisUser.id).then(() => {
-                this.setState({
-                    currentUserClothes: this.props.clothes
-                })
+        this.setState({
+            currentUserClothes: this.props.clothes
+        })
     });
   })}
 
@@ -124,34 +127,100 @@ class OutfitShow extends React.Component {
     })
   }
 
-  render() {
+  handleOnDragEnd(result) {
+    if (!result.destination) return;
+    console.log(result)
+    if (result.destination.droppableId === "all-clothes") {
+      if (result.source.droppableId === "outfit-clothes") {
+        let current = Object.assign({},this.state.outfit);
+        
+        let filteredClothes = this.state.currentUserClothes.filter(cloth => {
+          return this.state.outfit.clothes.includes(cloth._id)
+        });
 
-    const mappedItems = this.props.outfit._id
-      ? this.props.outfit.clothes.map((itemId) => {
-          return (
-            <ClothingItem
-              clothingId={itemId}
-              getClothing={this.props.getClothing}
-            />
-          );
+        let newClothes = current.clothes.filter(clothId => {
+          return clothId != filteredClothes[result.source.index]._id;
         })
-      : "";
+        console.log(newClothes)
+        current.clothes = newClothes
+        this.setState({
+          outfit: current,
+          isDragging: false,
+        })
+      }
+    } else if (result.destination.droppableId === "outfit-clothes") {
+      if (result.source.droppableId === "all-clothes") {
+        let current = this.state.currentUserClothes.filter(cloth => {
+          return !this.state.outfit.clothes.includes(cloth._id)
+        })
+
+        let removed = current[result.source.index - this.state.outfit.clothes.length];
+        let currentOutfit = Object.assign({}, this.state.outfit);
+        currentOutfit.clothes.push(removed._id)
+
+        this.setState({
+          isDragging: false,
+          outfit: currentOutfit
+        })
+      }
+    }
+  }
+
+  render() {
+    console.log(this.state.currentUserClothes.filter((cloth) =>{
+      return this.state.outfit.clothes.includes(cloth._id)
+    }))
+
+
+
+    const mappedItems = this.state.currentUserClothes
+    .filter((cloth) =>{
+      return this.state.outfit.clothes.includes(cloth._id)
+    })
+    .map((cloth, i) => {
+      let clothUrl = `/clothing/${cloth._id}`;
+      return (
+        <Draggable key={i} draggableId={i.toString()} index={i}>
+          {(provided) => (
+            <div className="clothing-item" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+              <Link to={clothUrl}>
+                <div className="shadow"></div>
+                <img src={cloth.img_url} alt="" />
+                <h3>{cloth.name}</h3>
+              </Link>
+            </div>
+          )}
+        </Draggable>
+      );
+    })
+      
 
     let clothingElements;
     if (this.state.currentUserClothes && this.state.renderClothes) {
-      clothingElements = Object.values(this.state.currentUserClothes).map((cloth, i) => {
+      clothingElements = Object.values(this.state.currentUserClothes)
+      .filter(cloth => {
+        return !this.state.outfit.clothes.includes(cloth._id)
+      })
+      .map((cloth, i) => {
+        let idx = i + mappedItems.length;
         return (
-          <div
-            onClick={() => this.addToOutfit(cloth._id)}
-            className="clothing-item"
-            key={i}
-          >
-            <Link to="#">
-              <div className="shadow"></div>
-              <img src={cloth.img_url} alt="" />
-              <h3>{cloth.name}</h3>
-            </Link>
-          </div>
+          <Draggable key={idx} draggableId={idx.toString()} index={idx}>
+            {provided => (
+              <div
+                onClick={() => this.addToOutfit(cloth._id)}
+                className="clothing-item"
+                {...provided.draggableProps}
+                {...provided.dragHandleProps} 
+                ref={provided.innerRef}
+              >
+                <Link to="#">
+                  <div className="shadow" ></div>
+                  <img src={cloth.img_url} alt="" />
+                  <h3>{cloth.name}</h3>
+                </Link>
+              </div>
+            )}
+          </Draggable>
         );
       });
     }
@@ -160,7 +229,6 @@ class OutfitShow extends React.Component {
     let tagInput = ""
     let addButton = "";
     let saveButton = "";
-    console.log(this.state.outfit)
 
     if ( this.state.currentUser.id == this.state.outfit.user ) {
       tagsDisplay = (
@@ -202,28 +270,46 @@ class OutfitShow extends React.Component {
     let imgUrl = this.state.outfit.img_url == "" ? defaultPic : this.state.outfit.img_url;
 
     return (
-      <div className="outfit-show-container">
-        <div className="outfit-info">
-          <h1 className="outfit-title">{this.props.outfit.name}</h1>
-          <h1 className="outfit-description">
-            {this.props.outfit.description}
-          </h1>
-          {tagInput}
-          {tagsDisplay}
-          <img src={imgUrl} className="outfit-image"></img>
+        <div className="outfit-show-container">
+          <DragDropContext onDragStart={() => this.setState({isDragging:true})} onDragEnd={this.handleOnDragEnd}>
+            
+                <div className="outfit-info">
+                  <h1 className="outfit-title">{this.state.outfit.name}</h1>
+                  <h1 className="outfit-description">
+                    {this.state.outfit.description}
+                  </h1>
+                  {tagInput}
+                  {tagsDisplay}
+                  <img src={imgUrl} className="outfit-image"></img>
 
-          {addButton}
+                  {addButton}
 
-          {saveButton}
+                  {saveButton}
+                </div>
+              
+            
+
+            <div className="modal" id="modal">
+              <h1 className="modal-header">Add clothes to your outfit</h1>
+              <Droppable droppableId="all-clothes">
+                {provided => (
+                  <div className="clothing-elements" {...provided.droppableProps} ref={provided.innerRef}>
+                    {clothingElements}
+                  </div>
+                )}
+              </Droppable>
+            </div>
+            <Droppable droppableId="outfit-clothes">
+              {provided => (
+                <div className="outfit-clothes" {...provided.droppableProps} ref={provided.innerRef}>
+                  {mappedItems}
+                  {provided.placeholder}
+                </div>
+              )}
+            </Droppable>
+          </DragDropContext>
         </div>
-        <div className="modal" id="modal">
-          <h1 className="modal-header">Add clothes to your outfit</h1>
-          <div className="clothing-elements">
-            {clothingElements}
-          </div>
-        </div>
-        <div className="outfit-clothes"> {mappedItems}</div>
-      </div>
+      
     );
   }
 }
