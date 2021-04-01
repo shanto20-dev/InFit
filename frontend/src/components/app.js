@@ -11,7 +11,7 @@ import NewClothingFormContainer from "./clothing/new_clothing_form_container";
 import ClosetContainer from "./closet/closet_container";
 import NewOutfitFormContainer from "./outfits/new_outfit_form_container";
 import EditClothingFormContainer from "./clothing/edit_clothing_form_container";
-
+import SearchResultsContainer from "./search/search_results_container";
 import tabLogo from "../assets/tabLogo.png";
 import OutfitShowContainer from "./outfits/outfit_show_container";
 
@@ -43,6 +43,7 @@ const App = () => (
       />
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/clothing/:_id" component={ClothingShowContainer} />
+      <Route exact path="/search" component={SearchResultsContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
     </Switch>
