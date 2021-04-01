@@ -58,7 +58,7 @@ router.get("/", (req, res) => {
                     outfitArr = outfitItems.concat(outfitItems2);
                 })
                 .then(() => {
-                    let fullRes = clothingArr.concat(outfitArr);
+                    let fullRes = outfitArr.concat(clothingArr);
                     return res.json(fullRes);
                 });
         });
