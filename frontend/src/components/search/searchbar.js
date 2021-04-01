@@ -16,11 +16,12 @@ export default class Searchbar extends Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    this.props
-      .searchClothesByName(this.state.term)
-      .then(() => this.setState({ term: "" }))
-      .then(() => this.props.history.push("/search"));
+    if (this.state.term.length) {
+      this.props
+        .searchClothesByName(this.state.term)
+        .then(() => this.setState({ term: "" }))
+        .then(() => this.props.history.push("/search"));
+    }
   }
 
   render() {
@@ -33,10 +34,11 @@ export default class Searchbar extends Component {
               type="text"
               className="search-field"
               value={this.state.term}
+              placeholder="Search"
             />
           </div>
           <div className="search-button-container">
-            <button>
+            <button className="search-button">
               <span className="material-icons">search</span>
             </button>
           </div>
