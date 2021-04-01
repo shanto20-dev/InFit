@@ -28,6 +28,7 @@ export default class Closet extends Component {
                 currentUser: thisUser
             })
             this.props.getUserClothing(thisUser.id)
+            this.props.getUserOutfits(thisUser.id)
         })
         
     }
@@ -64,7 +65,7 @@ export default class Closet extends Component {
             )
         } else if (this.state.selectedSidebar === "outfits") {
             outfitsClass = "selected";
-            currentContent = <Outfits />;
+            currentContent = <Outfits deleteOutfit={this.props.deleteOutfit} currentUser={this.state.currentUser} outfits={this.props.outfits}/>;
             addButton = (
                 <div className="upload-clothes-wrapper">
                     <Link to="/outfit/new"><img src={uploadOutfitsIcon} alt=""/></Link>
