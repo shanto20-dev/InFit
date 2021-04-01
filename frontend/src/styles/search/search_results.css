@@ -1,0 +1,77 @@
+.link {
+    text-decoration: none;
+    position: relative;
+}
+
+.search-results-container {
+    width: 100vw;
+    height: calc(100vh - 100px);
+    padding: 50px 30px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(4, 20%);
+    grid-template-rows: repeat(50, 30%);
+    grid-gap: 5%;
+    justify-content: center;
+    position: relative;
+}
+
+.search-result-card {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-result-name {
+    font-family: "Varela", sans-serif;
+    color: white;
+    margin-bottom: 10px;
+    line-height: 30px;
+    width: 100%;
+    background-color: #0a7a4cc6;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+.search-result-category {
+    font-family: "Varela", sans-serif;
+    color: white;
+    line-height: 30px;
+    width: 100%;
+    text-align: center;
+    background-color: #812616c6;
+}
+
+.search-result-img {
+    width: 100%;
+    height: 100%;
+    max-height: 200px;
+    max-width: 200px;
+}
+
+.overlay {
+    position: absolute;
+}
+
+.details {
+    position: absolute;
+    z-index: 2;
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.1);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    opacity: 0;
+}
