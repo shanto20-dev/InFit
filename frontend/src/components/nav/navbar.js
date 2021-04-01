@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import "../../styles/navbar/navbar.css";
 import Logo from "../../assets/InfitLogo.png";
+import Searchbar from "../search/searchbar_container.js";
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class NavBar extends React.Component {
         <Link to="/">
           <img src={Logo} alt="" />
         </Link>
+        <Searchbar />
         {this.getLinks()}
       </div>
     );

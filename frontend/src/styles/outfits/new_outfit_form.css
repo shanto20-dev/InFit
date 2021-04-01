@@ -4,6 +4,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
+  /* background-size: cover; */
+  /* background-position: center; */
+
+  background: url("../../assets/pillsbackground.jpeg");
+  background-size: contain;
 }
 
 .new-outfit-form {
@@ -75,6 +81,8 @@
   margin-bottom: 20px;
   height: 100px;
   font-size: 16px;
+
+  resize: none;
 }
 
 .new-outfit-form > label {

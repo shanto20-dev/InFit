@@ -19,6 +19,16 @@ router.get("/user/:user_id", (req, res) => {
     .catch((err) => res.status(400).json(err));
 });
 
+router.get("/search", (req, res) => {
+  let clothingItems = [];
+  Clothing.find().then((clothing) => {
+    clothingItems = clothing.filter((cloth) =>
+      cloth.name.toLowerCase().includes(req.query.searchTerm.toLowerCase())
+    );
+    return res.json(clothingItems);
+  });
+});
+
 router.get("/:id", (req, res) => {
   Clothing.findById(req.params.id)
     .then((clothing) => res.json(clothing))
@@ -26,12 +36,11 @@ router.get("/:id", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  Clothing.findById(req.params.id).then((clothing) =>{
+  Clothing.findById(req.params.id).then((clothing) => {
     if (clothing.user == req.body.userId) {
       clothing.delete();
     }
-  })
-  
+  });
 });
 
 router.patch("/edit", (req, res) => {
