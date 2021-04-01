@@ -5,13 +5,57 @@
   display: flex;
 }
 
+.outfit-info{
+  width: 35%;
+  background-color: rgb(250, 228, 228);;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
+
+.outfit-title{
+  font-family: "Varela", sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 20px;
+  margin-top: 20px;
+
+}
+
+.outfit-description{
+  font-size: 16px;
+  margin-bottom: 20px;
+
+}
+
+.outfit-tags{
+  margin-bottom: 40px;
+}
+
+.outfit-image{
+  height: 40%;
+  width: 40%;
+  border-radius: 15px;
+  margin-bottom: 40px;
+
+}
+
+.addButton{
+  margin-bottom: 10px;
+
+}
+
 .outfit-clothes {
-  margin-left: 20%;
   padding-left: 30px;
   display: grid;
   grid-template-columns: repeat(5, 100%);
   grid-template-rows: repeat(4, 20%);
   border-left: 1px solid rgb(248, 218, 218);
+  width: 10%;
+  grid-column-gap: 8%;
+  grid-row-gap: 5%;
 }
 
 .clothing-elements {
@@ -36,10 +80,10 @@
   height: 52vh;
   width: 60%;
   position: absolute;
-  left: 20%;
+  left: 38%;
   bottom: 0px;
-  z-index: 1;
-  background-color: #bef3dc;
+  z-index: 5;
+  background-color: #f5e3e3;
   border-radius: 10px;
   padding: 40px;
   box-shadow: 0 0 0px 5px rgba(0, 0, 0, 0.02);
@@ -93,7 +137,7 @@
   margin-bottom: 30px;
   font-size: 28px;
   font-weight: 800;
-  color: #246e4e;
+  color: #c44f4f;
 }
 
 .clothing-item {

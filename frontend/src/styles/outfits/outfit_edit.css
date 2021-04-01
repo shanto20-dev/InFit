@@ -1,0 +1,28 @@
+.outfit-edit-container{
+    width: 100vw;
+    height: calc(100vh - 100px);
+    display: flex;
+}
+
+.my-clothes-container{
+    width: 55%;
+    height: 100%;
+    background-color: rgb(250, 228, 228);
+}
+
+.my-outfit-container{
+    width: 45%;
+    height: 100%;
+}
+
+.my-clothes-grid{
+    display: grid;
+    padding: 30px;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    grid-template-columns: repeat(4, 20%);
+    grid-template-rows: repeat(4, 20%);
+    grid-gap: 6.66%;
+    justify-content: center;
+}
