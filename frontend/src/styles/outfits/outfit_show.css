@@ -1,8 +1,11 @@
 .outfit-show-container {
   width: 100vw;
-  height: 100vh;
+  height: Calc(100vh - 100px);
+  max-height: Calc(100vh - 100px);
   font-family: "Nunito", sans-serif;
   display: flex;
+  overflow:hidden;
+  box-sizing: border-box;
 }
 
 .outfit-info{
@@ -38,7 +41,7 @@
   height: 40%;
   width: 40%;
   border-radius: 15px;
-  margin-bottom: 40px;
+  margin: 40px auto;
 
 }
 
@@ -48,7 +51,7 @@
 }
 
 .outfit-clothes {
-  padding-left: 30px;
+  padding: 30px;
   display: grid;
   grid-template-columns: repeat(5, 100%);
   grid-template-rows: repeat(4, 20%);
@@ -59,10 +62,17 @@
 }
 
 .clothing-elements {
+  border-radius: 4px;
+  background-color: rgb(248, 233, 233);
+  box-shadow: 0 0 8px 2px rgba(0,0,0,0.1) inset;
+  box-sizing: border-box;
+  padding: 30px;
   display: grid;
+  height: 80%;
   grid-template-columns: repeat(5, 20%);
-  grid-template-rows: repeat(2, 50%);
+  grid-template-rows: repeat(1000, 50%);
   position: relative;
+  overflow: auto;
 }
 
 /* #A83C28","#FF8670","#F66B54","#18A86B","#53F5B0" */
@@ -83,10 +93,10 @@
   left: 38%;
   bottom: 0px;
   z-index: 5;
-  background-color: #f5e3e3;
-  border-radius: 10px;
+  background-color: #e4b4b4;
+  border-radius: 8px;
   padding: 40px;
-  box-shadow: 0 0 0px 5px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
 }
 
 .modal.active{
@@ -137,7 +147,7 @@
   margin-bottom: 30px;
   font-size: 28px;
   font-weight: 800;
-  color: #c44f4f;
+  color: #8a1d1d;
 }
 
 .clothing-item {
@@ -149,6 +159,7 @@
   height: 100%;
   box-sizing: border-box;
   padding: 6px;
+  border-radius: 4px;
 }
 
 .clothing-item a {
@@ -162,7 +173,7 @@
   position: relative;
   background-color: white;
   transition: 0.3s;
-
+  border-radius: 4px;
   overflow: hidden;
 }
 
@@ -200,7 +211,7 @@
 
 .clothing-item a:hover {
   transform: scale(1.2, 1.4);
-  z-index: 6;
+  z-index: 8;
   transition: 0.3s;
   box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
 }
@@ -216,7 +227,93 @@
 }
 
 .clothing-item a:hover h3 {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
+  overflow:hidden;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
   bottom: 4%;
   transition: 0.3s;
+  z-index: 10;
+  width: 100%;
+  height: auto;
+}
+
+.outfit-info input[type=text] {
+  margin-bottom: 12px;
+  height:28px;
+  border-radius: 4px;
+  font-size: 16px;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  border: 1px solid #8a1d1d;
+
+}
+
+.outfit-info input[type=text]:focus {
+  outline: none;
+  border-color: rgb(224, 36, 36);
+}
+
+.outfit-info .current-tags {
+  width: 66%;
+  height: auto;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.outfit-info .current-tags .tag {
+  padding: 6px 12px;
+  border-radius: 16px;
+  color: white;
+  background-color: #18A86B;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+}
+
+.outfit-info .current-tags .tag .delete-tag {
+  margin-left: 8px;
+  cursor: pointer
+}
+
+.outfit-info .current-tags .tag .delete-tag:hover {
+  color: rgb(216, 32, 0);
+}
+
+.outfit-info .tags-div {
+  width: 66%;
+  margin: 0 auto;
+  height: auto;
+  position: relative
+}
+
+.outfit-info .tags-div input[type=text]{
+  min-width: 100%;
+}
+
+.outfit-info .add-tag {
+  width: 20px;
+  height: 20px;
+  text-align: center;
+  border-radius: 50%;
+  color:white;
+  font-weight: 900;
+  font-size: 20px;
+  position: absolute;
+  top: 15%;
+  right: 3%;
+  padding-bottom: 1px;
+  background-color: rgb(255, 170, 170);
+  cursor: pointer;
+}
+
+.outfit-info .add-tag:hover {
+  background-color: rgb(165, 48, 44);
 }

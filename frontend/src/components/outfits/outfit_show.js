@@ -1,7 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
+
 import ClothingItem from "../clothing/clothing_item";
 import "../../styles/outfits/outfit_show.css";
+
+import defaultPic from '../../assets/icons/defaultOutfitIcon.png'
 
 class OutfitShow extends React.Component {
   constructor(props) {
@@ -10,14 +14,32 @@ class OutfitShow extends React.Component {
     this.state = {
       renderClothes: false,
       newClothes: [],
+      currentUser: {id: 1},
+      outfit: {
+        id:"",
+        tags:[],
+        name: "",
+        user: "",
+        img_url: "",
+        description: ""
+      },
+      tagText: ""
     };
 
     this.handleSave = this.handleSave.bind(this);
     this.handleModal = this.handleModal.bind(this);
+    this.update = this.update.bind(this);
+    this.addTag = this.addTag.bind(this);
+    this.removeTag = this.removeTag.bind(this);
   }
 
   componentDidMount() {
-    this.props.getOutfit(this.props.match.params.id);
+    this.props.getOutfit(this.props.match.params.id).then(action => {
+      console.log(action)
+      this.setState({
+        outfit: action.outfit
+      })
+    })
     this.props.currentUser().then((result) => {
       let thisUser = result.data;
       this.setState({
@@ -74,8 +96,35 @@ class OutfitShow extends React.Component {
     // this.setState({ renderClothes: false });
   }
 
+  update(type) {
+    return (e) =>
+      this.setState({
+        [type]: e.currentTarget.value,
+      });
+  }
+
+  addTag(e) {
+    e.preventDefault();
+    if (this.state.tagText === "") return;
+    if (this.state.outfit.tags.includes("#" + this.state.tagText)) return;
+    let current = this.state.outfit;
+    current.tags.push("#" + this.state.tagText);
+    this.setState({
+      outfit: current,
+      tagText: ""
+    })
+  }
+
+  removeTag(e) {
+    e.preventDefault();
+    let current = this.state.outfit;
+    current.tags.splice(e.currentTarget.id, 1)
+    this.setState({
+      outfit: current
+    })
+  }
+
   render() {
-    console.log(this.state, this.props);
 
     const mappedItems = this.props.outfit._id
       ? this.props.outfit.clothes.map((itemId) => {
@@ -107,6 +156,51 @@ class OutfitShow extends React.Component {
       });
     }
 
+    let tagsDisplay = "";
+    let tagInput = ""
+    let addButton = "";
+    let saveButton = "";
+    console.log(this.state.outfit)
+
+    if ( this.state.currentUser.id == this.state.outfit.user ) {
+      tagsDisplay = (
+        <div className="current-tags">
+          {this.state.outfit.tags.map((tag, i) => {
+            return (
+              <span key={i} className="tag">{tag}<span className="delete-tag" id={i} onClick={this.removeTag}>X</span></span>
+            )
+          })}
+        </div>
+      )
+      tagInput = (
+        <div className = "tags-div">
+          <input
+            type="text"
+            className="new-clothing-tags field"
+            value={this.state.tagText}
+            onChange={this.update("tagText")}
+            placeholder="#tag"
+          />
+          <span className="add-tag" onClick={this.addTag}>+</span>
+        </div>
+      );
+      addButton = <button className="addButton" onClick={() => this.handleModal()}>Add clothes to this outfit</button>
+      saveButton = <button onClick={this.handleSave}>Save Outfit</button>
+    } else {
+      tagsDisplay = (
+        <div className="current-tags">
+          {this.state.outfit.tags.map((tag, i) => {
+            return (
+              <span key={i} className="tag">{tag}</span>
+            )
+          })}
+        </div>
+      )
+    }
+    
+
+    let imgUrl = this.state.outfit.img_url == "" ? defaultPic : this.state.outfit.img_url;
+
     return (
       <div className="outfit-show-container">
         <div className="outfit-info">
@@ -114,19 +208,18 @@ class OutfitShow extends React.Component {
           <h1 className="outfit-description">
             {this.props.outfit.description}
           </h1>
-          <h1 className="outfit-tags">{this.props.outfit.tags}</h1>
-          <img src={this.props.outfit.img_url} className="outfit-image"></img>
+          {tagInput}
+          {tagsDisplay}
+          <img src={imgUrl} className="outfit-image"></img>
 
-          <button className="addButton" onClick={() => this.handleModal()}>
-            Add clothes to this outfit
-          </button>
+          {addButton}
 
-          <button onClick={this.handleSave}>Save Outfit</button>
+          {saveButton}
         </div>
         <div className="modal" id="modal">
           <h1 className="modal-header">Add clothes to your outfit</h1>
           <div className="clothing-elements">
-          {clothingElements}
+            {clothingElements}
           </div>
         </div>
         <div className="outfit-clothes"> {mappedItems}</div>
