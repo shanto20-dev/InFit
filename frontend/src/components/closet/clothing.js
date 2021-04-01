@@ -19,7 +19,7 @@ export default class Clothing extends Component {
             invalidTag: false,
             alreadyAdded: false,
             currentClothes: [],
-            isDragging: false
+            isDragging: false,
         }
 
         this.setPage = this.setPage.bind(this);
@@ -33,7 +33,11 @@ export default class Clothing extends Component {
     }
     
     componentDidMount() {
-        this.updateItems();
+        this.props.getUserClothing(this.props.currentUser.id).then(() => {
+            this.updateItems();
+        })
+        
+
     }
 
     updateTagText(e) {
@@ -134,8 +138,15 @@ export default class Clothing extends Component {
                 currentClothes: current,
                 isDragging: false
             })
-            this.props.deleteClothing(movedId, this.props.currentUser.id);
-
+            this.props.deleteClothing(movedId, this.props.currentUser.id).then(() => {
+                this.getUserClothing(this.props.currentUser.id).then(action => {
+                    console.log(action)
+                    // setState({
+                    //     currentClothes: Object.values(action.data.clothing)
+                    // })
+                })
+            })
+            
         } else {
 
             let current = this.state.currentClothes;

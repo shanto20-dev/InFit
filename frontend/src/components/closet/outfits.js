@@ -32,7 +32,10 @@ export default class Outfits extends Component {
     }
     
     componentDidMount() {
-        this.updateItems();
+        this.props.getUserOutfits(this.props.currentUser.id).then(() => {
+            this.updateItems();
+        })
+        
     }
 
     updateTagText(e) {
@@ -121,8 +124,13 @@ export default class Outfits extends Component {
             this.setState({
                 currentOutfits: current,
                 isDragging: false
+            }, () => {
+                
             })
-            this.props.deleteOutfit(movedId, this.props.currentUser.id);
+
+            this.props.deleteOutfit(movedId, this.props.currentUser.id).then(() => {
+                console.log("hello")
+            })
 
         } else {
 
@@ -143,7 +151,7 @@ export default class Outfits extends Component {
     updateItems() {
         let start = this.state.currentPage * 15;
         let end = this.state.currentPage * 15 + 15;
-
+        console.log(this.props.outfits)
         let filteredOutfits = Object.values(this.props.outfits)
         .filter(cloth => {
             if (this.state.tags === []){
