@@ -6,12 +6,22 @@ class ClothingShow extends React.Component {
   constructor(props){
     super(props);
     this.switchForm = this.switchForm.bind(this);
+
+    this.state = {
+      currentUser: {id: 0}
+    }
   }
 
 
 
   componentDidMount() {
     this.props.getClothing(this.props.match.params._id);
+    this.props.currentUser().then(result => {
+      let thisUser = result.data;
+      this.setState({
+          currentUser: thisUser
+      })
+    })
   }
 
 
@@ -24,6 +34,13 @@ class ClothingShow extends React.Component {
   }
 
   render() {
+
+    let editButton = this.props.clothing.user == this.state.currentUser ? (
+      <div className="edit-button">
+        <button onClick={this.switchForm}>Edit</button>
+      </div>
+    ) : ""
+
     const clothing = this.props.clothing._id ? (
       <div className="clothing-show-container">
         <div className="clothing-card" id="clothing-card">
@@ -44,9 +61,7 @@ class ClothingShow extends React.Component {
             <p>{this.props.clothing.description}</p>
             <h2 className="title clothing-tags">Tags:</h2>
             <p>{this.props.clothing.tags}</p>
-            <div className="edit-button">
-              <button onClick={this.switchForm}>Edit</button>
-            </div>
+            {editButton}
           </div>
           
         </div>
