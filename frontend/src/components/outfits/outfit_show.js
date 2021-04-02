@@ -88,10 +88,10 @@ class OutfitShow extends React.Component {
       this.setState({ renderClothes: !this.state.renderClothes })
     }, 100)
     }
-
+    console.log([...this.state.outfit.clothes])
     this.props.updateOutfit({
       id: this.props.match.params.id,
-      clothes: [...this.props.outfit.clothes, ...this.state.newClothes],
+      clothes: [...this.state.outfit.clothes],
     });
 
     this.setState({newClothes: []})
@@ -170,8 +170,6 @@ class OutfitShow extends React.Component {
     console.log(this.state.currentUserClothes.filter((cloth) =>{
       return this.state.outfit.clothes.includes(cloth._id)
     }))
-
-
 
     const mappedItems = this.state.currentUserClothes
     .filter((cloth) =>{
