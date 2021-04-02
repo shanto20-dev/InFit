@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import "../../styles/search/search_results.css";
+import defaultPic from "../../assets/icons/defaultOutfitIcon.png";
 
 export default class SearchResults extends Component {
     constructor(props) {
@@ -8,13 +9,45 @@ export default class SearchResults extends Component {
 
         this.detailsRef = [];
         this.cardRef = [];
-        this.state = { filter: "all" };
+        this.state = { filter: "all", currentPage: 0, numPages: 0 };
 
         this.update = this.update.bind(this);
+        this.setPage = this.setPage.bind(this);
     }
 
     update(e) {
-        this.setState({ filter: e.target.value });
+        this.setState({
+            filter: e.target.value,
+            currentPage: 0,
+        });
+    }
+
+    componentDidMount() {
+        let filtered;
+        this.state.filter === "all"
+            ? (filtered = this.props.searchResults)
+            : this.state.filter === "clothing"
+            ? (filtered = this.props.searchResults.filter(
+                  (result) => !result.clothes
+              ))
+            : (filtered = this.props.searchResults.filter(
+                  (result) => result.clothes
+              ));
+        this.setState({ numPages: Math.floor(filtered.length / 16) + 1 });
+    }
+
+    setPage(val) {
+        return (e) => {
+            e.preventDefault();
+            // let current = this.state.currentPage
+
+            if (val < 0) {
+                return;
+            }
+            this.setState({
+                currentPage: val,
+            });
+        };
     }
 
     render() {
@@ -28,6 +61,24 @@ export default class SearchResults extends Component {
             : (filtered = this.props.searchResults.filter(
                   (result) => result.clothes
               ));
+        let start = this.state.currentPage * 16;
+        let end = this.state.currentPage * 16 + 16;
+        let divided = filtered.slice(start, end);
+
+        let numPages = Math.floor(1 + filtered.length / 16);
+        let pageSelects = [];
+        for (let i = 0; i < numPages; i++) {
+            pageSelects.push(
+                <span key={i} onClick={this.setPage(i)}>
+                    {i + 1}
+                </span>
+            );
+        }
+        let nextPage =
+            this.state.currentPage + 1 === pageSelects.length
+                ? this.state.currentPage
+                : this.state.currentPage + 1;
+        console.log(filtered.length);
         return (
             <div>
                 <div className="filters-bar-container">
@@ -44,14 +95,19 @@ export default class SearchResults extends Component {
                     </select>
                 </div>
                 <div className="search-results-container">
-                    {filtered.map((result, idx) => {
+                    {divided.map((result, idx) => {
                         let link;
                         if (result.clothes) {
                             link = `/outfit/${result._id}`;
                         } else {
                             link = `clothing/${result._id}`;
                         }
-
+                        let imgUrl = "";
+                        if (result.img_url == "") {
+                            imgUrl = defaultPic;
+                        } else {
+                            imgUrl = result.img_url;
+                        }
                         return (
                             <Link
                                 className="link"
@@ -74,7 +130,7 @@ export default class SearchResults extends Component {
                                 >
                                     <img
                                         className="search-result-img"
-                                        src={result.img_url}
+                                        src={imgUrl}
                                     />
                                     <div className="overlay"></div>
                                     <div
@@ -105,6 +161,18 @@ export default class SearchResults extends Component {
                             </Link>
                         );
                     })}
+                </div>
+                <div className="page-select">
+                    <span
+                        className="left"
+                        onClick={this.setPage(this.state.currentPage - 1)}
+                    >
+                        &#9664;
+                    </span>
+                    {pageSelects}
+                    <span className="right" onClick={this.setPage(nextPage)}>
+                        &#9654;
+                    </span>
                 </div>
             </div>
         );

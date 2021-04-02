@@ -33,13 +33,13 @@
 
 .search-results-container {
     width: 100vw;
-    height: calc(100vh - 100px);
+    height: 1600px;
     padding: 20px 30px 50px 30px;
     box-sizing: border-box;
     display: grid;
     grid-template-columns: repeat(4, 20%);
-    grid-template-rows: repeat(50, 40%);
-    grid-gap: 5%;
+    grid-template-rows: repeat(4, 25%);
+    grid-gap: 2%;
     justify-content: center;
     position: relative;
 }
@@ -119,4 +119,29 @@
 
 .hidden {
     opacity: 0;
+}
+.page-select {
+    margin: 40px auto;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+}
+
+.page-select span {
+    margin: auto 4px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 18px;
+    font-family: "Varela", sans-serif;
+}
+
+.page-select span.left,
+span.right {
+    color: #a83c28;
+}
+
+.page-select span:hover {
+    font-weight: 800;
+    transition: 0.3s;
 }
