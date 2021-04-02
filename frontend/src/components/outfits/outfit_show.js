@@ -164,27 +164,45 @@ class OutfitShow extends React.Component {
   }
 
   render() {
-
-    const mappedItems = this.state.currentUserClothes
-    .filter((cloth) =>{
-      return this.state.outfit.clothes.includes(cloth._id)
-    })
-    .map((cloth, i) => {
-      let clothUrl = `/clothing/${cloth._id}`;
-      return (
-        <Draggable key={i} draggableId={i.toString()} index={i}>
-          {(provided) => (
-            <div className="clothing-item" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
-              <Link to={clothUrl}>
-                <div className="shadow"></div>
-                <img src={cloth.img_url} alt="" />
-                <h3>{cloth.name}</h3>
-              </Link>
-            </div>
-          )}
-        </Draggable>
-      );
-    })
+    let mappedItems;
+    if ( this.state.currentUser.id == this.state.outfit.user ) {
+      mappedItems = this.state.currentUserClothes
+      .filter((cloth) =>{
+        return this.state.outfit.clothes.includes(cloth._id)
+      })
+      .map((cloth, i) => {
+        let clothUrl = `/clothing/${cloth._id}`;
+        return (
+          <Draggable key={i} draggableId={i.toString()} index={i}>
+            {(provided) => (
+              <div className="clothing-item" {...provided.draggableProps} {...provided.dragHandleProps} ref={provided.innerRef}>
+                <Link to={clothUrl}>
+                  <div className="shadow"></div>
+                  <img src={cloth.img_url} alt="" />
+                  <h3>{cloth.name}</h3>
+                </Link>
+              </div>
+            )}
+          </Draggable>
+        );
+      })
+    } else {
+      mappedItems = this.state.outfit.clothes
+      .map((cloth, i) => {
+        return (
+          <Draggable key={i} draggableId={i.toString()} index={i}>
+            {(provided) => (
+              <ClothingItem
+                getClothing={this.props.getClothing}
+                clothingId={cloth}
+                {...provided.draggableProps}
+                {...provided.dragHandleProps}
+                ref={provided.innerRef}/>
+            )}
+          </Draggable>
+        );
+      })
+    }
       
 
     let clothingElements;

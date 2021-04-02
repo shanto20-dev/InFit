@@ -8,6 +8,23 @@
     align-items: center;
     /* background-color: #a83b2848; */
     background-color: #ff85704f;
+    position: relative;
+    
+}
+
+.landing-page img.suit-impala {
+    height: 600px;
+    width: auto;
+    position: absolute;
+    right: Calc(50% - 820px);
+    top: 200px;
+}
+.landing-page img.dress-impala {
+    height: 600px;
+    width: auto;
+    position: absolute;
+    left: Calc(50% - 820px);
+    top: 200px;
 }
 
 .message {
@@ -27,7 +44,7 @@
     margin: 40px auto 40px auto;
     width: 1080px;
     text-align: center;
-    color: #A83C28;
+    color: #681e11;
     font-family: 'Nunito', sans-serif;
     font-size: 32px;
     line-height: 40px;
