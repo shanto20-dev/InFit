@@ -27,7 +27,7 @@ router.get("/", (req, res) => {
                         clothes = cloth;
                 });
                 if (!clothes) return;
-                if (clothes) return clothes;
+                if (clothes && !clothingItems.includes(clothes)) return clothes;
             });
 
             clothingArr = clothingItems.concat(clothingItems2);
@@ -53,7 +53,8 @@ router.get("/", (req, res) => {
                                 outfits = outfit;
                         });
                         if (!outfits) return;
-                        if (outfits) return outfits;
+                        if (outfits && !outfitItems.includes(outfits))
+                            return outfits;
                     });
                     outfitArr = outfitItems.concat(outfitItems2);
                 })
