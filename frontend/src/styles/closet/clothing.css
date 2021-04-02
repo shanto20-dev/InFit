@@ -235,7 +235,12 @@
     cursor: pointer;
     transition: 0.3s;
     font-size: 18px;
+    font-weight: 300;
     font-family: 'Varela', sans-serif;
+}
+
+.clothing-wrapper .page-select span.selected {
+    font-weight: 800;
 }
 
 .clothing-wrapper .page-select span.left, span.right {

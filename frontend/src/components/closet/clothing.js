@@ -88,8 +88,10 @@ export default class Clothing extends Component {
 
 
     setPage(val) {
+        
         return (e) => {
             e.preventDefault();
+            console.log(val )
             // let current = this.state.currentPage
             if (val > Math.floor(Object.values(this.props.clothing).length/15)) {
                 return;
@@ -98,8 +100,10 @@ export default class Clothing extends Component {
             }
             this.setState({
                 currentPage: val
+            }, () => {
+                this.updateItems();
             })
-            this.updateItems();
+            
         }
     }
 
@@ -212,8 +216,12 @@ export default class Clothing extends Component {
         let numPages = Math.floor(1 + Object.values(this.props.clothing).length/15);
         let pageSelects = [];
         for (let i = 0; i < numPages; i++) {
+            let spanClass = ""
+            if (i === this.state.currentPage) {
+                spanClass = "selected"
+            }
             pageSelects.push(
-                <span key={i} onClick={this.setPage(i)}>{i + 1}</span>
+                <span className={spanClass} key={i} onClick={this.setPage(i)}>{i + 1}</span>
             )
         }
 
@@ -260,7 +268,7 @@ export default class Clothing extends Component {
                             <input 
                                 type="text" 
                                 value={this.state.tagText}
-                                placeholder="Filter by Tag" 
+                                placeholder="Add Tag" 
                                 onChange={this.updateTagText} 
                                 onKeyDown={this.handleKeyPress}
                             />
@@ -293,9 +301,9 @@ export default class Clothing extends Component {
                     
                 </DragDropContext>
                 <div className="page-select">
-                    <span className="left" onClick={this.setPage(this.state.currentPage + 1)}>&#9664;</span>
+                    <span className="left" onClick={this.setPage(this.state.currentPage - 1)}>&#9664;</span>
                     {pageSelects}
-                    <span className="right" onClick={this.setPage(this.state.currentPage - 1)}>&#9654;</span>
+                    <span className="right" onClick={this.setPage(this.state.currentPage + 1)}>&#9654;</span>
                 </div>
             </div>
         )
