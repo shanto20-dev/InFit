@@ -8,6 +8,23 @@
     align-items: center;
     /* background-color: #a83b2848; */
     background-color: #ff85704f;
+    position: relative;
+    
+}
+
+.landing-page img.suit-impala {
+    height: 600px;
+    width: auto;
+    position: absolute;
+    right: Calc(50% - 820px);
+    top: 200px;
+}
+.landing-page img.dress-impala {
+    height: 600px;
+    width: auto;
+    position: absolute;
+    left: Calc(50% - 820px);
+    top: 200px;
 }
 
 .message {

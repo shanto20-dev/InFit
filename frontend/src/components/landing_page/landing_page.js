@@ -3,17 +3,19 @@ import Carousel from './carousel'
 
 import '../../styles/landing_page/landing_page.css'
 
-import fancyBorder from '../../assets/fancyborder.png'
 import LogoWhite from "../../assets/InfitLogoWhite.png"
+import suitImpala from "../../assets/InfitImpalaBody.png"
+import dressImpala from "../../assets/InfitImpalaDress.png"
 
 export default class LandingPage extends React.Component {
     render() {
         return (
             <div className="landing-page">
+                <img className="suit-impala" src={suitImpala} alt=""/>
+                <img className="dress-impala" src={dressImpala} alt=""/>
                 <Carousel />
                 <div className="message">
                     <p>Whether you are looking to expand your wardrobe, find trending outfits, or simply plan your own outfits. InFit gives you a simple and fun way to plan, edit, and share clothing and outfits with your friends and family</p>
-                    {/* <img src={fancyBorder} /> */}
                 </div>
                 <div className="bottom-div-container">
                     <div className="bottom-div">
