@@ -60,10 +60,38 @@
     box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.2);
 }
 
-.navbar-div .logout-other a {
-    background-color: #3eda99;
+.navbar-div .logout-other a.closet-link {
+    color: #461006;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    background-color: rgba(0,0,0,0);
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
 }
 
-.navbar-div .logout-other a:hover {
-    background-color: #18A86B;
+.navbar-div .logout-other a.closet-link:hover {
+    color: #c94028;
+    background-color: rgba(0,0,0,0.1)
+}
+
+.navbar-div .logout-other a.closet-link span {
+    height: 50px;
+    width: 50px;
+    background-image: url('../../assets/icons/closedCloset.png');
+    background-size: 50px 50px;
+    margin-left: 12px;
+    transition: ease-in-out 0.17s;
+}
+
+.navbar-div .logout-other a.closet-link:hover span {
+    transition: ease-in-out 0.17s;
+    background-image: url('../../assets/icons/openCloset.png');
+}
+
+.navbar-div .logout-other {
+    width: auto;
+    display: flex;
+    align-items: center;
 }
