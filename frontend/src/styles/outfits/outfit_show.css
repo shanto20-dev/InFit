@@ -76,6 +76,23 @@
   overflow: auto;
 }
 
+.clothing-elements::-webkit-scrollbar {
+  width: 8px;
+  
+}
+
+.clothing-elements::-webkit-scrollbar-track {
+  
+  background: rgba(0,0,0,0);
+}
+.clothing-elements::-webkit-scrollbar-thumb {
+  background: #9b3321;
+  border-radius: 4px;
+}
+.clothing-elements::-webkit-scrollbar-thumb:hover {
+  background: #681e11;
+}
+
 /* #A83C28","#FF8670","#F66B54","#18A86B","#53F5B0" */
 .modal.inactive{
   animation-name: slideOutModal;

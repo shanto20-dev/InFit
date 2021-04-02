@@ -32,7 +32,7 @@
 }
 
 .search-results-container {
-    width: 100vw;
+    width: Calc(100vw - 20px);
     height: 1600px;
     padding: 20px 30px 50px 30px;
     box-sizing: border-box;
@@ -115,10 +115,12 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    transition: 0.17s;
 }
 
 .hidden {
     opacity: 0;
+    transition: 0.17s;
 }
 .page-select {
     margin: 40px auto;
