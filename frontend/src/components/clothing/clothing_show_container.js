@@ -4,9 +4,11 @@ import { currentUser } from "../../util/session_api_util";
 import ClothingShow from "./clothing_show";
 
 const mapStateToProps = (state) => {
+
   return {
     clothing: state.entities.clothing,
     currentUser: currentUser,
+    currentUserId: state.session.user.id
   };
 };
 

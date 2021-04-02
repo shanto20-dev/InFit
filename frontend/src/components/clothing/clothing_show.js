@@ -34,8 +34,7 @@ class ClothingShow extends React.Component {
   }
 
   render() {
-
-    let editButton = this.props.clothing.user == this.state.currentUser ? (
+    let editButton = this.props.clothing.user == this.props.currentUserId ? (
       <div className="edit-button">
         <button onClick={this.switchForm}>Edit</button>
       </div>
