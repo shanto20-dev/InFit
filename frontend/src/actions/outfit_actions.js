@@ -54,10 +54,8 @@ export const newOutfit = (outfitData) => (dispatch) => {
 };
 
 export const destroyOutfit = (outfitId, userId) => (dispatch) => {
-  console.log("plz")
   return deleteOutfit(outfitId, userId).then(
     () => {
-      console.log("got here")
       dispatch(removeOutfit(outfitId))
     },
     (err) => console.log(err)

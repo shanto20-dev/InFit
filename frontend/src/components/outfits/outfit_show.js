@@ -88,7 +88,6 @@ class OutfitShow extends React.Component {
       this.setState({ renderClothes: !this.state.renderClothes })
     }, 100)
     }
-    console.log([...this.state.outfit.clothes])
     this.props.updateOutfit({
       id: this.props.match.params.id,
       clothes: [...this.state.outfit.clothes],
@@ -129,7 +128,6 @@ class OutfitShow extends React.Component {
 
   handleOnDragEnd(result) {
     if (!result.destination) return;
-    console.log(result)
     if (result.destination.droppableId === "all-clothes") {
       if (result.source.droppableId === "outfit-clothes") {
         let current = Object.assign({},this.state.outfit);
@@ -141,7 +139,6 @@ class OutfitShow extends React.Component {
         let newClothes = current.clothes.filter(clothId => {
           return clothId != filteredClothes[result.source.index]._id;
         })
-        console.log(newClothes)
         current.clothes = newClothes
         this.setState({
           outfit: current,
@@ -167,9 +164,6 @@ class OutfitShow extends React.Component {
   }
 
   render() {
-    console.log(this.state.currentUserClothes.filter((cloth) =>{
-      return this.state.outfit.clothes.includes(cloth._id)
-    }))
 
     const mappedItems = this.state.currentUserClothes
     .filter((cloth) =>{

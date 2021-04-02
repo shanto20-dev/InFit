@@ -128,10 +128,7 @@ export default class Outfits extends Component {
                 
             })
 
-            this.props.deleteOutfit(movedId, this.props.currentUser.id).then(() => {
-                console.log("hello")
-            })
-
+            this.props.deleteOutfit(movedId, this.props.currentUser.id)
         } else {
 
             let current = this.state.currentOutfits;
@@ -151,7 +148,7 @@ export default class Outfits extends Component {
     updateItems() {
         let start = this.state.currentPage * 15;
         let end = this.state.currentPage * 15 + 15;
-        console.log(this.props.outfits)
+
         let filteredOutfits = Object.values(this.props.outfits)
         .filter(cloth => {
             if (this.state.tags === []){

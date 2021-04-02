@@ -91,7 +91,6 @@ export default class Clothing extends Component {
         
         return (e) => {
             e.preventDefault();
-            console.log(val )
             // let current = this.state.currentPage
             if (val > Math.floor(Object.values(this.props.clothing).length/15)) {
                 return;
@@ -143,12 +142,7 @@ export default class Clothing extends Component {
                 isDragging: false
             })
             this.props.deleteClothing(movedId, this.props.currentUser.id).then(() => {
-                this.getUserClothing(this.props.currentUser.id).then(action => {
-                    console.log(action)
-                    // setState({
-                    //     currentClothes: Object.values(action.data.clothing)
-                    // })
-                })
+                this.getUserClothing(this.props.currentUser.id)
             })
             
         } else {

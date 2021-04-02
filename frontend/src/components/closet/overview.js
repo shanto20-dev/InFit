@@ -42,8 +42,7 @@ export default class Overview extends Component {
                     mostUsed.push(tag)
                 }
             })
-            console.log(counts)
-            console.log(mostUsed)
+
             return mostUsed.join(", ")
         }
         return "";

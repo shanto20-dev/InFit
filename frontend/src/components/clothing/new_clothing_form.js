@@ -29,7 +29,6 @@ class NewClothingForm extends React.Component {
     e.preventDefault();
     let newClothing
     this.props.newClothing(this.state).then((clothing) => {
-      console.log(clothing);
       if (clothing.type !== RECEIVE_SESSION_ERRORS){
         this.props.clearErrors();
         newClothing = clothing;

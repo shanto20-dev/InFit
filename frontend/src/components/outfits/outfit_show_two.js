@@ -49,7 +49,6 @@ export default class OutfitShowTwo extends Component {
 
 
     render() {
-        console.log(this.state)
         let myClothes = this.renderMyClothes();
         return (
             <div className="outfit-edit-container">

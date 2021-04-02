@@ -6,7 +6,6 @@ class EditClothingForm extends React.Component {
 
     this.state = this.props.clothing;
     
-    console.log(this.props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addTag = this.addTag.bind(this);
     this.removeTag = this.removeTag.bind(this)
@@ -17,7 +16,6 @@ class EditClothingForm extends React.Component {
     // document.getElementById("clothing-card").classList.add("inactive");
     this.props.editClothing(this.state).then(() => {
       document.getElementById("clothing-card").classList.add("inactive");
-      console.log(this.state)
       setTimeout(() => {   
           this.props.history.push(`/clothing/${this.state._id}`);
       }, 100)
