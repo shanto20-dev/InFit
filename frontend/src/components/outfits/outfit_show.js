@@ -35,6 +35,7 @@ class OutfitShow extends React.Component {
     this.addTag = this.addTag.bind(this);
     this.removeTag = this.removeTag.bind(this);
     this.handleOnDragEnd = this.handleOnDragEnd.bind(this)
+    this.goBack = this.goBack.bind(this)
   }
 
   componentDidMount() {
@@ -163,6 +164,11 @@ class OutfitShow extends React.Component {
     }
   }
 
+  goBack(e) {
+    e.preventDefault();
+    this.props.history.goBack();
+  }
+
   render() {
     let mappedItems;
     if ( this.state.currentUser.id == this.state.outfit.user ) {
@@ -281,6 +287,7 @@ class OutfitShow extends React.Component {
 
     return (
         <div className="outfit-show-container">
+          <span className="back-button" onClick={this.goBack}>❮ Back</span>
           <DragDropContext onDragStart={() => this.setState({isDragging:true})} onDragEnd={this.handleOnDragEnd}>
             
                 <div className="outfit-info">

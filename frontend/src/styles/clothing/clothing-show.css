@@ -8,6 +8,22 @@
   background: url("../../assets//fashion-background.jpeg");
   background-size: cover;
   background-position: center;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.back-button:hover {
+
+  font-weight: 800;
 }
 
 .clothing-card {
