@@ -39,7 +39,6 @@ export default class SearchResults extends Component {
     setPage(val) {
         return (e) => {
             e.preventDefault();
-            // let current = this.state.currentPage
 
             if (val < 0) {
                 return;
@@ -78,7 +77,6 @@ export default class SearchResults extends Component {
             this.state.currentPage + 1 === pageSelects.length
                 ? this.state.currentPage
                 : this.state.currentPage + 1;
-        console.log(filtered.length);
         return (
             <div>
                 <div className="filters-bar-container">
