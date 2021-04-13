@@ -6,3 +6,10 @@ export const searchClothingByName = (searchTerm) => {
         url: `/api/search?searchTerm=${searchTerm}`,
     });
 };
+
+export const searchOutfitByClothes = (clothingId) => {
+    return axios({
+        method: "GET",
+        url: `/api/search/clothing?clothingId=${clothingId}`,
+    });
+};

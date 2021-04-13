@@ -65,4 +65,18 @@ router.get("/", (req, res) => {
         });
 });
 
+router.get("/clothing", (req, res) => {
+    let outfitArr = [];
+    Outfit.find()
+        .then(
+            (outfit) =>
+                (outfitArr = outfit.filter((outfit) =>
+                    outfit.clothes.includes(req.query.clothingId)
+                ))
+        )
+        .then(() => {
+            return res.json(outfitArr);
+        });
+});
+
 module.exports = router;
