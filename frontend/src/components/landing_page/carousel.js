@@ -28,6 +28,8 @@ export default class Carousel extends Component {
         nextSlideTO = setTimeout(() => {
             this.nextSlide()
         }, 5000)
+
+        this.delay = null;
     }
 
     previousSlide () {
@@ -62,7 +64,7 @@ export default class Carousel extends Component {
             rightArrowClickable: false
         });
     
-        setTimeout( () => {
+        this.delay = setTimeout( () => {
             this.setState({
                 currentImageIndex: index,
                 rightArrowClickable: true
@@ -77,6 +79,7 @@ export default class Carousel extends Component {
 
     componentWillUnmount() {
         clearTimeout(nextSlideTO)
+        clearTimeout(this.delay)
     }
 
     render() {
