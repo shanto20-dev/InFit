@@ -149,7 +149,7 @@ class NewOutfitForm extends React.Component {
                         className="new-outfit-img_url"
                         value={this.state.img_url}
                         onChange={this.update("img_url")}
-                        placeholder="Upload an Image"
+                        placeholder="Link an image of your outfit"
                     />
                     <button>Create Outfit</button>
                 </form>
