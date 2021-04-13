@@ -30,8 +30,10 @@ class NewOutfitForm extends React.Component {
         e.preventDefault();
 
         this.props.newOutfit(this.state).then((action) => {
-            if (action.type !== "RECEIVE_SESSION_ERRORS")
+            if (action.type !== "RECEIVE_SESSION_ERRORS") {
+                this.props.clearErrors();
                 this.props.history.push(`/outfit/${action.outfit.data._id}`);
+            }
         });
     }
 
@@ -73,7 +75,22 @@ class NewOutfitForm extends React.Component {
         );
     }
 
+    nameErrors() {
+        if (
+            Object.values(this.props.errors).includes("Name field is required")
+        ) {
+            return " - field is required";
+        }
+        return "";
+    }
+
     render() {
+        let nameStyle = {};
+
+        if (this.nameErrors() != "") {
+            nameStyle = { color: "red" };
+        }
+
         let currentTags = this.state.tags.map((tag, i) => {
             return (
                 <span key={i} className="tag">
@@ -88,14 +105,16 @@ class NewOutfitForm extends React.Component {
                 </span>
             );
         });
-        console.log(this.props.errors);
         return (
             <div className="new-outfit-form-container">
                 <form className="new-outfit-form" onSubmit={this.handleSubmit}>
                     <h1 className="new-outfit-form-header">
                         Add a new outfit to your closet
                     </h1>
-                    <label>Outfit Name</label>
+                    <label style={nameStyle}>
+                        Outfit Name{this.nameErrors()}
+                    </label>
+
                     <input
                         type="text"
                         value={this.state.name}
@@ -103,7 +122,6 @@ class NewOutfitForm extends React.Component {
                         placeholder="Outfit Name"
                         className="new-outfit-name"
                     />
-
                     <label>Tags</label>
                     <div className="tags-div">
                         <input
@@ -118,7 +136,6 @@ class NewOutfitForm extends React.Component {
                         </span>
                     </div>
                     <div className="current-tags">{currentTags}</div>
-
                     <label>Description</label>
                     <textarea
                         className="new-outfit-description"
@@ -126,8 +143,7 @@ class NewOutfitForm extends React.Component {
                         onChange={this.update("description")}
                         placeholder="Description"
                     />
-
-                    <label>Image</label>
+                    <label>Image URL</label>
                     <input
                         type="text"
                         className="new-outfit-img_url"
@@ -135,7 +151,6 @@ class NewOutfitForm extends React.Component {
                         onChange={this.update("img_url")}
                         placeholder="Upload an Image"
                     />
-                    {this.renderErrors()}
                     <button>Create Outfit</button>
                 </form>
             </div>
