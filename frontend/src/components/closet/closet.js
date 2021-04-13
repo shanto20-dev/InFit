@@ -23,6 +23,8 @@ export default class Closet extends Component {
         this.updateSelected = this.updateSelected.bind(this);
         this.clickKnob = this.clickKnob.bind(this)
         this.updateProps = this.updateProps.bind(this)
+        this.newClothing = this.newClothing.bind(this)
+        this.newOutfit = this.newOutfit.bind(this)
     }
 
     componentDidMount() {
@@ -63,6 +65,16 @@ export default class Closet extends Component {
             contentClass: currentContent === "content" ? "content hide-sidebar" : "content",
         })
     }
+
+    newClothing(e) {
+        e.preventDefault();
+        this.props.history.push("/clothing/new")
+    }
+
+    newOutfit(e) {
+        e.preventDefault();
+        this.props.history.push("/outfit/new")
+    }
     
     render() {
 
@@ -81,7 +93,7 @@ export default class Closet extends Component {
             addButton = (
                 <div className="upload-clothes-wrapper">
                     <Link to="/clothing/new"><img src={uploadClothesIcon} alt=""/></Link>
-                    <span>Add Clothing</span>
+                    <span onClick={this.newClothing}>Add Clothing</span>
                     <div className="hider"></div>
                 </div>
             )
@@ -91,7 +103,7 @@ export default class Closet extends Component {
             addButton = (
                 <div className="upload-clothes-wrapper">
                     <Link to="/outfit/new"><img src={uploadOutfitsIcon} alt=""/></Link>
-                    <span>Add Outfit</span>
+                    <span onClick={this.newOutfit}>Add Outfit</span>
                     <div className="hider"></div>
                 </div>
             )
