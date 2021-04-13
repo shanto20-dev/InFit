@@ -26,7 +26,7 @@ InFit was built with a Node.js back-end and a React/Redux for the front-end.
 
 
 
-<img width="1438" alt="Screen Shot 2021-04-13 at 10 51 50 AM" src="https://user-images.githubusercontent.com/74939594/114573294-41c4ea80-9c46-11eb-9d6b-0f2bae2df28f.png">
+
 
 ## User Auth
 
@@ -36,10 +36,9 @@ InFit was built with a Node.js back-end and a React/Redux for the front-end.
 * The Closet page of InFit is an ProtectedRoute - meaning that you cannot access the page if you are not signed-in.
 
 
+<img width="1438" alt="Screen Shot 2021-04-13 at 10 51 50 AM" src="https://user-images.githubusercontent.com/74939594/114573294-41c4ea80-9c46-11eb-9d6b-0f2bae2df28f.png">
 
 
-
-<img width="1432" alt="Screen Shot 2021-04-13 at 10 51 21 AM" src="https://user-images.githubusercontent.com/74939594/114573231-31ad0b00-9c46-11eb-894a-1b1fac7b4439.png">
 
 
 
@@ -54,11 +53,11 @@ InFit was built with a Node.js back-end and a React/Redux for the front-end.
 
 
 
+<img width="1432" alt="Screen Shot 2021-04-13 at 10 51 21 AM" src="https://user-images.githubusercontent.com/74939594/114573231-31ad0b00-9c46-11eb-894a-1b1fac7b4439.png">
 
 
 
 
-<img width="1439" alt="Screen Shot 2021-04-13 at 10 52 54 AM" src="https://user-images.githubusercontent.com/74939594/114573476-67ea8a80-9c46-11eb-838d-73519c4f1905.png">
 
 
 
@@ -69,11 +68,11 @@ InFit was built with a Node.js back-end and a React/Redux for the front-end.
 * If the user is the owner of the clothing item, an edit button will appear on the clothing's show page to edit details for the clothing
 
 
+<img width="1439" alt="Screen Shot 2021-04-13 at 10 52 54 AM" src="https://user-images.githubusercontent.com/74939594/114573476-67ea8a80-9c46-11eb-838d-73519c4f1905.png">
 
 
 
 
-<img width="1435" alt="Screen Shot 2021-04-13 at 10 50 41 AM" src="https://user-images.githubusercontent.com/74939594/114573122-18a45a00-9c46-11eb-9442-d601101d30c3.png">
 
 
 ## Outfits
@@ -82,3 +81,6 @@ InFit was built with a Node.js back-end and a React/Redux for the front-end.
 * Users can view their own outfits or other user's outfits on an outfit show page
 * If the user is the owner of the outfit, two buttons will appear for the user to "Add clothes to this outfit" or "Save outfit." Additonally, the user can edit the tags for the outfit.
 * If the user clicks "Add Clothes to this Outfit", a modal will slide up on the screen that contains all the user's clothing items that are not already a part of the outfit. The user can then drag and drop clothing items into the outfit to add items to that outfit.
+
+
+<img width="1435" alt="Screen Shot 2021-04-13 at 10 50 41 AM" src="https://user-images.githubusercontent.com/74939594/114573122-18a45a00-9c46-11eb-9442-d601101d30c3.png">
