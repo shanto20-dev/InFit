@@ -6,9 +6,26 @@
   display: flex;
   overflow:hidden;
   box-sizing: border-box;
+  position: relative;
+}
+
+.back-button {
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  font-family: "Nunito", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.back-button:hover {
+
+  font-weight: 800;
 }
 
 .outfit-info{
+  padding-top: 50px;
   width: 35%;
   background-color: rgb(250, 228, 228);;
   text-align: center;
