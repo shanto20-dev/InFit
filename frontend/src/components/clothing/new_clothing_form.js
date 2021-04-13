@@ -19,6 +19,9 @@ class NewClothingForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addTag = this.addTag.bind(this)
     this.removeTag = this.removeTag.bind(this)
+    this.nameErrors = this.nameErrors.bind(this);
+    this.categoryErrors = this.categoryErrors.bind(this);
+    this.imgErrors = this.imgErrors.bind(this)
   }
 
   componentDidMount(){
@@ -71,14 +74,25 @@ class NewClothingForm extends React.Component {
     })
   }
 
-  renderErrors() {
-    return (
-      <ul>
-        {Object.keys(this.props.errors).map((error, i) => (
-          <li key={`error-${i}`}>{this.props.errors[error]}</li>
-        ))}
-      </ul>
-    );
+  nameErrors() {
+    if (Object.values(this.props.errors).includes("Name field is required")) {
+      return " - field is required"
+    }
+    return ""
+  }
+
+  categoryErrors() {
+    if (Object.values(this.props.errors).includes("Category field is required")) {
+      return " - field is required"
+    }
+    return ""
+  }
+
+  imgErrors() {
+    if (Object.values(this.props.errors).includes("An image is required")) {
+      return " - field is required"
+    }
+    return ""
   }
 
   render() {
@@ -88,14 +102,27 @@ class NewClothingForm extends React.Component {
       )
     })
 
+    let nameStyle = {};
+    let imgStyle = {};
+    let categoryStyle = {};
+    if (this.nameErrors() != "") {
+      nameStyle = { color: "red"}
+    }
+    if (this.imgErrors() != "") {
+      imgStyle = { color: "red"}
+    }
+    if (this.categoryErrors() != "") {
+      categoryStyle = { color: "red"}
+    }
+
     return (
       <div className="clothes-form-container">
         <div className="clothes-form-card">
         <h1>Create New Clothing Item</h1>
         <form onSubmit={this.handleSubmit}>
           <div className="form-details">
-            <label>
-              Item Name
+            <label style={nameStyle}>
+              Item Name{this.nameErrors()}
             </label>
               <input
                 type="text"
@@ -104,8 +131,8 @@ class NewClothingForm extends React.Component {
                 placeholder="Item Name"
                 className="new-clothing-name field"
               />
-            <label>
-              Category
+            <label style={categoryStyle}>
+              Category{this.categoryErrors()}
             </label>
             <select
               name="category"
@@ -150,8 +177,8 @@ class NewClothingForm extends React.Component {
               {currentTags}
             </div>
             
-            <label>
-              Image
+            <label style={imgStyle}>
+              Image{this.imgErrors()}
             </label>
               <input
                 type="text"
@@ -170,7 +197,6 @@ class NewClothingForm extends React.Component {
                 onChange={this.update("link")}
                 placeholder="Where can you buy this item?"
               />
-              {this.renderErrors()}
             <button>Submit</button>
           </div>
         </form>
