@@ -1,5 +1,6 @@
 .clothing-show-container,
 .clothing-edit-container {
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,177 +25,193 @@
 .back-button:hover {
 
   font-weight: 800;
+
 }
 
 .clothing-card {
-  margin-bottom: 100px;
-  width: 800px;
-  height: auto;
-  padding: 40px;
-  border: 1px solid black;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  align-items: center;
-  font-family: "Varela", sans-serif;
-  animation-name: slideInCard;
-  animation-duration: 0.2s;
-  animation-iteration-count: 1;
-  z-index: 3;
-  background-color: rgba(255, 255, 255, 0.938);
+    margin-bottom: 100px;
+    width: 800px;
+    height: auto;
+    padding: 40px;
+    border: 1px solid black;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    align-items: center;
+    font-family: "Varela", sans-serif;
+    animation-name: slideInCard;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
+    z-index: 3;
+    background-color: rgba(255, 255, 255, 0.938);
 }
 
 .clothing-card.inactive {
-  animation-name: slideOutCard;
-  animation-duration: 0.2s;
-  animation-iteration-count: 1;
+    animation-name: slideOutCard;
+    animation-duration: 0.2s;
+    animation-iteration-count: 1;
 }
 
 @keyframes slideInCard {
-  0% {
-    transform: scale(1, 0);
-  }
-  100% {
-    transform: scale(1, 1);
-  }
+    0% {
+        transform: scale(1, 0);
+    }
+    100% {
+        transform: scale(1, 1);
+    }
 }
 
 @keyframes slideOutCard {
-  0% {
-    transform: scale(1, 1);
-  }
-  100% {
-    transform: scale(1, 0);
-  }
+    0% {
+        transform: scale(1, 1);
+    }
+    100% {
+        transform: scale(1, 0);
+    }
 }
 
 .clothing-card .clothing-info {
-  margin-left: 40px;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
+    margin-left: 40px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
 }
 
 .clothing-image {
-  width: auto;
-  height: auto;
-  max-height: 350px;
-  max-width: 350px;
+    width: auto;
+    height: auto;
+    max-height: 350px;
+    max-width: 350px;
 }
 
 .title {
-  line-height: 20px;
-  font-family: "Nunito", sans-serif;
-  font-size: 16px;
-  font-weight: 700;
-  color: #a83c28;
+    line-height: 20px;
+    font-family: "Nunito", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    color: #a83c28;
 }
 
 .title + p {
-  line-height: 24px;
-  font-size: 18px;
-  margin-bottom: 10px;
+    line-height: 24px;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
 .loading {
-  text-align: center;
+    text-align: center;
 }
 
 .clothing-info input {
-  height: 40px;
-  width: 100%;
-  max-width: 500px;
-  box-sizing: border-box;
-  margin-bottom: 12px;
-  font-family: "Nunito", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
+    height: 40px;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    font-family: "Nunito", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .clothing-info textarea {
-  height: 64px;
-  width: 100%;
-  max-width: 500px;
-  box-sizing: border-box;
-  margin-bottom: 12px;
-  font-family: "Nunito", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
-  resize: none;
+    height: 64px;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    font-family: "Nunito", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    resize: none;
 }
 
 .clothing-info select {
-  height: 40px;
-  width: 100%;
-  max-width: 500px;
-  box-sizing: border-box;
-  margin-bottom: 12px;
-  font-family: "Nunito", sans-serif;
-  font-size: 16px;
-  font-weight: 600;
+    height: 40px;
+    width: 100%;
+    max-width: 500px;
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    font-family: "Nunito", sans-serif;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .clothing-info button.submit-edit {
-  width: 80px;
-  margin: 0 auto;
-  padding-left: 18px;
+    width: 80px;
+    margin: 0 auto;
+    padding-left: 18px;
 }
 
 .clothing-info .current-tags {
-  width: 100%;
-  height: auto;
-  box-sizing: border-box;
-  margin-bottom: 16px;
-  display: flex;
-  flex-wrap: wrap;
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .clothing-info .current-tags .tag {
-  padding: 6px 12px;
-  border-radius: 16px;
-  color: white;
-  background-color: #18a86b;
-  font-family: "Nunito", sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  margin-right: 8px;
-  margin-bottom: 8px;
+    padding: 6px 12px;
+    border-radius: 16px;
+    color: white;
+    background-color: #18a86b;
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 8px;
+    margin-bottom: 8px;
 }
 
 .clothing-info .current-tags .tag .delete-tag {
-  margin-left: 8px;
-  cursor: pointer;
+    margin-left: 8px;
+    cursor: pointer;
 }
 
 .clothing-info .current-tags .tag .delete-tag:hover {
-  color: rgb(216, 32, 0);
+    color: rgb(216, 32, 0);
 }
 
 .clothing-info .tags-div {
-  width: 100%;
-  height: auto;
-  position: relative;
+    width: 100%;
+    height: auto;
+    position: relative;
 }
 
 .clothing-info .add-tag {
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  border-radius: 50%;
-  color: white;
-  font-weight: 900;
-  font-size: 20px;
-  position: absolute;
-  top: 40%;
-  right: 3%;
-  padding-bottom: 1px;
-  background-color: rgb(255, 170, 170);
-  cursor: pointer;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+    font-weight: 900;
+    font-size: 20px;
+    position: absolute;
+    top: 40%;
+    right: 3%;
+    padding-bottom: 1px;
+    background-color: rgb(255, 170, 170);
+    cursor: pointer;
 }
 
 .clothing-info .add-tag:hover {
-  background-color: rgb(165, 48, 44);
+    background-color: rgb(165, 48, 44);
+}
+
+.search-outfits-button {
+    cursor: pointer;
+    position: relative;
+    bottom: -40px;
+    right: -110px;
+
+    font-family: "Nunito", sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.search-outfits-button:hover {
+    color: #ff684e;
 }
 
 /*
