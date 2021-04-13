@@ -178,7 +178,7 @@ class NewClothingForm extends React.Component {
             </div>
             
             <label style={imgStyle}>
-              Image{this.imgErrors()}
+              Image URL{this.imgErrors()}
             </label>
               <input
                 type="text"
