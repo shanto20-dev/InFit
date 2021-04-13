@@ -3,7 +3,8 @@
 
 [Live Site!](https://in-fit.herokuapp.com/#/)
 
-[image](https://user-images.githubusercontent.com/74939594/114573731-a08a6400-9c46-11eb-8f33-a67d6d57dfb7.png)
+![Screen Shot 2021-04-13 at 10 55 33 AM](https://user-images.githubusercontent.com/74939594/114573886-c879c780-9c46-11eb-8e48-9f7d2afd642c.png)
+
 
 
 
