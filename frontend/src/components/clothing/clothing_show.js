@@ -3,17 +3,16 @@ import { Link } from "react-router-dom";
 import "../../styles/clothing/clothing-show.css";
 
 class ClothingShow extends React.Component {
-
     constructor(props) {
         super(props);
         this.switchForm = this.switchForm.bind(this);
         this.searchOutfits = this.searchOutfits.bind(this);
-
-    this.goBack = this.goBack.bind(this)
-
+        this.goBack = this.goBack.bind(this);
+        this.toggleLike = this.toggleLike.bind(this);
 
         this.state = {
             currentUser: { id: 0 },
+            liked: false,
         };
     }
 
@@ -43,32 +42,63 @@ class ClothingShow extends React.Component {
             .then(() => this.props.history.push("/search"));
     }
 
+    goBack(e) {
+        e.preventDefault();
+        this.props.history.goBack();
+    }
 
-  goBack(e) {
-    e.preventDefault();
-    this.props.history.goBack();
-  }
+    toggleLike() {
+        this.setState({ liked: !this.state.liked });
+        this.props.toggleLike(this.props.match.params._id);
+    }
 
-  render() {
+    liked() {
+        if (this.state.liked) {
+            return (
+                <span
+                    onClick={this.toggleLike}
+                    className="heart material-icons"
+                >
+                    favorite
+                </span>
+            );
+        } else {
+            return (
+                <span
+                    onClick={this.toggleLike}
+                    className="heart material-icons"
+                >
+                    favorite_border
+                </span>
+            );
+        }
+    }
 
-    let editButton = this.props.clothing.user == this.props.currentUserId ? (
-      <div className="edit-button">
-        <button onClick={this.switchForm}>Edit</button>
-      </div>
-    ) : ""
+    render() {
+        let editButton =
+            this.props.clothing.user == this.props.currentUserId ? (
+                <div className="edit-button">
+                    <button onClick={this.switchForm}>Edit</button>
+                </div>
+            ) : (
+                ""
+            );
 
-    const clothing = this.props.clothing._id ? (
-      <div className="clothing-show-container">
-        <span className="back-button" onClick={this.goBack}>❮ Back</span>
-        <div className="clothing-card" id="clothing-card">
-          <div className="image-container">
-            <img
-              className="clothing-image"
-              src={this.props.clothing.img_url}
-              alt=""
-            />
-          </div>
+        const clothing = this.props.clothing._id ? (
+            <div className="clothing-show-container">
+                <span className="back-button" onClick={this.goBack}>
+                    ❮ Back
+                </span>
+                <div className="clothing-card" id="clothing-card">
+                    {this.liked()}
 
+                    <div className="image-container">
+                        <img
+                            className="clothing-image"
+                            src={this.props.clothing.img_url}
+                            alt=""
+                        />
+                    </div>
 
                     <div className="clothing-info">
                         <h1 className="title clothing-name">Item Name:</h1>

@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import { getClothing } from "../../actions/clothing_actions";
 import { currentUser } from "../../util/session_api_util";
 import { searchOutfitByClothing } from "../../actions/search_actions";
+import { toggleLike } from "../../actions/like_actions";
 import ClothingShow from "./clothing_show";
 
 const mapStateToProps = (state) => {
@@ -17,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
         getClothing: (clothingId) => dispatch(getClothing(clothingId)),
         searchOutfitByClothing: (clothingId) =>
             dispatch(searchOutfitByClothing(clothingId)),
+        toggleLike: (itemId) => dispatch(toggleLike(itemId)),
     };
 };
 
