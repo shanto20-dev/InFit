@@ -4,6 +4,7 @@ const users = require("./routes/api/users");
 const clothing = require("./routes/api/clothing");
 const outfit = require("./routes/api/outfit");
 const search = require("./routes/api/search");
+const like = require("./routes/api/like");
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const path = require("path");
@@ -35,6 +36,7 @@ app.use("/api/users", users);
 app.use("/api/clothing", clothing);
 app.use("/api/outfit", outfit);
 app.use("/api/search", search);
+app.use("/api/like", like);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
