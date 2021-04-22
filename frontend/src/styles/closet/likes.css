@@ -1,0 +1,179 @@
+.likes-wrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.likes-wrapper .header-div {
+    width: 90%;
+    min-height: 160px;
+    border-bottom: 2px solid #ffd2ca9f;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: flex-end;
+    margin: 0 auto 30px auto;
+    position: relative;
+}
+
+.likes-wrapper .header-div h1 {
+    color: #585858;
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 36px;
+    margin-bottom: 18px;
+}
+
+.likes-wrapper .likes-list {
+    width: 95%;
+    max-width: 1000px;
+    height: Calc(100% - 160px);
+    max-height: 450px;
+    display: grid;
+    grid-template-columns: repeat(5, 20%);
+    grid-template-rows: repeat(3, 33%);
+    align-items: flex-start;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    position: relative;
+}
+
+.likes-wrapper .likes-list .like-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    position: relative;
+}
+.likes-wrapper .likes-list .like-item a {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    position: relative;
+    background-color: white;
+    transition: 0.3s;
+
+    overflow: hidden;
+}
+
+.likes-wrapper .likes-list .like-item a .shadow {
+    min-width: Calc(100% - 4px);
+    min-height: Calc(100% - 4px);
+    border: rgb(119, 119, 119) 2px solid;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2) inset;
+    border-radius: 4px;
+
+    z-index: 4;
+    position: absolute;
+}
+
+.likes-wrapper .likes-list .like-item a img {
+    max-height: 100%;
+    height: auto;
+    width: auto;
+    max-width: 100%;
+    z-index: 3;
+    transition: 0.3s;
+}
+.likes-wrapper .likes-list .like-item a h3 {
+    display: none;
+    position: absolute;
+    bottom: 50%;
+    color: #585858;
+    font-family: "Varela", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    font-size: 1.2vh;
+    overflow: hidden;
+    transition: 0.3s;
+}
+
+.likes-wrapper .likes-list .like-item:hover a {
+    transform: scale(1.2, 1.4);
+    z-index: 6;
+    transition: 0.3s;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
+}
+
+.likes-wrapper .likes-list .like-item:hover img {
+    transform: scale(1, 0.9) translateY(-10%);
+    transition: 0.3s;
+}
+
+.likes-wrapper .likes-list .like-item:hover h3 {
+    display: block;
+    bottom: 4%;
+    transition: 0.3s;
+}
+
+.likes-wrapper .page-select {
+    margin: 0 auto;
+    position: absolute;
+    bottom: 3%;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.likes-wrapper .page-select span {
+    margin: auto 4px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 18px;
+    font-weight: 300;
+    font-family: "Varela", sans-serif;
+}
+
+.likes-wrapper .page-select span.selected {
+    font-weight: 800;
+}
+
+.likes-wrapper .page-select span.left,
+span.right {
+    color: #a83c28;
+}
+
+.likes-wrapper .page-select span:hover {
+    font-weight: 800;
+    transition: 0.3s;
+}
+
+.spacing {
+    height: 30.45px;
+}
+
+.likes-page-heart {
+    opacity: 0;
+    position: absolute;
+    z-index: 0;
+    top: 40px;
+    right: 50px;
+}
+
+.likes-wrapper .likes-list .like-item:hover .likes-page-heart {
+    opacity: 1;
+    z-index: 10;
+    transition: 1s;
+    cursor: pointer;
+    font-size: 32px;
+    color: red;
+    position: absolute;
+    right: 0px;
+    height: 24px;
+    top: 130px;
+}
+/* 
+.likes-wrapper .likes-list .like-item:hover .likes-page-heart:hover {
+    color: rgb(72, 0, 0);
+} */

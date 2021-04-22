@@ -12,7 +12,9 @@ class ClothingShow extends React.Component {
 
         this.state = {
             currentUser: { id: 0 },
-            liked: false,
+            liked: this.props.likes.some(
+                (like) => like._id === this.props.match.params._id
+            ),
         };
     }
 
@@ -23,6 +25,13 @@ class ClothingShow extends React.Component {
             this.setState({
                 currentUser: thisUser,
             });
+            this.props.getUserLikes(thisUser.id).then(() =>
+                this.setState({
+                    liked: this.props.likes.some(
+                        (like) => like._id === this.props.match.params._id
+                    ),
+                })
+            );
         });
     }
 
@@ -48,8 +57,13 @@ class ClothingShow extends React.Component {
     }
 
     toggleLike() {
+        this.props.toggleLike(
+            this.props.match.params._id,
+            "clothing",
+            this.props.currentUserId,
+            this.state.liked
+        );
         this.setState({ liked: !this.state.liked });
-        this.props.toggleLike(this.props.match.params._id);
     }
 
     liked() {

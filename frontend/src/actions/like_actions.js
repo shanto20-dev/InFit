@@ -1,11 +1,12 @@
 import * as util from "../util/like_util";
 
-export const RECEIVE_LIKE = "RECEIVE_LIKE";
+export const RECEIVE_LIKES = "RECEIVE_LIKES";
 export const SEND_LIKE = "SEND_LIKE";
 
-const receiveLike = () => {
+const receiveLikes = (likes) => {
     return {
-        type: RECEIVE_LIKE,
+        type: RECEIVE_LIKES,
+        likes,
     };
 };
 
@@ -15,6 +16,12 @@ const sendLike = () => {
     };
 };
 
-export const toggleLike = (itemId) => (dispatch) => {
-    return util.toggleLike(itemId).then(() => dispatch(sendLike(itemId)));
+export const toggleLike = (itemId, type, user, liked) => (dispatch) => {
+    return util
+        .toggleLike(itemId, type, user, liked)
+        .then(() => dispatch(sendLike(itemId)));
+};
+
+export const getUserLikes = (id) => (dispatch) => {
+    return util.fetchLikes(id).then((likes) => dispatch(receiveLikes(likes)));
 };
