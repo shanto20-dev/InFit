@@ -71,9 +71,22 @@ router.post("/", (req, res) => {
 
 router.get("/:id", (req, res) => {
     let response = [];
-    User.findById(req.params.id)
-        .then((user) => {
-            user.likes.forEach((like) => {
+
+    // User.findById(req.params.id)
+    //     .then((user) => {
+    //         user.likes.forEach((like) => {
+    //             if (like.onModel === "clothing") {
+    //                 response.push(Clothing.findById(like.likeable_id));
+    //             } else if (like.onModel === "outfits") {
+    //                 response.push(Outfit.findById(like.likeable_id));
+    //             }
+    //         });
+    //     })
+    //     .then(() => Promise.all(response))
+    //     .then((result) => res.json(result));
+    Like.find({ liker: req.params.id })
+        .then((likes) => {
+            likes.forEach((like) => {
                 if (like.onModel === "clothing") {
                     response.push(Clothing.findById(like.likeable_id));
                 } else if (like.onModel === "outfits") {
