@@ -62,8 +62,6 @@ export default class Likes extends Component {
     }
 
     render() {
-        console.log(this.state);
-
         const clothing = [];
         const outfit = [];
 

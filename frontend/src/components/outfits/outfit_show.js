@@ -44,7 +44,6 @@ class OutfitShow extends React.Component {
 
     componentDidMount() {
         this.props.getOutfit(this.props.match.params.id).then((action) => {
-            console.log(action);
             this.setState({
                 outfit: action.outfit,
             });
