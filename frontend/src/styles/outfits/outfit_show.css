@@ -1,255 +1,246 @@
 .outfit-show-container {
-  width: 100vw;
-  height: Calc(100vh - 100px);
-  max-height: Calc(100vh - 100px);
-  font-family: "Nunito", sans-serif;
-  display: flex;
-  overflow:hidden;
-  box-sizing: border-box;
-  position: relative;
+    width: 100vw;
+    height: Calc(100vh - 100px);
+    max-height: Calc(100vh - 100px);
+    font-family: "Nunito", sans-serif;
+    display: flex;
+    overflow: hidden;
+    box-sizing: border-box;
+    position: relative;
 }
 
 .back-button {
-  position: absolute;
-  top: 20px;
-  left: 30px;
-  font-family: "Nunito", sans-serif;
-  font-size: 20px;
-  font-weight: 600;
-  cursor: pointer;
+    position: absolute;
+    top: 20px;
+    left: 30px;
+    font-family: "Nunito", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .back-button:hover {
-
-  font-weight: 800;
+    font-weight: 800;
 }
 
-.outfit-info{
-  padding-top: 50px;
-  width: 35%;
-  background-color: rgb(250, 228, 228);;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
+.outfit-info {
+    padding-top: 50px;
+    width: 35%;
+    background-color: rgb(250, 228, 228);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
 }
 
-.outfit-title{
-  font-family: "Varela", sans-serif;
-  font-size: 24px;
-  font-weight: 800;
-  margin-bottom: 20px;
-  margin-top: 20px;
-
+.outfit-title {
+    font-family: "Varela", sans-serif;
+    font-size: 24px;
+    font-weight: 800;
+    margin-bottom: 20px;
+    margin-top: 20px;
 }
 
-.outfit-description{
-  font-size: 16px;
-  margin-bottom: 20px;
-
+.outfit-description {
+    font-size: 16px;
+    margin-bottom: 20px;
 }
 
-.outfit-tags{
-  margin-bottom: 40px;
+.outfit-tags {
+    margin-bottom: 40px;
 }
 
-.outfit-image{
-  height: 40%;
-  width: 40%;
-  border-radius: 15px;
-  margin: 40px auto;
-
+.outfit-image {
+    height: 40%;
+    width: 40%;
+    border-radius: 15px;
+    margin: 40px auto;
 }
 
-.addButton{
-  margin-bottom: 10px;
-
+.addButton {
+    margin-bottom: 10px;
 }
 
 .outfit-clothes {
-  padding: 30px;
-  display: grid;
-  grid-template-columns: repeat(5, 18%);
-  grid-template-rows: repeat(4, 50%);
-  border-left: 1px solid rgb(248, 218, 218);
-  width: 60%;
-  height: 40%;
-  grid-column-gap: 2%;
-  grid-row-gap: 5%;
+    padding: 30px;
+    display: grid;
+    grid-template-columns: repeat(5, 18%);
+    grid-template-rows: repeat(4, 50%);
+    border-left: 1px solid rgb(248, 218, 218);
+    width: 60%;
+    height: 40%;
+    grid-column-gap: 2%;
+    grid-row-gap: 5%;
 }
 
 .clothing-elements {
-  border-radius: 4px;
-  background-color: rgb(248, 233, 233);
-  box-shadow: 0 0 8px 2px rgba(0,0,0,0.1) inset;
-  box-sizing: border-box;
-  padding: 30px;
-  display: grid;
-  height: 80%;
-  grid-template-columns: repeat(5, 20%);
-  grid-template-rows: repeat(1000, 50%);
-  position: relative;
-  overflow: auto;
+    border-radius: 4px;
+    background-color: rgb(248, 233, 233);
+    box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.1) inset;
+    box-sizing: border-box;
+    padding: 30px;
+    display: grid;
+    height: 80%;
+    grid-template-columns: repeat(5, 20%);
+    grid-template-rows: repeat(1000, 50%);
+    position: relative;
+    overflow: auto;
 }
 
 .clothing-elements::-webkit-scrollbar {
-  width: 8px;
-  
+    width: 8px;
 }
 
 .clothing-elements::-webkit-scrollbar-track {
-  
-  background: rgba(0,0,0,0);
+    background: rgba(0, 0, 0, 0);
 }
 .clothing-elements::-webkit-scrollbar-thumb {
-  background: #9b3321;
-  border-radius: 4px;
+    background: #9b3321;
+    border-radius: 4px;
 }
 .clothing-elements::-webkit-scrollbar-thumb:hover {
-  background: #681e11;
+    background: #681e11;
 }
 
 /* #A83C28","#FF8670","#F66B54","#18A86B","#53F5B0" */
-.modal.inactive{
-  animation-name: slideOutModal;
-  animation-duration: 0.4s;
-  animation-iteration-count: 1;
-  display: block;
-  /* opacity: 0; */
+.modal.inactive {
+    animation-name: slideOutModal;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+    display: block;
+    /* opacity: 0; */
 }
 
 .modal {
-  display: none;
-  box-sizing: border-box;
-  height: 52vh;
-  width: 60%;
-  position: absolute;
-  left: 38%;
-  bottom: 0px;
-  z-index: 5;
-  background-color: #e4b4b4;
-  border-radius: 8px;
-  padding: 40px;
-  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
-}
-
-.modal.active{
-  display: block;
-  animation-name: slideInModal;
-  animation-duration: 0.4s;
-  animation-iteration-count: 1;
-}
-
-@keyframes slideInModal{
-  0% {
-    bottom: -300px;
-    opacity: 0;
-  }
-
-  70% {
-    bottom: -30px;
-    opacity: 1;
-  }
-
-  100%{
+    display: none;
+    box-sizing: border-box;
+    height: 52vh;
+    width: 60%;
+    position: absolute;
+    left: 38%;
     bottom: 0px;
-  }
-
+    z-index: 5;
+    background-color: #e4b4b4;
+    border-radius: 8px;
+    padding: 40px;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2);
 }
-@keyframes slideOutModal{
-  0% {
-    bottom: 0px;
-    opacity: 1;
-  }
 
-  70% {
-    bottom: -270px;
-    opacity: .5;
-  }
+.modal.active {
+    display: block;
+    animation-name: slideInModal;
+    animation-duration: 0.4s;
+    animation-iteration-count: 1;
+}
 
-  100%{
-    bottom: -300px;
-    opacity: 0;
-  }
+@keyframes slideInModal {
+    0% {
+        bottom: -300px;
+        opacity: 0;
+    }
 
+    70% {
+        bottom: -30px;
+        opacity: 1;
+    }
+
+    100% {
+        bottom: 0px;
+    }
+}
+@keyframes slideOutModal {
+    0% {
+        bottom: 0px;
+        opacity: 1;
+    }
+
+    70% {
+        bottom: -270px;
+        opacity: 0.5;
+    }
+
+    100% {
+        bottom: -300px;
+        opacity: 0;
+    }
 }
 
 .modal-header {
-  width: 100%;
-  text-align: center;
-  position: relative;
-  margin-bottom: 30px;
-  font-size: 28px;
-  font-weight: 800;
-  color: #8a1d1d;
+    width: 100%;
+    text-align: center;
+    position: relative;
+    margin-bottom: 30px;
+    font-size: 28px;
+    font-weight: 800;
+    color: #8a1d1d;
 }
 
 .clothing-item {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 20px;
-  height: 100%;
-  box-sizing: border-box;
-  padding: 6px;
-  border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 6px;
+    border-radius: 4px;
 }
 
 .clothing-item a {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  object-fit: contain;
-  position: relative;
-  background-color: white;
-  transition: 0.3s;
-  border-radius: 4px;
-  overflow: hidden;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    object-fit: contain;
+    position: relative;
+    background-color: white;
+    transition: 0.3s;
+    border-radius: 4px;
+    overflow: hidden;
 }
 
 .clothing-item a .shadow {
-  min-width: Calc(100% - 4px);
-  min-height: Calc(100% - 4px);
-  border: rgb(119, 119, 119) 2px solid;
-  box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2) inset;
-  border-radius: 4px;
+    min-width: Calc(100% - 4px);
+    min-height: Calc(100% - 4px);
+    border: rgb(119, 119, 119) 2px solid;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.2) inset;
+    border-radius: 4px;
 
-  z-index: 4;
-  position: absolute;
+    z-index: 4;
+    position: absolute;
 }
 
 .clothing-item a img {
-  height: auto;
-  max-height: 100%;
-  width: auto;
-  max-width: 100%;
-  z-index: 3;
-  transition: 0.3s;
+    height: auto;
+    max-height: 100%;
+    width: auto;
+    max-width: 100%;
+    z-index: 3;
+    transition: 0.3s;
 }
 
 .clothing-item a h3 {
-  display: none;
-  position: absolute;
-  bottom: 50%;
-  color: #585858;
-  font-family: "Varela", sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  font-size: 1.2vh;
-  overflow: hidden;
-  transition: 0.3s;
+    display: none;
+    position: absolute;
+    bottom: 50%;
+    color: #585858;
+    font-family: "Varela", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    font-size: 1.2vh;
+    overflow: hidden;
+    transition: 0.3s;
 }
 
 .clothing-item a:hover {
-  transform: scale(1.2, 1.4);
-  z-index: 8;
-  transition: 0.3s;
-  box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
+    transform: scale(1.2, 1.4);
+    z-index: 8;
+    transition: 0.3s;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.4);
 }
 
 /* .clothing-wrapper .clothing-list .clothing-item a:hover .shadow{
@@ -258,98 +249,103 @@
 } */
 
 .clothing-item a:hover img {
-  transform: scale(1, 0.9) translateY(-10%);
-  transition: 0.3s;
+    transform: scale(1, 0.9) translateY(-10%);
+    transition: 0.3s;
 }
 
 .clothing-item a:hover h3 {
-  display: flex;
-  flex-wrap: wrap;
-  overflow:hidden;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  bottom: 4%;
-  transition: 0.3s;
-  z-index: 10;
-  width: 100%;
-  height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    bottom: 4%;
+    transition: 0.3s;
+    z-index: 10;
+    width: 100%;
+    height: auto;
 }
 
-.outfit-info input[type=text] {
-  margin-bottom: 12px;
-  height:28px;
-  border-radius: 4px;
-  font-size: 16px;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 600;
-  border: 1px solid #8a1d1d;
-
+.outfit-info input[type="text"] {
+    margin-bottom: 12px;
+    height: 28px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-family: "Nunito", sans-serif;
+    font-weight: 600;
+    border: 1px solid #8a1d1d;
 }
 
-.outfit-info input[type=text]:focus {
-  outline: none;
-  border-color: rgb(224, 36, 36);
+.outfit-info input[type="text"]:focus {
+    outline: none;
+    border-color: rgb(224, 36, 36);
 }
 
 .outfit-info .current-tags {
-  width: 66%;
-  height: auto;
-  box-sizing: border-box;
-  margin-bottom: 16px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+    width: 66%;
+    height: auto;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .outfit-info .current-tags .tag {
-  padding: 6px 12px;
-  border-radius: 16px;
-  color: white;
-  background-color: #18A86B;
-  font-family: 'Nunito', sans-serif;
-  font-weight: 700;
-  font-size: 14px;
-  margin-right: 8px;
-  margin-bottom: 8px;
+    padding: 6px 12px;
+    border-radius: 16px;
+    color: white;
+    background-color: #18a86b;
+    font-family: "Nunito", sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    margin-right: 8px;
+    margin-bottom: 8px;
 }
 
 .outfit-info .current-tags .tag .delete-tag {
-  margin-left: 8px;
-  cursor: pointer
+    margin-left: 8px;
+    cursor: pointer;
 }
 
 .outfit-info .current-tags .tag .delete-tag:hover {
-  color: rgb(216, 32, 0);
+    color: rgb(216, 32, 0);
 }
 
 .outfit-info .tags-div {
-  width: 66%;
-  margin: 0 auto;
-  height: auto;
-  position: relative
+    width: 66%;
+    margin: 0 auto;
+    height: auto;
+    position: relative;
 }
 
-.outfit-info .tags-div input[type=text]{
-  min-width: 100%;
+.outfit-info .tags-div input[type="text"] {
+    min-width: 100%;
 }
 
 .outfit-info .add-tag {
-  width: 20px;
-  height: 20px;
-  text-align: center;
-  border-radius: 50%;
-  color:white;
-  font-weight: 900;
-  font-size: 20px;
-  position: absolute;
-  top: 15%;
-  right: 3%;
-  padding-bottom: 1px;
-  background-color: rgb(255, 170, 170);
-  cursor: pointer;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    border-radius: 50%;
+    color: white;
+    font-weight: 900;
+    font-size: 20px;
+    position: absolute;
+    top: 15%;
+    right: 3%;
+    padding-bottom: 1px;
+    background-color: rgb(255, 170, 170);
+    cursor: pointer;
 }
 
 .outfit-info .add-tag:hover {
-  background-color: rgb(165, 48, 44);
+    background-color: rgb(165, 48, 44);
+}
+
+.outfit-like {
+    top: 65px;
+    left: 350px;
+    z-index: 3;
 }
